@@ -14,7 +14,7 @@ const CarCard = ({ car }) => {
   const handleToggleSave = async (e) => {};
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition group">
+    <Card className="overflow-hidden hover:shadow-lg transition group py-0">
       <div className="relative h-48">
         {car.images && car.images.length > 0 ? (
           <div className="relative w-full h-full">
@@ -79,7 +79,7 @@ const CarCard = ({ car }) => {
 
         <div className="flex justify-between items-center mt-auto">
           <Button
-            className="flex-1"
+            className="flex-1 cursor-pointer"
             onClick={() => router.push(`/cars/${car.id}`)}
           >
             View Car
