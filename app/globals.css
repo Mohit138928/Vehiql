@@ -127,3 +127,34 @@
     @apply bg-gradient-to-br from-blue-500 to-green-500 font-extrabold tracking-tighter pr-2 pb-2 text-transparent bg-clip-text;
   }
 }
+
+.dotted-background {
+  background-color: #16223c;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Pseudo-element to handle the dots and fade */
+.dotted-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+  background-size: 30px 30px;
+  pointer-events: none;
+
+  /* Fade out the dots towards left and right */
+  mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse at center,
+    rgba(0, 0, 0, 1) 30%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-repeat: no-repeat;
+  mask-size: cover;
+}
+

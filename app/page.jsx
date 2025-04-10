@@ -1,9 +1,11 @@
 import CarCard from "@/components/car-card";
 import HomeSearch from "@/components/home-search";
 import { DotPattern } from "@/components/magicui/dot-pattern";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
-import { bodyTypes, carMakes, featuredCars } from "@/lib/data";
+import { bodyTypes, carMakes, faqItems, featuredCars } from "@/lib/data";
 import { cn } from "@/lib/utils";
+import { SignedOut } from "@clerk/nextjs";
 import { Calendar, Car, ChevronRight, Shield } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,13 +15,13 @@ export default function Home() {
     <div className="pt-20 flex flex-col">
       {/*Hero */}
 
-      <section className="relative py-16 md:py-28 bg-[#16223c]">
+      <section className="relative py-16 md:py-28 dotted-background">
         <div className="max-w-4xl mx-auto text-center">
           <div>
             <h1 className="text-5xl md:text-8xl mb-4 gradient-title">
               Find Your Dream Car with Vehiql AI
             </h1>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-8">
               Advanced AI Car Search and test Drive from thousands of vehicles.
             </p>
           </div>
@@ -27,13 +29,14 @@ export default function Home() {
           {/* Search */}
           <HomeSearch />
         </div>
-        <DotPattern
+
+        {/* <DotPattern
           // glow={true}
           className={cn(
             "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]",
             "text-white"
           )}
-        />
+        /> */}
       </section>
 
       <section className="py-12">
@@ -168,6 +171,45 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section with Accordion */}
+      <section className="py-12 bg-gray-50">
+        <div className="container mx-auto px-20">
+          <h2 className="text-2xl font-bold text-center mb-8">
+            Frequently Asked Questions
+          </h2>
+          <Accordion type="single" collapsible className="w-full">
+            {faqItems.map((faq, index) => (
+              <AccordionItem key={index} value={`item-${index}`}>
+                <AccordionTrigger className="hover:no-underline font-semibold">{faq.question}</AccordionTrigger>
+                <AccordionContent>{faq.answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 dotted-background text-white">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-3xl font-bold mb-4">
+            Ready to Find Your Dream Car?
+          </h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Join thousands of satisfied customers who found their perfect
+            vehicle through our platform.
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button size="lg" variant="secondary" asChild>
+              <Link href="/cars">View All Cars</Link>
+            </Button>
+            <SignedOut>
+              <Button size="lg" asChild>
+                <Link href="/sign-up">Sign Up Now</Link>
+              </Button>
+            </SignedOut>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
