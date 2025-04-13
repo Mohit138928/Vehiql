@@ -1,0 +1,208 @@
+import db from "@/lib/prisma";
+import { createClient } from "@/lib/supabase";
+import { auth } from "@clerk/nextjs/server";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { m } from "framer-motion";
+import { revalidatePath } from "next/cache";
+import { cookies } from "next/headers";
+
+//function to convert file to base64
+async function fileToBase64(file) {
+  const bytes = await file.arrayBuffer();
+  const buffer = Buffer.from(bytes);
+  return buffer.toString("base64");
+}
+
+export async function processCarImageWithAI(file) {
+  try {
+    if (!process.env.GEMINI_API_KEY) {
+      //checking if api key is available or not
+      throw new Error("Gemini API key not found");
+    }
+
+    const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+
+    const base64Image = await fileToBase64(file); //converting file to base64
+
+    const imagePart = {
+      inlineData: {
+        data: base64Image,
+        mimeType: file.type,
+      },
+    };
+
+    const prompt = `
+        Analyze this car image and extract the following information:
+      1. Make (manufacturer)
+      2. Model
+      3. Year (approximately)
+      4. Color
+      5. Body type (SUV, Sedan, Hatchback, etc.)
+      6. Mileage
+      7. Fuel type (your best guess)
+      8. Transmission type (your best guess)
+      9. Price (your best guess)
+      9. Short Description as to be added to a car listing
+
+      Format your response as a clean JSON object with these fields:
+      {
+        "make": "",
+        "model": "",
+        "year": 0000,
+        "color": "",
+        "price": "",
+        "mileage": "",
+        "bodyType": "",
+        "fuelType": "",
+        "transmission": "",
+        "description": "",
+        "confidence": 0.0
+      }
+
+      For confidence, provide a value between 0 and 1 representing how confident you are in your overall identification.
+      Only respond with the JSON object, nothing else.
+       `;
+
+    const result = await model.generateContent([imagePart, prompt]);
+    const response = await result.response;
+    const text = response.test();
+    const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
+
+    try {
+      const carDetails = JSON.parse(cleanedText);
+
+      const requiredFields = [
+        "make",
+        "model",
+        "year",
+        "color",
+        "bodyType",
+        "price",
+        "mileage",
+        "fuelType",
+        "transmission",
+        "description",
+        "confidence",
+      ];
+
+      const missingFields = requiredFields.filter(
+        (field) => !(field in carDetails)
+      );
+
+      if (missingFields.length > 0) {
+        throw new Error(
+          `AI response Missing required fields: ${missingFields.join(", ")}`
+        );
+      }
+
+      return {
+        success: true,
+        data: carDetails,
+      };
+    } catch (error) {
+      console.error("Error parsing AI response:", parseError);
+      return {
+        success: false,
+        error: "AI response parsing error",
+      };
+    }
+  } catch (error) {
+    console.error("GEMINI API error");
+    throw new Error("GEMINI API error: " + error.message);
+  }
+}
+
+export async function addCar({ carData, images }) {
+  try {
+    const { userId } = await auth();
+    if (!userId) throw new Error("Unauthorized");
+
+    const user = await db.user.findUnique({
+      where: {
+        clerkUserId: userId,
+      },
+    });
+
+    if (!user) throw new Error("User not found");
+
+    const carId = uuidv4(); // Generate a unique ID for the car
+    const folderPath = `cars/${carId}`; // Define the folder path for the car images
+
+    const cookieStore = await cookies();
+    const supabase = createClient(cookieStore);
+    const imageUrls = [];
+
+    for (let i = 0; i < images.length; i++) {
+      const base64Data = images[i];
+
+      //skip if images data is not valid
+      if (!base64Data || !base64Data.startsWith("data:image/")) {
+        console.warn("Invalid image data, skipping upload");
+        continue;
+      }
+      const base64 = base64Data.split(",")[1]; // Extract the base64 string
+
+      const imageBuffer = Buffer.from(base64, "base64"); // Convert to buffer
+
+      //Determine file extension from the data url
+      const mimeMatch = base64Data.match(/data:image\/([a-zA-Z0-9]+);/);
+      const fileExtension = mimeMatch ? mimeMatch[1] : "jpg"; // Default to jpg if not found
+
+      //Create Filename
+      const fileName = `image-${Date.now()}-${i}.${fileExtension}`; // Unique filename
+      const filePath = `${folderPath}/${fileName}`; // Full path in the bucket
+
+      const { data, error } = await supabase.storage
+        .from("car-images")
+        .upload(filePath, imageBuffer, {
+          contentType: `image/${fileExtension}`, // Set content type
+          upsert: true, // Overwrite if file already exists
+        });
+
+      if (error) {
+        console.error("Error uploading images:", error.message);
+        return {
+          success: false,
+          error: "Image upload failed",
+        };
+      }
+
+      const publicUrl = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/car-images/${filePath}`; // Construct public URL
+      imageUrls.push(publicUrl); // Add to the list of image URLs
+    }
+
+    if (imageUrls.length === 0) {
+      throw new Error("No valid images uploaded");
+    }
+
+    const car = await db.car.create({
+      data: {
+        id: carId, // Use the same ID we used for the folder
+        make: carData.make,
+        model: carData.model,
+        year: carData.year,
+        price: carData.price,
+        mileage: carData.mileage,
+        color: carData.color,
+        fuelType: carData.fuelType,
+        transmission: carData.transmission,
+        bodyType: carData.bodyType,
+        seats: carData.seats,
+        description: carData.description,
+        status: carData.status,
+        featured: carData.featured,
+        images: imageUrls, // Store the array of image URLs
+      },
+    });
+
+    revalidatePath("/admin/cars"); // Revalidate the path to refresh the data
+
+    return {
+        success: true,
+    }
+  } catch (error) {
+    throw new Error("Error adding car: " + error.message);
+  }
+}
