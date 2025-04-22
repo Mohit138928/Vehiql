@@ -1,3 +1,5 @@
+"use server";
+
 import db from "@/lib/prisma";
 import { createClient } from "@/lib/supabase";
 import { auth } from "@clerk/nextjs/server";
@@ -5,6 +7,7 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 import { m } from "framer-motion";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import {v4 as uuidv4} from "uuid";
 
 //function to convert file to base64
 async function fileToBase64(file) {
@@ -67,7 +70,7 @@ export async function processCarImageWithAI(file) {
 
     const result = await model.generateContent([imagePart, prompt]);
     const response = await result.response;
-    const text = response.test();
+    const text = response.text();
     const cleanedText = text.replace(/```(?:json)?\n?/g, "").trim();
 
     try {
