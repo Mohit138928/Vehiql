@@ -13,11 +13,12 @@ const useFetch = (cb) => {
         setError(null);
         try {
             const response = await cb(...args);
+            console.log(response)
             setData(response);
             setError(null);
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
+            // if (!response.ok) {
+            //     throw new Error('Network response was not ok');
+            // }
         } catch (err) {
             setError(err);
             toast.error(err.message);

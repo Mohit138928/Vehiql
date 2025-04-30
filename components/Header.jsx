@@ -23,7 +23,7 @@ const Header = async ({ isAdminPage = false }) => {
           />
 
           {isAdminPage && (
-            <span className="text-xs font-extralight">admin</span>
+            <span className="text-xs font-extralight"></span>
           )}
         </Link>
 

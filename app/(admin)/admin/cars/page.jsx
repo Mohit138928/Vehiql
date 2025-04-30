@@ -15,4 +15,4 @@ const CarsPage = () => {
   )
 }
 
-export default CarsPage
+export default CarsPage;
