@@ -1,49 +1,97 @@
 "use client";
 
-import React, { useState } from "react";
-import { Card, CardContent } from "./ui/card";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { Badge, CarIcon, Heart } from "lucide-react";
-import { Button } from "./ui/button";
+import { Heart, Car as CarIcon, Loader2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { toast } from "sonner";
+import { toggleSavedCar } from "@/actions/car-listing";
+import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
+import useFetch from "@/hooks/use-fetch";
 
 const CarCard = ({ car }) => {
-  const [isSaved, setIsSaved] = useState(car.wishlisted);
+  const { isSignedIn } = useAuth();
   const router = useRouter();
+  const [isSaved, setIsSaved] = useState(car.wishlisted);
 
-  const handleToggleSave = async (e) => {};
+  // Use the useFetch hook
+  const {
+    loading: isToggling,
+    fn: toggleSavedCarFn,
+    data: toggleResult,
+    error: toggleError,
+  } = useFetch(toggleSavedCar);
+
+  // Handle toggle result with useEffect
+  useEffect(() => {
+    if (toggleResult?.success && toggleResult.saved !== isSaved) {
+      setIsSaved(toggleResult.saved);
+      toast.success(toggleResult.message);
+    }
+  }, [toggleResult, isSaved]);
+
+  // Handle errors with useEffect
+  useEffect(() => {
+    if (toggleError) {
+      toast.error("Failed to update favorites");
+    }
+  }, [toggleError]);
+
+  // Handle save/unsave car
+  const handleToggleSave = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (!isSignedIn) {
+      toast.error("Please sign in to save cars");
+      router.push("/sign-in");
+      return;
+    }
+
+    if (isToggling) return;
+
+    // Call the toggleSavedCar function using our useFetch hook
+    await toggleSavedCarFn(car.id);
+  };
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition group py-0">
+    <Card className="overflow-hidden hover:shadow-lg transition group">
       <div className="relative h-48">
         {car.images && car.images.length > 0 ? (
           <div className="relative w-full h-full">
             <Image
               src={car.images[0]}
               alt={`${car.make} ${car.model}`}
-              // width={300}
-              // height={200}
               fill
               className="object-cover group-hover:scale-105 transition duration-300"
             />
           </div>
         ) : (
-          <div className="w-full h-full flex items-center justify-center bg-gray-200">
-            <CarIcon className="w-12 h-12 text-gray-300" />
+          <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+            <CarIcon className="h-12 w-12 text-gray-400" />
           </div>
         )}
 
         <Button
           variant="ghost"
           size="icon"
-          className={`absolute top-2 right-2 bg-white/90 rounded-full p-1.51 ${
+          className={`absolute top-2 right-2 bg-white/90 rounded-full p-1.5 ${
             isSaved
               ? "text-red-500 hover:text-red-600"
               : "text-gray-600 hover:text-gray-900"
           }`}
           onClick={handleToggleSave}
+          disabled={isToggling}
         >
-          <Heart className={isSaved ? "fill-current" : ""} size={20} />
+          {isToggling ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <Heart className={isSaved ? "fill-current" : ""} size={20} />
+          )}
         </Button>
       </div>
 
@@ -53,11 +101,11 @@ const CarCard = ({ car }) => {
             {car.make} {car.model}
           </h3>
           <span className="text-xl font-bold text-blue-600">
-            ${car.price.toLocaleString("en-US")}
+            ${car.price.toLocaleString()}
           </span>
         </div>
 
-        <div className="flex text-gray-600 mb-2 items-center">
+        <div className="text-gray-600 mb-2 flex items-center">
           <span>{car.year}</span>
           <span className="mx-2">•</span>
           <span>{car.transmission}</span>
@@ -66,21 +114,23 @@ const CarCard = ({ car }) => {
         </div>
 
         <div className="flex flex-wrap gap-1 mb-4">
-          <span className="bg-gray-100 text-black px-2 py-1 rounded text-xs hover:bg-gray-200 transition duration-300 font-mono font-semibold">
+          <Badge variant="outline" className="bg-gray-50">
             {car.bodyType}
-          </span>
-          <span className="bg-gray-100 text-black px-2 py-1 rounded text-xs hover:bg-gray-200 transition duration-300 font-mono font-semibold">
+          </Badge>
+          <Badge variant="outline" className="bg-gray-50">
             {car.mileage.toLocaleString()} miles
-          </span>
-          <span className="bg-gray-100 text-black px-2 py-1 rounded text-xs hover:bg-gray-200 transition duration-300 font-mono font-semibold">
+          </Badge>
+          <Badge variant="outline" className="bg-gray-50">
             {car.color}
-          </span>
+          </Badge>
         </div>
 
-        <div className="flex justify-between items-center mt-auto">
+        <div className="flex justify-between">
           <Button
-            className="flex-1 cursor-pointer"
-            onClick={() => router.push(`/cars/${car.id}`)}
+            className="flex-1"
+            onClick={() => {
+              router.push(`/cars/${car.id}`);
+            }}
           >
             View Car
           </Button>
@@ -90,4 +140,4 @@ const CarCard = ({ car }) => {
   );
 };
 
-export default CarCard;
+export default CarCard
