@@ -73,10 +73,10 @@ enum CarStatus {
 // Single dealership configuration, if you have multiple dealerships, you can remove default values.
 model DealershipInfo {
   id           String        @id @default(uuid())
-  name         String        @default("Vehiql Motors")
+  name         String        @default("AutoVolt Motors")
   address      String        @default("69 Car Street, Autoville, CA 69420")
   phone        String        @default("+1 (555) 123-4567")
-  email        String        @default("contact@vehiql.com")
+  email        String        @default("contact@autovolt.com")
   workingHours WorkingHour[]
   createdAt    DateTime      @default(now())
   updatedAt    DateTime      @updatedAt

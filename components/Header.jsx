@@ -16,10 +16,10 @@ const Header = async ({ isAdminPage = false }) => {
         <Link href={isAdminPage ? "/admin" : "/"} className="flex">
           <Image
             src={"/logo.png"}
-            alt="vehiql logo"
+            alt="AutoVolt logo"
             width={200}
             height={60}
-            className="h-12 w-auto object-contain"
+            className="h-12 w-40 object-contain"
           />
 
           {isAdminPage && (

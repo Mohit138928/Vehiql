@@ -23,8 +23,8 @@ export default async function Home() {
       <section className="relative py-16 md:py-28 dotted-background">
         <div className="max-w-4xl mx-auto text-center">
           <div>
-            <h1 className="text-5xl md:text-8xl mb-4 gradient-title">
-              Find Your Dream Car with Vehiql AI
+            <h1 className="text-4xl md:text-7xl mb-4 gradient-title">
+              Electrify Your Journey with AutoVolt AI
             </h1>
             <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-8">
               Advanced AI Car Search and test Drive from thousands of vehicles.
