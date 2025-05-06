@@ -2,8 +2,9 @@ import { getCarById } from "@/actions/car-listing";
 import { CarDetails } from "./_components/car-details";
 import { notFound } from "next/navigation";
 
+// ✅ Correct: no await needed here
 export async function generateMetadata({ params }) {
-  const { id } = await params;
+  const { id } = params;
   const result = await getCarById(id);
 
   if (!result.success) {
@@ -24,12 +25,11 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// ✅ Also fixed here
 export default async function CarDetailsPage({ params }) {
-  // Fetch car details
-  const { id } = await params;
+  const { id } = params;
   const result = await getCarById(id);
 
-  // If car not found, show 404
   if (!result.success) {
     notFound();
   }
