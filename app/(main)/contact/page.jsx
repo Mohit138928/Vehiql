@@ -25,7 +25,7 @@ const ContactPage = () => {
       <div className="text-center mb-12">
         <h1 className="text-6xl mb-4 gradient-title">Get In Touch</h1>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          Have questions about a car or need assistance? We're here to help you find your perfect vehicle.
+          Have questions about a car or need assistance? We&apos;re here to help you find your perfect vehicle.
         </p>
       </div>
 

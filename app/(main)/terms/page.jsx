@@ -22,7 +22,7 @@ const TermsPage = () => {
       <div className="text-center mb-12">
         <h1 className="text-6xl mb-4 gradient-title">Terms of Service</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Please read these terms carefully before using AutoVolt's car marketplace platform.
+          Please read these terms carefully before using AutoVolt&apos;s car marketplace platform.
         </p>
       </div>
 
@@ -36,7 +36,7 @@ const TermsPage = () => {
               <h2 className="text-2xl font-bold">Agreement to Terms</h2>
             </div>
             <p className="text-gray-600">
-              By accessing or using AutoVolt's platform, you agree to be bound by these Terms of Service. 
+              By accessing or using AutoVolt&apos;s platform, you agree to be bound by these Terms of Service. 
               If you disagree with any part of these terms, you may not access our services.
             </p>
           </CardContent>
@@ -85,7 +85,7 @@ const TermsPage = () => {
               <h2 className="text-2xl font-bold">Test Drive Rules</h2>
             </div>
             <ul className="ml-9 space-y-3 text-gray-600">
-              <li>Valid driver's license required for test drives</li>
+              <li>Valid driver&apos;s license required for test drives</li>
               <li>24-hour notice required for cancellations</li>
               <li>Users must follow dealership safety guidelines</li>
               <li>Insurance coverage verification may be required</li>

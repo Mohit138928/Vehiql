@@ -237,7 +237,7 @@ export const SettingsForm = () => {
             <CardHeader>
               <CardTitle>Working Hours</CardTitle>
               <CardDescription>
-                Set your dealership's working hours for each day of the week.
+                Set your dealership&apos;s working hours for each day of the week.
               </CardDescription>
             </CardHeader>
             <CardContent>

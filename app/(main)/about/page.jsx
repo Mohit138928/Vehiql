@@ -41,7 +41,7 @@ export default function AboutPage() {
             <div>
               <h2 className="text-3xl font-bold mb-6">Our Mission</h2>
               <p className="text-gray-600 mb-6">
-                At AutoVolt, we're on a mission to transform the car buying experience. We believe finding your dream car should be exciting, not exhausting. Our AI-powered platform simplifies the journey from search to test drive.
+                At AutoVolt, we&apos;re on a mission to transform the car buying experience. We believe finding your dream car should be exciting, not exhausting. Our AI-powered platform simplifies the journey from search to test drive.
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">

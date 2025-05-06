@@ -28,7 +28,7 @@ const PrivacyPage = () => {
               <h2 className="text-2xl font-bold">Introduction</h2>
             </div>
             <p className="text-gray-600">
-              This Privacy Policy explains how AutoVolt ("we", "our", or "us") collects, uses, and protects your personal information when you use our car dealership platform. By using our services, you agree to the collection and use of information in accordance with this policy.
+              This Privacy Policy explains how AutoVolt (&quot;we&quot;, &quot;our&quot;, or &quot;us&quot;) collects, uses, and protects your personal information when you use our car dealership platform. By using our services, you agree to the collection and use of information in accordance with this policy.
             </p>
           </CardContent>
         </Card>
@@ -79,7 +79,7 @@ const PrivacyPage = () => {
               </li>
               <li className="flex items-start gap-2">
                 <Image className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
-                <span>To process AI-powered image searches using Google's Gemini AI</span>
+                <span>To process AI-powered image searches using Google&apos;s Gemini AI</span>
               </li>
               <li className="flex items-start gap-2">
                 <MapPin className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
@@ -102,7 +102,7 @@ const PrivacyPage = () => {
             <ul className="ml-9 list-disc text-gray-600 space-y-2">
               <li>Secure data storage using PostgreSQL on Supabase</li>
               <li>Image storage with encrypted Supabase Storage</li>
-              <li>Authentication handled by Clerk's secure identity platform</li>
+              <li>Authentication handled by Clerk&apos;s secure identity platform</li>
               <li>Regular security audits and updates</li>
             </ul>
           </CardContent>

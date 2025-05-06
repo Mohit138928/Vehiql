@@ -72,7 +72,7 @@ const SitemapPage = () => {
       <div className="text-center mb-12">
         <h1 className="text-6xl mb-4 gradient-title">Sitemap</h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-          Navigate through AutoVolt's complete website structure
+          Navigate through AutoVolt&apos;s complete website structure
         </p>
       </div>
 

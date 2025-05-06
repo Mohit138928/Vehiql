@@ -20,7 +20,7 @@ export default async function TestDrivePage({ params }) {
   }
 
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-10 py-12">
       <h1 className="text-6xl mb-6 gradient-title">Book a Test Drive</h1>
       <TestDriveForm
         car={result.data}

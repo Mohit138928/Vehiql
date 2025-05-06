@@ -50,9 +50,12 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@typescript-eslint/eslint-plugin": "^8.32.0",
+    "@typescript-eslint/parser": "^8.32.0",
     "eslint": "^9",
     "eslint-config-next": "15.2.3",
     "prisma": "^6.6.0",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4",
+    "typescript": "^5.8.3"
   }
 }

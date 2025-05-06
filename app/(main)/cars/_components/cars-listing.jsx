@@ -123,7 +123,7 @@ export function CarListings() {
         </div>
         <h3 className="text-lg font-medium mb-2">No cars found</h3>
         <p className="text-gray-500 mb-6 max-w-md">
-          We couldn't find any cars matching your search criteria. Try adjusting
+          We couldn&apos;t find any cars matching your search criteria. Try adjusting
           your filters or search term.
         </p>
         <Button variant="outline" asChild>
