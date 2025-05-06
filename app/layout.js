@@ -10,7 +10,28 @@ const inter = Inter({subsets: ['latin']});
 
 export const metadata = {
   title: "AutoVolt",
-  description: "Find your dream car",
+  description: "Find your dream car with AI",
+  icons: {
+    icon: [
+      // You can specify multiple sizes
+      // { url: '/favicon.ico', sizes: 'any' },
+      // Or use PNG format
+      { url: '/favicon.png', sizes: '32x32' },
+      // { url: '/apple-icon.png', sizes: '180x180' },
+    ],
+    // For Apple devices
+    // apple: [
+    //   { url: '/apple-icon.png', sizes: '180x180' }
+    // ],
+    // For other devices
+    // other: [
+    //   {
+    //     rel: 'mask-icon',
+    //     url: '/safari-pinned-tab.svg',
+    //     color: '#1d4ed8' // Your brand color
+    //   }
+    // ]
+  }
 };
 
 export default function RootLayout({ children }) {
