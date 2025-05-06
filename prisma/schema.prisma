@@ -15,6 +15,51 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+model ChatInteraction {
+  id                String   @id @default(uuid())
+  userId            String
+  userMessage       String
+  aiResponse        String
+  preferences       Json
+  recommendedCarIds String[]
+  createdAt         DateTime @default(now())
+  user              User     @relation(fields: [userId], references: [id])
+  recommendedCars   Car[]    @relation("ChatRecommendations")
+
+  @@index([userId])
+}
+
+model MaintenancePrediction {
+  id                  String   @id @default(uuid())
+  userId              String
+  carId               String
+  nextServices        Json     // Array of service predictions
+  partsReplacement    Json     // Array of parts to replace
+  totalMaintenanceCost Float
+  maintenanceSchedule Json     // Scheduled maintenance tasks
+  createdAt           DateTime @default(now())
+  user                User     @relation(fields: [userId], references: [id])
+  car                 Car      @relation(fields: [carId], references: [id])
+
+  @@index([userId])
+  @@index([carId])
+}
+
+model EnvironmentalImpact {
+  id                  String   @id @default(uuid())
+  userId              String
+  carId               String
+  carbonFootprint     Json
+  greenScore          Json
+  environmentalMetrics Json
+  createdAt           DateTime @default(now())
+  user                User     @relation(fields: [userId], references: [id])
+  car                 Car      @relation(fields: [carId], references: [id])
+
+  @@index([userId])
+  @@index([carId])
+}
+
 model User {
   id          String             @id @default(uuid())
   clerkUserId String             @unique // clerk user id
@@ -27,6 +72,9 @@ model User {
   role        UserRole           @default(USER)
   savedCars   UserSavedCar[]
   testDrives  TestDriveBooking[]
+  chatInteractions ChatInteraction[]
+  maintenancePredictions MaintenancePrediction[]
+  environmentalImpacts EnvironmentalImpact[]
 }
 
 enum UserRole {
@@ -54,6 +102,11 @@ model Car {
   testDriveBookings TestDriveBooking[]
   createdAt         DateTime           @default(now())
   updatedAt         DateTime           @updatedAt
+  chatRecommendations ChatInteraction[] @relation("ChatRecommendations")
+  maintenancePredictions MaintenancePrediction[]
+    greenScore Float? @default(0)
+  environmentalMetrics Json?
+  environmentalImpacts EnvironmentalImpact[]
 
   @@index([make, model])
   @@index([bodyType])

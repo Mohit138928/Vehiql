@@ -1,5 +1,7 @@
 import { getCarById } from "@/actions/car-listing";
 import { CarDetails } from "./_components/car-details";
+import { MaintenanceCalculator } from "@/components/maintenance/MaintenanceCalculator";
+import { EnvironmentalDashboard } from "@/components/environmental/EnvironmentalDashboard";
 import { notFound } from "next/navigation";
 
 // ✅ Correct: no await needed here
@@ -37,6 +39,18 @@ export default async function CarDetailsPage({ params }) {
   return (
     <div className="container mx-auto px-10 py-12">
       <CarDetails car={result.data} testDriveInfo={result.data.testDriveInfo} />
+      
+      {/* Environmental Impact Section */}
+      <div className="mt-16">
+        <h2 className="text-3xl font-bold mb-8">Environmental Impact</h2>
+        <EnvironmentalDashboard car={result.data} />
+      </div>
+
+      {/* Maintenance Calculator Section */}
+      <div className="mt-16">
+        <h2 className="text-3xl font-bold mb-8">Maintenance Predictions</h2>
+        <MaintenanceCalculator car={result.data} />
+      </div>
     </div>
   );
 }

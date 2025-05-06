@@ -14,6 +14,21 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model ChatInteraction
+ * 
+ */
+export type ChatInteraction = $Result.DefaultSelection<Prisma.$ChatInteractionPayload>
+/**
+ * Model MaintenancePrediction
+ * 
+ */
+export type MaintenancePrediction = $Result.DefaultSelection<Prisma.$MaintenancePredictionPayload>
+/**
+ * Model EnvironmentalImpact
+ * 
+ */
+export type EnvironmentalImpact = $Result.DefaultSelection<Prisma.$EnvironmentalImpactPayload>
+/**
  * Model User
  * 
  */
@@ -113,8 +128,8 @@ export const BookingStatus: typeof $Enums.BookingStatus
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more ChatInteractions
+ * const chatInteractions = await prisma.chatInteraction.findMany()
  * ```
  *
  *
@@ -134,8 +149,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more ChatInteractions
+   * const chatInteractions = await prisma.chatInteraction.findMany()
    * ```
    *
    *
@@ -232,6 +247,36 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.chatInteraction`: Exposes CRUD operations for the **ChatInteraction** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ChatInteractions
+    * const chatInteractions = await prisma.chatInteraction.findMany()
+    * ```
+    */
+  get chatInteraction(): Prisma.ChatInteractionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.maintenancePrediction`: Exposes CRUD operations for the **MaintenancePrediction** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more MaintenancePredictions
+    * const maintenancePredictions = await prisma.maintenancePrediction.findMany()
+    * ```
+    */
+  get maintenancePrediction(): Prisma.MaintenancePredictionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.environmentalImpact`: Exposes CRUD operations for the **EnvironmentalImpact** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more EnvironmentalImpacts
+    * const environmentalImpacts = await prisma.environmentalImpact.findMany()
+    * ```
+    */
+  get environmentalImpact(): Prisma.EnvironmentalImpactDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -730,6 +775,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    ChatInteraction: 'ChatInteraction',
+    MaintenancePrediction: 'MaintenancePrediction',
+    EnvironmentalImpact: 'EnvironmentalImpact',
     User: 'User',
     Car: 'Car',
     DealershipInfo: 'DealershipInfo',
@@ -754,10 +802,232 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "car" | "dealershipInfo" | "workingHour" | "userSavedCar" | "testDriveBooking"
+      modelProps: "chatInteraction" | "maintenancePrediction" | "environmentalImpact" | "user" | "car" | "dealershipInfo" | "workingHour" | "userSavedCar" | "testDriveBooking"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      ChatInteraction: {
+        payload: Prisma.$ChatInteractionPayload<ExtArgs>
+        fields: Prisma.ChatInteractionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ChatInteractionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ChatInteractionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>
+          }
+          findFirst: {
+            args: Prisma.ChatInteractionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ChatInteractionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>
+          }
+          findMany: {
+            args: Prisma.ChatInteractionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>[]
+          }
+          create: {
+            args: Prisma.ChatInteractionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>
+          }
+          createMany: {
+            args: Prisma.ChatInteractionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ChatInteractionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>[]
+          }
+          delete: {
+            args: Prisma.ChatInteractionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>
+          }
+          update: {
+            args: Prisma.ChatInteractionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>
+          }
+          deleteMany: {
+            args: Prisma.ChatInteractionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ChatInteractionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ChatInteractionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>[]
+          }
+          upsert: {
+            args: Prisma.ChatInteractionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ChatInteractionPayload>
+          }
+          aggregate: {
+            args: Prisma.ChatInteractionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateChatInteraction>
+          }
+          groupBy: {
+            args: Prisma.ChatInteractionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ChatInteractionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ChatInteractionCountArgs<ExtArgs>
+            result: $Utils.Optional<ChatInteractionCountAggregateOutputType> | number
+          }
+        }
+      }
+      MaintenancePrediction: {
+        payload: Prisma.$MaintenancePredictionPayload<ExtArgs>
+        fields: Prisma.MaintenancePredictionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.MaintenancePredictionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.MaintenancePredictionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>
+          }
+          findFirst: {
+            args: Prisma.MaintenancePredictionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.MaintenancePredictionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>
+          }
+          findMany: {
+            args: Prisma.MaintenancePredictionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>[]
+          }
+          create: {
+            args: Prisma.MaintenancePredictionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>
+          }
+          createMany: {
+            args: Prisma.MaintenancePredictionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.MaintenancePredictionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>[]
+          }
+          delete: {
+            args: Prisma.MaintenancePredictionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>
+          }
+          update: {
+            args: Prisma.MaintenancePredictionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>
+          }
+          deleteMany: {
+            args: Prisma.MaintenancePredictionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.MaintenancePredictionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.MaintenancePredictionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>[]
+          }
+          upsert: {
+            args: Prisma.MaintenancePredictionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MaintenancePredictionPayload>
+          }
+          aggregate: {
+            args: Prisma.MaintenancePredictionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMaintenancePrediction>
+          }
+          groupBy: {
+            args: Prisma.MaintenancePredictionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MaintenancePredictionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.MaintenancePredictionCountArgs<ExtArgs>
+            result: $Utils.Optional<MaintenancePredictionCountAggregateOutputType> | number
+          }
+        }
+      }
+      EnvironmentalImpact: {
+        payload: Prisma.$EnvironmentalImpactPayload<ExtArgs>
+        fields: Prisma.EnvironmentalImpactFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.EnvironmentalImpactFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.EnvironmentalImpactFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>
+          }
+          findFirst: {
+            args: Prisma.EnvironmentalImpactFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.EnvironmentalImpactFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>
+          }
+          findMany: {
+            args: Prisma.EnvironmentalImpactFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>[]
+          }
+          create: {
+            args: Prisma.EnvironmentalImpactCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>
+          }
+          createMany: {
+            args: Prisma.EnvironmentalImpactCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.EnvironmentalImpactCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>[]
+          }
+          delete: {
+            args: Prisma.EnvironmentalImpactDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>
+          }
+          update: {
+            args: Prisma.EnvironmentalImpactUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>
+          }
+          deleteMany: {
+            args: Prisma.EnvironmentalImpactDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.EnvironmentalImpactUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.EnvironmentalImpactUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>[]
+          }
+          upsert: {
+            args: Prisma.EnvironmentalImpactUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$EnvironmentalImpactPayload>
+          }
+          aggregate: {
+            args: Prisma.EnvironmentalImpactAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEnvironmentalImpact>
+          }
+          groupBy: {
+            args: Prisma.EnvironmentalImpactGroupByArgs<ExtArgs>
+            result: $Utils.Optional<EnvironmentalImpactGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.EnvironmentalImpactCountArgs<ExtArgs>
+            result: $Utils.Optional<EnvironmentalImpactCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -1286,6 +1556,9 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    chatInteraction?: ChatInteractionOmit
+    maintenancePrediction?: MaintenancePredictionOmit
+    environmentalImpact?: EnvironmentalImpactOmit
     user?: UserOmit
     car?: CarOmit
     dealershipInfo?: DealershipInfoOmit
@@ -1382,17 +1655,54 @@ export namespace Prisma {
 
 
   /**
+   * Count Type ChatInteractionCountOutputType
+   */
+
+  export type ChatInteractionCountOutputType = {
+    recommendedCars: number
+  }
+
+  export type ChatInteractionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    recommendedCars?: boolean | ChatInteractionCountOutputTypeCountRecommendedCarsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ChatInteractionCountOutputType without action
+   */
+  export type ChatInteractionCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteractionCountOutputType
+     */
+    select?: ChatInteractionCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ChatInteractionCountOutputType without action
+   */
+  export type ChatInteractionCountOutputTypeCountRecommendedCarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CarWhereInput
+  }
+
+
+  /**
    * Count Type UserCountOutputType
    */
 
   export type UserCountOutputType = {
     savedCars: number
     testDrives: number
+    chatInteractions: number
+    maintenancePredictions: number
+    environmentalImpacts: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     savedCars?: boolean | UserCountOutputTypeCountSavedCarsArgs
     testDrives?: boolean | UserCountOutputTypeCountTestDrivesArgs
+    chatInteractions?: boolean | UserCountOutputTypeCountChatInteractionsArgs
+    maintenancePredictions?: boolean | UserCountOutputTypeCountMaintenancePredictionsArgs
+    environmentalImpacts?: boolean | UserCountOutputTypeCountEnvironmentalImpactsArgs
   }
 
   // Custom InputTypes
@@ -1420,6 +1730,27 @@ export namespace Prisma {
     where?: TestDriveBookingWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountChatInteractionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatInteractionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMaintenancePredictionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MaintenancePredictionWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountEnvironmentalImpactsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EnvironmentalImpactWhereInput
+  }
+
 
   /**
    * Count Type CarCountOutputType
@@ -1428,11 +1759,17 @@ export namespace Prisma {
   export type CarCountOutputType = {
     savedBy: number
     testDriveBookings: number
+    chatRecommendations: number
+    maintenancePredictions: number
+    environmentalImpacts: number
   }
 
   export type CarCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     savedBy?: boolean | CarCountOutputTypeCountSavedByArgs
     testDriveBookings?: boolean | CarCountOutputTypeCountTestDriveBookingsArgs
+    chatRecommendations?: boolean | CarCountOutputTypeCountChatRecommendationsArgs
+    maintenancePredictions?: boolean | CarCountOutputTypeCountMaintenancePredictionsArgs
+    environmentalImpacts?: boolean | CarCountOutputTypeCountEnvironmentalImpactsArgs
   }
 
   // Custom InputTypes
@@ -1458,6 +1795,27 @@ export namespace Prisma {
    */
   export type CarCountOutputTypeCountTestDriveBookingsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: TestDriveBookingWhereInput
+  }
+
+  /**
+   * CarCountOutputType without action
+   */
+  export type CarCountOutputTypeCountChatRecommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatInteractionWhereInput
+  }
+
+  /**
+   * CarCountOutputType without action
+   */
+  export type CarCountOutputTypeCountMaintenancePredictionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MaintenancePredictionWhereInput
+  }
+
+  /**
+   * CarCountOutputType without action
+   */
+  export type CarCountOutputTypeCountEnvironmentalImpactsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EnvironmentalImpactWhereInput
   }
 
 
@@ -1495,6 +1853,3319 @@ export namespace Prisma {
   /**
    * Models
    */
+
+  /**
+   * Model ChatInteraction
+   */
+
+  export type AggregateChatInteraction = {
+    _count: ChatInteractionCountAggregateOutputType | null
+    _min: ChatInteractionMinAggregateOutputType | null
+    _max: ChatInteractionMaxAggregateOutputType | null
+  }
+
+  export type ChatInteractionMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    userMessage: string | null
+    aiResponse: string | null
+    createdAt: Date | null
+  }
+
+  export type ChatInteractionMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    userMessage: string | null
+    aiResponse: string | null
+    createdAt: Date | null
+  }
+
+  export type ChatInteractionCountAggregateOutputType = {
+    id: number
+    userId: number
+    userMessage: number
+    aiResponse: number
+    preferences: number
+    recommendedCarIds: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ChatInteractionMinAggregateInputType = {
+    id?: true
+    userId?: true
+    userMessage?: true
+    aiResponse?: true
+    createdAt?: true
+  }
+
+  export type ChatInteractionMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    userMessage?: true
+    aiResponse?: true
+    createdAt?: true
+  }
+
+  export type ChatInteractionCountAggregateInputType = {
+    id?: true
+    userId?: true
+    userMessage?: true
+    aiResponse?: true
+    preferences?: true
+    recommendedCarIds?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ChatInteractionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChatInteraction to aggregate.
+     */
+    where?: ChatInteractionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatInteractions to fetch.
+     */
+    orderBy?: ChatInteractionOrderByWithRelationInput | ChatInteractionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ChatInteractionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatInteractions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatInteractions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ChatInteractions
+    **/
+    _count?: true | ChatInteractionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ChatInteractionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ChatInteractionMaxAggregateInputType
+  }
+
+  export type GetChatInteractionAggregateType<T extends ChatInteractionAggregateArgs> = {
+        [P in keyof T & keyof AggregateChatInteraction]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateChatInteraction[P]>
+      : GetScalarType<T[P], AggregateChatInteraction[P]>
+  }
+
+
+
+
+  export type ChatInteractionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ChatInteractionWhereInput
+    orderBy?: ChatInteractionOrderByWithAggregationInput | ChatInteractionOrderByWithAggregationInput[]
+    by: ChatInteractionScalarFieldEnum[] | ChatInteractionScalarFieldEnum
+    having?: ChatInteractionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ChatInteractionCountAggregateInputType | true
+    _min?: ChatInteractionMinAggregateInputType
+    _max?: ChatInteractionMaxAggregateInputType
+  }
+
+  export type ChatInteractionGroupByOutputType = {
+    id: string
+    userId: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonValue
+    recommendedCarIds: string[]
+    createdAt: Date
+    _count: ChatInteractionCountAggregateOutputType | null
+    _min: ChatInteractionMinAggregateOutputType | null
+    _max: ChatInteractionMaxAggregateOutputType | null
+  }
+
+  type GetChatInteractionGroupByPayload<T extends ChatInteractionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ChatInteractionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ChatInteractionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ChatInteractionGroupByOutputType[P]>
+            : GetScalarType<T[P], ChatInteractionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ChatInteractionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    userMessage?: boolean
+    aiResponse?: boolean
+    preferences?: boolean
+    recommendedCarIds?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    recommendedCars?: boolean | ChatInteraction$recommendedCarsArgs<ExtArgs>
+    _count?: boolean | ChatInteractionCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatInteraction"]>
+
+  export type ChatInteractionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    userMessage?: boolean
+    aiResponse?: boolean
+    preferences?: boolean
+    recommendedCarIds?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatInteraction"]>
+
+  export type ChatInteractionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    userMessage?: boolean
+    aiResponse?: boolean
+    preferences?: boolean
+    recommendedCarIds?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["chatInteraction"]>
+
+  export type ChatInteractionSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    userMessage?: boolean
+    aiResponse?: boolean
+    preferences?: boolean
+    recommendedCarIds?: boolean
+    createdAt?: boolean
+  }
+
+  export type ChatInteractionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "userMessage" | "aiResponse" | "preferences" | "recommendedCarIds" | "createdAt", ExtArgs["result"]["chatInteraction"]>
+  export type ChatInteractionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    recommendedCars?: boolean | ChatInteraction$recommendedCarsArgs<ExtArgs>
+    _count?: boolean | ChatInteractionCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ChatInteractionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ChatInteractionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ChatInteractionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ChatInteraction"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      recommendedCars: Prisma.$CarPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      userMessage: string
+      aiResponse: string
+      preferences: Prisma.JsonValue
+      recommendedCarIds: string[]
+      createdAt: Date
+    }, ExtArgs["result"]["chatInteraction"]>
+    composites: {}
+  }
+
+  type ChatInteractionGetPayload<S extends boolean | null | undefined | ChatInteractionDefaultArgs> = $Result.GetResult<Prisma.$ChatInteractionPayload, S>
+
+  type ChatInteractionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ChatInteractionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ChatInteractionCountAggregateInputType | true
+    }
+
+  export interface ChatInteractionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ChatInteraction'], meta: { name: 'ChatInteraction' } }
+    /**
+     * Find zero or one ChatInteraction that matches the filter.
+     * @param {ChatInteractionFindUniqueArgs} args - Arguments to find a ChatInteraction
+     * @example
+     * // Get one ChatInteraction
+     * const chatInteraction = await prisma.chatInteraction.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ChatInteractionFindUniqueArgs>(args: SelectSubset<T, ChatInteractionFindUniqueArgs<ExtArgs>>): Prisma__ChatInteractionClient<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ChatInteraction that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ChatInteractionFindUniqueOrThrowArgs} args - Arguments to find a ChatInteraction
+     * @example
+     * // Get one ChatInteraction
+     * const chatInteraction = await prisma.chatInteraction.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ChatInteractionFindUniqueOrThrowArgs>(args: SelectSubset<T, ChatInteractionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ChatInteractionClient<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ChatInteraction that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatInteractionFindFirstArgs} args - Arguments to find a ChatInteraction
+     * @example
+     * // Get one ChatInteraction
+     * const chatInteraction = await prisma.chatInteraction.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ChatInteractionFindFirstArgs>(args?: SelectSubset<T, ChatInteractionFindFirstArgs<ExtArgs>>): Prisma__ChatInteractionClient<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ChatInteraction that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatInteractionFindFirstOrThrowArgs} args - Arguments to find a ChatInteraction
+     * @example
+     * // Get one ChatInteraction
+     * const chatInteraction = await prisma.chatInteraction.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ChatInteractionFindFirstOrThrowArgs>(args?: SelectSubset<T, ChatInteractionFindFirstOrThrowArgs<ExtArgs>>): Prisma__ChatInteractionClient<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ChatInteractions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatInteractionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ChatInteractions
+     * const chatInteractions = await prisma.chatInteraction.findMany()
+     * 
+     * // Get first 10 ChatInteractions
+     * const chatInteractions = await prisma.chatInteraction.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const chatInteractionWithIdOnly = await prisma.chatInteraction.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ChatInteractionFindManyArgs>(args?: SelectSubset<T, ChatInteractionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ChatInteraction.
+     * @param {ChatInteractionCreateArgs} args - Arguments to create a ChatInteraction.
+     * @example
+     * // Create one ChatInteraction
+     * const ChatInteraction = await prisma.chatInteraction.create({
+     *   data: {
+     *     // ... data to create a ChatInteraction
+     *   }
+     * })
+     * 
+     */
+    create<T extends ChatInteractionCreateArgs>(args: SelectSubset<T, ChatInteractionCreateArgs<ExtArgs>>): Prisma__ChatInteractionClient<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ChatInteractions.
+     * @param {ChatInteractionCreateManyArgs} args - Arguments to create many ChatInteractions.
+     * @example
+     * // Create many ChatInteractions
+     * const chatInteraction = await prisma.chatInteraction.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ChatInteractionCreateManyArgs>(args?: SelectSubset<T, ChatInteractionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ChatInteractions and returns the data saved in the database.
+     * @param {ChatInteractionCreateManyAndReturnArgs} args - Arguments to create many ChatInteractions.
+     * @example
+     * // Create many ChatInteractions
+     * const chatInteraction = await prisma.chatInteraction.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ChatInteractions and only return the `id`
+     * const chatInteractionWithIdOnly = await prisma.chatInteraction.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ChatInteractionCreateManyAndReturnArgs>(args?: SelectSubset<T, ChatInteractionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ChatInteraction.
+     * @param {ChatInteractionDeleteArgs} args - Arguments to delete one ChatInteraction.
+     * @example
+     * // Delete one ChatInteraction
+     * const ChatInteraction = await prisma.chatInteraction.delete({
+     *   where: {
+     *     // ... filter to delete one ChatInteraction
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ChatInteractionDeleteArgs>(args: SelectSubset<T, ChatInteractionDeleteArgs<ExtArgs>>): Prisma__ChatInteractionClient<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ChatInteraction.
+     * @param {ChatInteractionUpdateArgs} args - Arguments to update one ChatInteraction.
+     * @example
+     * // Update one ChatInteraction
+     * const chatInteraction = await prisma.chatInteraction.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ChatInteractionUpdateArgs>(args: SelectSubset<T, ChatInteractionUpdateArgs<ExtArgs>>): Prisma__ChatInteractionClient<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ChatInteractions.
+     * @param {ChatInteractionDeleteManyArgs} args - Arguments to filter ChatInteractions to delete.
+     * @example
+     * // Delete a few ChatInteractions
+     * const { count } = await prisma.chatInteraction.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ChatInteractionDeleteManyArgs>(args?: SelectSubset<T, ChatInteractionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ChatInteractions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatInteractionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ChatInteractions
+     * const chatInteraction = await prisma.chatInteraction.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ChatInteractionUpdateManyArgs>(args: SelectSubset<T, ChatInteractionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ChatInteractions and returns the data updated in the database.
+     * @param {ChatInteractionUpdateManyAndReturnArgs} args - Arguments to update many ChatInteractions.
+     * @example
+     * // Update many ChatInteractions
+     * const chatInteraction = await prisma.chatInteraction.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ChatInteractions and only return the `id`
+     * const chatInteractionWithIdOnly = await prisma.chatInteraction.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ChatInteractionUpdateManyAndReturnArgs>(args: SelectSubset<T, ChatInteractionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ChatInteraction.
+     * @param {ChatInteractionUpsertArgs} args - Arguments to update or create a ChatInteraction.
+     * @example
+     * // Update or create a ChatInteraction
+     * const chatInteraction = await prisma.chatInteraction.upsert({
+     *   create: {
+     *     // ... data to create a ChatInteraction
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ChatInteraction we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ChatInteractionUpsertArgs>(args: SelectSubset<T, ChatInteractionUpsertArgs<ExtArgs>>): Prisma__ChatInteractionClient<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ChatInteractions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatInteractionCountArgs} args - Arguments to filter ChatInteractions to count.
+     * @example
+     * // Count the number of ChatInteractions
+     * const count = await prisma.chatInteraction.count({
+     *   where: {
+     *     // ... the filter for the ChatInteractions we want to count
+     *   }
+     * })
+    **/
+    count<T extends ChatInteractionCountArgs>(
+      args?: Subset<T, ChatInteractionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ChatInteractionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ChatInteraction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatInteractionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ChatInteractionAggregateArgs>(args: Subset<T, ChatInteractionAggregateArgs>): Prisma.PrismaPromise<GetChatInteractionAggregateType<T>>
+
+    /**
+     * Group by ChatInteraction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ChatInteractionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ChatInteractionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ChatInteractionGroupByArgs['orderBy'] }
+        : { orderBy?: ChatInteractionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ChatInteractionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetChatInteractionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ChatInteraction model
+   */
+  readonly fields: ChatInteractionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ChatInteraction.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ChatInteractionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    recommendedCars<T extends ChatInteraction$recommendedCarsArgs<ExtArgs> = {}>(args?: Subset<T, ChatInteraction$recommendedCarsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ChatInteraction model
+   */
+  interface ChatInteractionFieldRefs {
+    readonly id: FieldRef<"ChatInteraction", 'String'>
+    readonly userId: FieldRef<"ChatInteraction", 'String'>
+    readonly userMessage: FieldRef<"ChatInteraction", 'String'>
+    readonly aiResponse: FieldRef<"ChatInteraction", 'String'>
+    readonly preferences: FieldRef<"ChatInteraction", 'Json'>
+    readonly recommendedCarIds: FieldRef<"ChatInteraction", 'String[]'>
+    readonly createdAt: FieldRef<"ChatInteraction", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ChatInteraction findUnique
+   */
+  export type ChatInteractionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatInteraction to fetch.
+     */
+    where: ChatInteractionWhereUniqueInput
+  }
+
+  /**
+   * ChatInteraction findUniqueOrThrow
+   */
+  export type ChatInteractionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatInteraction to fetch.
+     */
+    where: ChatInteractionWhereUniqueInput
+  }
+
+  /**
+   * ChatInteraction findFirst
+   */
+  export type ChatInteractionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatInteraction to fetch.
+     */
+    where?: ChatInteractionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatInteractions to fetch.
+     */
+    orderBy?: ChatInteractionOrderByWithRelationInput | ChatInteractionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChatInteractions.
+     */
+    cursor?: ChatInteractionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatInteractions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatInteractions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChatInteractions.
+     */
+    distinct?: ChatInteractionScalarFieldEnum | ChatInteractionScalarFieldEnum[]
+  }
+
+  /**
+   * ChatInteraction findFirstOrThrow
+   */
+  export type ChatInteractionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatInteraction to fetch.
+     */
+    where?: ChatInteractionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatInteractions to fetch.
+     */
+    orderBy?: ChatInteractionOrderByWithRelationInput | ChatInteractionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ChatInteractions.
+     */
+    cursor?: ChatInteractionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatInteractions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatInteractions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ChatInteractions.
+     */
+    distinct?: ChatInteractionScalarFieldEnum | ChatInteractionScalarFieldEnum[]
+  }
+
+  /**
+   * ChatInteraction findMany
+   */
+  export type ChatInteractionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * Filter, which ChatInteractions to fetch.
+     */
+    where?: ChatInteractionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ChatInteractions to fetch.
+     */
+    orderBy?: ChatInteractionOrderByWithRelationInput | ChatInteractionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ChatInteractions.
+     */
+    cursor?: ChatInteractionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ChatInteractions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ChatInteractions.
+     */
+    skip?: number
+    distinct?: ChatInteractionScalarFieldEnum | ChatInteractionScalarFieldEnum[]
+  }
+
+  /**
+   * ChatInteraction create
+   */
+  export type ChatInteractionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a ChatInteraction.
+     */
+    data: XOR<ChatInteractionCreateInput, ChatInteractionUncheckedCreateInput>
+  }
+
+  /**
+   * ChatInteraction createMany
+   */
+  export type ChatInteractionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ChatInteractions.
+     */
+    data: ChatInteractionCreateManyInput | ChatInteractionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ChatInteraction createManyAndReturn
+   */
+  export type ChatInteractionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * The data used to create many ChatInteractions.
+     */
+    data: ChatInteractionCreateManyInput | ChatInteractionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ChatInteraction update
+   */
+  export type ChatInteractionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a ChatInteraction.
+     */
+    data: XOR<ChatInteractionUpdateInput, ChatInteractionUncheckedUpdateInput>
+    /**
+     * Choose, which ChatInteraction to update.
+     */
+    where: ChatInteractionWhereUniqueInput
+  }
+
+  /**
+   * ChatInteraction updateMany
+   */
+  export type ChatInteractionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ChatInteractions.
+     */
+    data: XOR<ChatInteractionUpdateManyMutationInput, ChatInteractionUncheckedUpdateManyInput>
+    /**
+     * Filter which ChatInteractions to update
+     */
+    where?: ChatInteractionWhereInput
+    /**
+     * Limit how many ChatInteractions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChatInteraction updateManyAndReturn
+   */
+  export type ChatInteractionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * The data used to update ChatInteractions.
+     */
+    data: XOR<ChatInteractionUpdateManyMutationInput, ChatInteractionUncheckedUpdateManyInput>
+    /**
+     * Filter which ChatInteractions to update
+     */
+    where?: ChatInteractionWhereInput
+    /**
+     * Limit how many ChatInteractions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * ChatInteraction upsert
+   */
+  export type ChatInteractionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the ChatInteraction to update in case it exists.
+     */
+    where: ChatInteractionWhereUniqueInput
+    /**
+     * In case the ChatInteraction found by the `where` argument doesn't exist, create a new ChatInteraction with this data.
+     */
+    create: XOR<ChatInteractionCreateInput, ChatInteractionUncheckedCreateInput>
+    /**
+     * In case the ChatInteraction was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ChatInteractionUpdateInput, ChatInteractionUncheckedUpdateInput>
+  }
+
+  /**
+   * ChatInteraction delete
+   */
+  export type ChatInteractionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    /**
+     * Filter which ChatInteraction to delete.
+     */
+    where: ChatInteractionWhereUniqueInput
+  }
+
+  /**
+   * ChatInteraction deleteMany
+   */
+  export type ChatInteractionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ChatInteractions to delete
+     */
+    where?: ChatInteractionWhereInput
+    /**
+     * Limit how many ChatInteractions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ChatInteraction.recommendedCars
+   */
+  export type ChatInteraction$recommendedCarsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Car
+     */
+    select?: CarSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Car
+     */
+    omit?: CarOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarInclude<ExtArgs> | null
+    where?: CarWhereInput
+    orderBy?: CarOrderByWithRelationInput | CarOrderByWithRelationInput[]
+    cursor?: CarWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CarScalarFieldEnum | CarScalarFieldEnum[]
+  }
+
+  /**
+   * ChatInteraction without action
+   */
+  export type ChatInteractionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model MaintenancePrediction
+   */
+
+  export type AggregateMaintenancePrediction = {
+    _count: MaintenancePredictionCountAggregateOutputType | null
+    _avg: MaintenancePredictionAvgAggregateOutputType | null
+    _sum: MaintenancePredictionSumAggregateOutputType | null
+    _min: MaintenancePredictionMinAggregateOutputType | null
+    _max: MaintenancePredictionMaxAggregateOutputType | null
+  }
+
+  export type MaintenancePredictionAvgAggregateOutputType = {
+    totalMaintenanceCost: number | null
+  }
+
+  export type MaintenancePredictionSumAggregateOutputType = {
+    totalMaintenanceCost: number | null
+  }
+
+  export type MaintenancePredictionMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    carId: string | null
+    totalMaintenanceCost: number | null
+    createdAt: Date | null
+  }
+
+  export type MaintenancePredictionMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    carId: string | null
+    totalMaintenanceCost: number | null
+    createdAt: Date | null
+  }
+
+  export type MaintenancePredictionCountAggregateOutputType = {
+    id: number
+    userId: number
+    carId: number
+    nextServices: number
+    partsReplacement: number
+    totalMaintenanceCost: number
+    maintenanceSchedule: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type MaintenancePredictionAvgAggregateInputType = {
+    totalMaintenanceCost?: true
+  }
+
+  export type MaintenancePredictionSumAggregateInputType = {
+    totalMaintenanceCost?: true
+  }
+
+  export type MaintenancePredictionMinAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    totalMaintenanceCost?: true
+    createdAt?: true
+  }
+
+  export type MaintenancePredictionMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    totalMaintenanceCost?: true
+    createdAt?: true
+  }
+
+  export type MaintenancePredictionCountAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    nextServices?: true
+    partsReplacement?: true
+    totalMaintenanceCost?: true
+    maintenanceSchedule?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type MaintenancePredictionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MaintenancePrediction to aggregate.
+     */
+    where?: MaintenancePredictionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MaintenancePredictions to fetch.
+     */
+    orderBy?: MaintenancePredictionOrderByWithRelationInput | MaintenancePredictionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: MaintenancePredictionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MaintenancePredictions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MaintenancePredictions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned MaintenancePredictions
+    **/
+    _count?: true | MaintenancePredictionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: MaintenancePredictionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: MaintenancePredictionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: MaintenancePredictionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: MaintenancePredictionMaxAggregateInputType
+  }
+
+  export type GetMaintenancePredictionAggregateType<T extends MaintenancePredictionAggregateArgs> = {
+        [P in keyof T & keyof AggregateMaintenancePrediction]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMaintenancePrediction[P]>
+      : GetScalarType<T[P], AggregateMaintenancePrediction[P]>
+  }
+
+
+
+
+  export type MaintenancePredictionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MaintenancePredictionWhereInput
+    orderBy?: MaintenancePredictionOrderByWithAggregationInput | MaintenancePredictionOrderByWithAggregationInput[]
+    by: MaintenancePredictionScalarFieldEnum[] | MaintenancePredictionScalarFieldEnum
+    having?: MaintenancePredictionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: MaintenancePredictionCountAggregateInputType | true
+    _avg?: MaintenancePredictionAvgAggregateInputType
+    _sum?: MaintenancePredictionSumAggregateInputType
+    _min?: MaintenancePredictionMinAggregateInputType
+    _max?: MaintenancePredictionMaxAggregateInputType
+  }
+
+  export type MaintenancePredictionGroupByOutputType = {
+    id: string
+    userId: string
+    carId: string
+    nextServices: JsonValue
+    partsReplacement: JsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonValue
+    createdAt: Date
+    _count: MaintenancePredictionCountAggregateOutputType | null
+    _avg: MaintenancePredictionAvgAggregateOutputType | null
+    _sum: MaintenancePredictionSumAggregateOutputType | null
+    _min: MaintenancePredictionMinAggregateOutputType | null
+    _max: MaintenancePredictionMaxAggregateOutputType | null
+  }
+
+  type GetMaintenancePredictionGroupByPayload<T extends MaintenancePredictionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<MaintenancePredictionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof MaintenancePredictionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], MaintenancePredictionGroupByOutputType[P]>
+            : GetScalarType<T[P], MaintenancePredictionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type MaintenancePredictionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    nextServices?: boolean
+    partsReplacement?: boolean
+    totalMaintenanceCost?: boolean
+    maintenanceSchedule?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["maintenancePrediction"]>
+
+  export type MaintenancePredictionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    nextServices?: boolean
+    partsReplacement?: boolean
+    totalMaintenanceCost?: boolean
+    maintenanceSchedule?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["maintenancePrediction"]>
+
+  export type MaintenancePredictionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    nextServices?: boolean
+    partsReplacement?: boolean
+    totalMaintenanceCost?: boolean
+    maintenanceSchedule?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["maintenancePrediction"]>
+
+  export type MaintenancePredictionSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    nextServices?: boolean
+    partsReplacement?: boolean
+    totalMaintenanceCost?: boolean
+    maintenanceSchedule?: boolean
+    createdAt?: boolean
+  }
+
+  export type MaintenancePredictionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "carId" | "nextServices" | "partsReplacement" | "totalMaintenanceCost" | "maintenanceSchedule" | "createdAt", ExtArgs["result"]["maintenancePrediction"]>
+  export type MaintenancePredictionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+  export type MaintenancePredictionIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+  export type MaintenancePredictionIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+
+  export type $MaintenancePredictionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "MaintenancePrediction"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      car: Prisma.$CarPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      carId: string
+      nextServices: Prisma.JsonValue
+      partsReplacement: Prisma.JsonValue
+      totalMaintenanceCost: number
+      maintenanceSchedule: Prisma.JsonValue
+      createdAt: Date
+    }, ExtArgs["result"]["maintenancePrediction"]>
+    composites: {}
+  }
+
+  type MaintenancePredictionGetPayload<S extends boolean | null | undefined | MaintenancePredictionDefaultArgs> = $Result.GetResult<Prisma.$MaintenancePredictionPayload, S>
+
+  type MaintenancePredictionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MaintenancePredictionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MaintenancePredictionCountAggregateInputType | true
+    }
+
+  export interface MaintenancePredictionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['MaintenancePrediction'], meta: { name: 'MaintenancePrediction' } }
+    /**
+     * Find zero or one MaintenancePrediction that matches the filter.
+     * @param {MaintenancePredictionFindUniqueArgs} args - Arguments to find a MaintenancePrediction
+     * @example
+     * // Get one MaintenancePrediction
+     * const maintenancePrediction = await prisma.maintenancePrediction.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends MaintenancePredictionFindUniqueArgs>(args: SelectSubset<T, MaintenancePredictionFindUniqueArgs<ExtArgs>>): Prisma__MaintenancePredictionClient<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one MaintenancePrediction that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {MaintenancePredictionFindUniqueOrThrowArgs} args - Arguments to find a MaintenancePrediction
+     * @example
+     * // Get one MaintenancePrediction
+     * const maintenancePrediction = await prisma.maintenancePrediction.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends MaintenancePredictionFindUniqueOrThrowArgs>(args: SelectSubset<T, MaintenancePredictionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MaintenancePredictionClient<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MaintenancePrediction that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MaintenancePredictionFindFirstArgs} args - Arguments to find a MaintenancePrediction
+     * @example
+     * // Get one MaintenancePrediction
+     * const maintenancePrediction = await prisma.maintenancePrediction.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends MaintenancePredictionFindFirstArgs>(args?: SelectSubset<T, MaintenancePredictionFindFirstArgs<ExtArgs>>): Prisma__MaintenancePredictionClient<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first MaintenancePrediction that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MaintenancePredictionFindFirstOrThrowArgs} args - Arguments to find a MaintenancePrediction
+     * @example
+     * // Get one MaintenancePrediction
+     * const maintenancePrediction = await prisma.maintenancePrediction.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends MaintenancePredictionFindFirstOrThrowArgs>(args?: SelectSubset<T, MaintenancePredictionFindFirstOrThrowArgs<ExtArgs>>): Prisma__MaintenancePredictionClient<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more MaintenancePredictions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MaintenancePredictionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all MaintenancePredictions
+     * const maintenancePredictions = await prisma.maintenancePrediction.findMany()
+     * 
+     * // Get first 10 MaintenancePredictions
+     * const maintenancePredictions = await prisma.maintenancePrediction.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const maintenancePredictionWithIdOnly = await prisma.maintenancePrediction.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends MaintenancePredictionFindManyArgs>(args?: SelectSubset<T, MaintenancePredictionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a MaintenancePrediction.
+     * @param {MaintenancePredictionCreateArgs} args - Arguments to create a MaintenancePrediction.
+     * @example
+     * // Create one MaintenancePrediction
+     * const MaintenancePrediction = await prisma.maintenancePrediction.create({
+     *   data: {
+     *     // ... data to create a MaintenancePrediction
+     *   }
+     * })
+     * 
+     */
+    create<T extends MaintenancePredictionCreateArgs>(args: SelectSubset<T, MaintenancePredictionCreateArgs<ExtArgs>>): Prisma__MaintenancePredictionClient<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many MaintenancePredictions.
+     * @param {MaintenancePredictionCreateManyArgs} args - Arguments to create many MaintenancePredictions.
+     * @example
+     * // Create many MaintenancePredictions
+     * const maintenancePrediction = await prisma.maintenancePrediction.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends MaintenancePredictionCreateManyArgs>(args?: SelectSubset<T, MaintenancePredictionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many MaintenancePredictions and returns the data saved in the database.
+     * @param {MaintenancePredictionCreateManyAndReturnArgs} args - Arguments to create many MaintenancePredictions.
+     * @example
+     * // Create many MaintenancePredictions
+     * const maintenancePrediction = await prisma.maintenancePrediction.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many MaintenancePredictions and only return the `id`
+     * const maintenancePredictionWithIdOnly = await prisma.maintenancePrediction.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends MaintenancePredictionCreateManyAndReturnArgs>(args?: SelectSubset<T, MaintenancePredictionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a MaintenancePrediction.
+     * @param {MaintenancePredictionDeleteArgs} args - Arguments to delete one MaintenancePrediction.
+     * @example
+     * // Delete one MaintenancePrediction
+     * const MaintenancePrediction = await prisma.maintenancePrediction.delete({
+     *   where: {
+     *     // ... filter to delete one MaintenancePrediction
+     *   }
+     * })
+     * 
+     */
+    delete<T extends MaintenancePredictionDeleteArgs>(args: SelectSubset<T, MaintenancePredictionDeleteArgs<ExtArgs>>): Prisma__MaintenancePredictionClient<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one MaintenancePrediction.
+     * @param {MaintenancePredictionUpdateArgs} args - Arguments to update one MaintenancePrediction.
+     * @example
+     * // Update one MaintenancePrediction
+     * const maintenancePrediction = await prisma.maintenancePrediction.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends MaintenancePredictionUpdateArgs>(args: SelectSubset<T, MaintenancePredictionUpdateArgs<ExtArgs>>): Prisma__MaintenancePredictionClient<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more MaintenancePredictions.
+     * @param {MaintenancePredictionDeleteManyArgs} args - Arguments to filter MaintenancePredictions to delete.
+     * @example
+     * // Delete a few MaintenancePredictions
+     * const { count } = await prisma.maintenancePrediction.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends MaintenancePredictionDeleteManyArgs>(args?: SelectSubset<T, MaintenancePredictionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MaintenancePredictions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MaintenancePredictionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many MaintenancePredictions
+     * const maintenancePrediction = await prisma.maintenancePrediction.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends MaintenancePredictionUpdateManyArgs>(args: SelectSubset<T, MaintenancePredictionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more MaintenancePredictions and returns the data updated in the database.
+     * @param {MaintenancePredictionUpdateManyAndReturnArgs} args - Arguments to update many MaintenancePredictions.
+     * @example
+     * // Update many MaintenancePredictions
+     * const maintenancePrediction = await prisma.maintenancePrediction.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more MaintenancePredictions and only return the `id`
+     * const maintenancePredictionWithIdOnly = await prisma.maintenancePrediction.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends MaintenancePredictionUpdateManyAndReturnArgs>(args: SelectSubset<T, MaintenancePredictionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one MaintenancePrediction.
+     * @param {MaintenancePredictionUpsertArgs} args - Arguments to update or create a MaintenancePrediction.
+     * @example
+     * // Update or create a MaintenancePrediction
+     * const maintenancePrediction = await prisma.maintenancePrediction.upsert({
+     *   create: {
+     *     // ... data to create a MaintenancePrediction
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the MaintenancePrediction we want to update
+     *   }
+     * })
+     */
+    upsert<T extends MaintenancePredictionUpsertArgs>(args: SelectSubset<T, MaintenancePredictionUpsertArgs<ExtArgs>>): Prisma__MaintenancePredictionClient<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of MaintenancePredictions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MaintenancePredictionCountArgs} args - Arguments to filter MaintenancePredictions to count.
+     * @example
+     * // Count the number of MaintenancePredictions
+     * const count = await prisma.maintenancePrediction.count({
+     *   where: {
+     *     // ... the filter for the MaintenancePredictions we want to count
+     *   }
+     * })
+    **/
+    count<T extends MaintenancePredictionCountArgs>(
+      args?: Subset<T, MaintenancePredictionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], MaintenancePredictionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a MaintenancePrediction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MaintenancePredictionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends MaintenancePredictionAggregateArgs>(args: Subset<T, MaintenancePredictionAggregateArgs>): Prisma.PrismaPromise<GetMaintenancePredictionAggregateType<T>>
+
+    /**
+     * Group by MaintenancePrediction.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {MaintenancePredictionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends MaintenancePredictionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: MaintenancePredictionGroupByArgs['orderBy'] }
+        : { orderBy?: MaintenancePredictionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, MaintenancePredictionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMaintenancePredictionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the MaintenancePrediction model
+   */
+  readonly fields: MaintenancePredictionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for MaintenancePrediction.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__MaintenancePredictionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    car<T extends CarDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CarDefaultArgs<ExtArgs>>): Prisma__CarClient<$Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the MaintenancePrediction model
+   */
+  interface MaintenancePredictionFieldRefs {
+    readonly id: FieldRef<"MaintenancePrediction", 'String'>
+    readonly userId: FieldRef<"MaintenancePrediction", 'String'>
+    readonly carId: FieldRef<"MaintenancePrediction", 'String'>
+    readonly nextServices: FieldRef<"MaintenancePrediction", 'Json'>
+    readonly partsReplacement: FieldRef<"MaintenancePrediction", 'Json'>
+    readonly totalMaintenanceCost: FieldRef<"MaintenancePrediction", 'Float'>
+    readonly maintenanceSchedule: FieldRef<"MaintenancePrediction", 'Json'>
+    readonly createdAt: FieldRef<"MaintenancePrediction", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * MaintenancePrediction findUnique
+   */
+  export type MaintenancePredictionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * Filter, which MaintenancePrediction to fetch.
+     */
+    where: MaintenancePredictionWhereUniqueInput
+  }
+
+  /**
+   * MaintenancePrediction findUniqueOrThrow
+   */
+  export type MaintenancePredictionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * Filter, which MaintenancePrediction to fetch.
+     */
+    where: MaintenancePredictionWhereUniqueInput
+  }
+
+  /**
+   * MaintenancePrediction findFirst
+   */
+  export type MaintenancePredictionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * Filter, which MaintenancePrediction to fetch.
+     */
+    where?: MaintenancePredictionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MaintenancePredictions to fetch.
+     */
+    orderBy?: MaintenancePredictionOrderByWithRelationInput | MaintenancePredictionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MaintenancePredictions.
+     */
+    cursor?: MaintenancePredictionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MaintenancePredictions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MaintenancePredictions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MaintenancePredictions.
+     */
+    distinct?: MaintenancePredictionScalarFieldEnum | MaintenancePredictionScalarFieldEnum[]
+  }
+
+  /**
+   * MaintenancePrediction findFirstOrThrow
+   */
+  export type MaintenancePredictionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * Filter, which MaintenancePrediction to fetch.
+     */
+    where?: MaintenancePredictionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MaintenancePredictions to fetch.
+     */
+    orderBy?: MaintenancePredictionOrderByWithRelationInput | MaintenancePredictionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for MaintenancePredictions.
+     */
+    cursor?: MaintenancePredictionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MaintenancePredictions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MaintenancePredictions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of MaintenancePredictions.
+     */
+    distinct?: MaintenancePredictionScalarFieldEnum | MaintenancePredictionScalarFieldEnum[]
+  }
+
+  /**
+   * MaintenancePrediction findMany
+   */
+  export type MaintenancePredictionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * Filter, which MaintenancePredictions to fetch.
+     */
+    where?: MaintenancePredictionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of MaintenancePredictions to fetch.
+     */
+    orderBy?: MaintenancePredictionOrderByWithRelationInput | MaintenancePredictionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing MaintenancePredictions.
+     */
+    cursor?: MaintenancePredictionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` MaintenancePredictions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` MaintenancePredictions.
+     */
+    skip?: number
+    distinct?: MaintenancePredictionScalarFieldEnum | MaintenancePredictionScalarFieldEnum[]
+  }
+
+  /**
+   * MaintenancePrediction create
+   */
+  export type MaintenancePredictionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * The data needed to create a MaintenancePrediction.
+     */
+    data: XOR<MaintenancePredictionCreateInput, MaintenancePredictionUncheckedCreateInput>
+  }
+
+  /**
+   * MaintenancePrediction createMany
+   */
+  export type MaintenancePredictionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many MaintenancePredictions.
+     */
+    data: MaintenancePredictionCreateManyInput | MaintenancePredictionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * MaintenancePrediction createManyAndReturn
+   */
+  export type MaintenancePredictionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * The data used to create many MaintenancePredictions.
+     */
+    data: MaintenancePredictionCreateManyInput | MaintenancePredictionCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MaintenancePrediction update
+   */
+  export type MaintenancePredictionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * The data needed to update a MaintenancePrediction.
+     */
+    data: XOR<MaintenancePredictionUpdateInput, MaintenancePredictionUncheckedUpdateInput>
+    /**
+     * Choose, which MaintenancePrediction to update.
+     */
+    where: MaintenancePredictionWhereUniqueInput
+  }
+
+  /**
+   * MaintenancePrediction updateMany
+   */
+  export type MaintenancePredictionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update MaintenancePredictions.
+     */
+    data: XOR<MaintenancePredictionUpdateManyMutationInput, MaintenancePredictionUncheckedUpdateManyInput>
+    /**
+     * Filter which MaintenancePredictions to update
+     */
+    where?: MaintenancePredictionWhereInput
+    /**
+     * Limit how many MaintenancePredictions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * MaintenancePrediction updateManyAndReturn
+   */
+  export type MaintenancePredictionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * The data used to update MaintenancePredictions.
+     */
+    data: XOR<MaintenancePredictionUpdateManyMutationInput, MaintenancePredictionUncheckedUpdateManyInput>
+    /**
+     * Filter which MaintenancePredictions to update
+     */
+    where?: MaintenancePredictionWhereInput
+    /**
+     * Limit how many MaintenancePredictions to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * MaintenancePrediction upsert
+   */
+  export type MaintenancePredictionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * The filter to search for the MaintenancePrediction to update in case it exists.
+     */
+    where: MaintenancePredictionWhereUniqueInput
+    /**
+     * In case the MaintenancePrediction found by the `where` argument doesn't exist, create a new MaintenancePrediction with this data.
+     */
+    create: XOR<MaintenancePredictionCreateInput, MaintenancePredictionUncheckedCreateInput>
+    /**
+     * In case the MaintenancePrediction was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<MaintenancePredictionUpdateInput, MaintenancePredictionUncheckedUpdateInput>
+  }
+
+  /**
+   * MaintenancePrediction delete
+   */
+  export type MaintenancePredictionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    /**
+     * Filter which MaintenancePrediction to delete.
+     */
+    where: MaintenancePredictionWhereUniqueInput
+  }
+
+  /**
+   * MaintenancePrediction deleteMany
+   */
+  export type MaintenancePredictionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which MaintenancePredictions to delete
+     */
+    where?: MaintenancePredictionWhereInput
+    /**
+     * Limit how many MaintenancePredictions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * MaintenancePrediction without action
+   */
+  export type MaintenancePredictionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model EnvironmentalImpact
+   */
+
+  export type AggregateEnvironmentalImpact = {
+    _count: EnvironmentalImpactCountAggregateOutputType | null
+    _min: EnvironmentalImpactMinAggregateOutputType | null
+    _max: EnvironmentalImpactMaxAggregateOutputType | null
+  }
+
+  export type EnvironmentalImpactMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    carId: string | null
+    createdAt: Date | null
+  }
+
+  export type EnvironmentalImpactMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    carId: string | null
+    createdAt: Date | null
+  }
+
+  export type EnvironmentalImpactCountAggregateOutputType = {
+    id: number
+    userId: number
+    carId: number
+    carbonFootprint: number
+    greenScore: number
+    environmentalMetrics: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type EnvironmentalImpactMinAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    createdAt?: true
+  }
+
+  export type EnvironmentalImpactMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    createdAt?: true
+  }
+
+  export type EnvironmentalImpactCountAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    carbonFootprint?: true
+    greenScore?: true
+    environmentalMetrics?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type EnvironmentalImpactAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EnvironmentalImpact to aggregate.
+     */
+    where?: EnvironmentalImpactWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EnvironmentalImpacts to fetch.
+     */
+    orderBy?: EnvironmentalImpactOrderByWithRelationInput | EnvironmentalImpactOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: EnvironmentalImpactWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EnvironmentalImpacts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EnvironmentalImpacts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned EnvironmentalImpacts
+    **/
+    _count?: true | EnvironmentalImpactCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: EnvironmentalImpactMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: EnvironmentalImpactMaxAggregateInputType
+  }
+
+  export type GetEnvironmentalImpactAggregateType<T extends EnvironmentalImpactAggregateArgs> = {
+        [P in keyof T & keyof AggregateEnvironmentalImpact]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEnvironmentalImpact[P]>
+      : GetScalarType<T[P], AggregateEnvironmentalImpact[P]>
+  }
+
+
+
+
+  export type EnvironmentalImpactGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: EnvironmentalImpactWhereInput
+    orderBy?: EnvironmentalImpactOrderByWithAggregationInput | EnvironmentalImpactOrderByWithAggregationInput[]
+    by: EnvironmentalImpactScalarFieldEnum[] | EnvironmentalImpactScalarFieldEnum
+    having?: EnvironmentalImpactScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: EnvironmentalImpactCountAggregateInputType | true
+    _min?: EnvironmentalImpactMinAggregateInputType
+    _max?: EnvironmentalImpactMaxAggregateInputType
+  }
+
+  export type EnvironmentalImpactGroupByOutputType = {
+    id: string
+    userId: string
+    carId: string
+    carbonFootprint: JsonValue
+    greenScore: JsonValue
+    environmentalMetrics: JsonValue
+    createdAt: Date
+    _count: EnvironmentalImpactCountAggregateOutputType | null
+    _min: EnvironmentalImpactMinAggregateOutputType | null
+    _max: EnvironmentalImpactMaxAggregateOutputType | null
+  }
+
+  type GetEnvironmentalImpactGroupByPayload<T extends EnvironmentalImpactGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<EnvironmentalImpactGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof EnvironmentalImpactGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], EnvironmentalImpactGroupByOutputType[P]>
+            : GetScalarType<T[P], EnvironmentalImpactGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type EnvironmentalImpactSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    carbonFootprint?: boolean
+    greenScore?: boolean
+    environmentalMetrics?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["environmentalImpact"]>
+
+  export type EnvironmentalImpactSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    carbonFootprint?: boolean
+    greenScore?: boolean
+    environmentalMetrics?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["environmentalImpact"]>
+
+  export type EnvironmentalImpactSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    carbonFootprint?: boolean
+    greenScore?: boolean
+    environmentalMetrics?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["environmentalImpact"]>
+
+  export type EnvironmentalImpactSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    carbonFootprint?: boolean
+    greenScore?: boolean
+    environmentalMetrics?: boolean
+    createdAt?: boolean
+  }
+
+  export type EnvironmentalImpactOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "carId" | "carbonFootprint" | "greenScore" | "environmentalMetrics" | "createdAt", ExtArgs["result"]["environmentalImpact"]>
+  export type EnvironmentalImpactInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+  export type EnvironmentalImpactIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+  export type EnvironmentalImpactIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+
+  export type $EnvironmentalImpactPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "EnvironmentalImpact"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      car: Prisma.$CarPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      carId: string
+      carbonFootprint: Prisma.JsonValue
+      greenScore: Prisma.JsonValue
+      environmentalMetrics: Prisma.JsonValue
+      createdAt: Date
+    }, ExtArgs["result"]["environmentalImpact"]>
+    composites: {}
+  }
+
+  type EnvironmentalImpactGetPayload<S extends boolean | null | undefined | EnvironmentalImpactDefaultArgs> = $Result.GetResult<Prisma.$EnvironmentalImpactPayload, S>
+
+  type EnvironmentalImpactCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<EnvironmentalImpactFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: EnvironmentalImpactCountAggregateInputType | true
+    }
+
+  export interface EnvironmentalImpactDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['EnvironmentalImpact'], meta: { name: 'EnvironmentalImpact' } }
+    /**
+     * Find zero or one EnvironmentalImpact that matches the filter.
+     * @param {EnvironmentalImpactFindUniqueArgs} args - Arguments to find a EnvironmentalImpact
+     * @example
+     * // Get one EnvironmentalImpact
+     * const environmentalImpact = await prisma.environmentalImpact.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends EnvironmentalImpactFindUniqueArgs>(args: SelectSubset<T, EnvironmentalImpactFindUniqueArgs<ExtArgs>>): Prisma__EnvironmentalImpactClient<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one EnvironmentalImpact that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {EnvironmentalImpactFindUniqueOrThrowArgs} args - Arguments to find a EnvironmentalImpact
+     * @example
+     * // Get one EnvironmentalImpact
+     * const environmentalImpact = await prisma.environmentalImpact.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends EnvironmentalImpactFindUniqueOrThrowArgs>(args: SelectSubset<T, EnvironmentalImpactFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EnvironmentalImpactClient<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EnvironmentalImpact that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EnvironmentalImpactFindFirstArgs} args - Arguments to find a EnvironmentalImpact
+     * @example
+     * // Get one EnvironmentalImpact
+     * const environmentalImpact = await prisma.environmentalImpact.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends EnvironmentalImpactFindFirstArgs>(args?: SelectSubset<T, EnvironmentalImpactFindFirstArgs<ExtArgs>>): Prisma__EnvironmentalImpactClient<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first EnvironmentalImpact that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EnvironmentalImpactFindFirstOrThrowArgs} args - Arguments to find a EnvironmentalImpact
+     * @example
+     * // Get one EnvironmentalImpact
+     * const environmentalImpact = await prisma.environmentalImpact.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends EnvironmentalImpactFindFirstOrThrowArgs>(args?: SelectSubset<T, EnvironmentalImpactFindFirstOrThrowArgs<ExtArgs>>): Prisma__EnvironmentalImpactClient<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more EnvironmentalImpacts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EnvironmentalImpactFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all EnvironmentalImpacts
+     * const environmentalImpacts = await prisma.environmentalImpact.findMany()
+     * 
+     * // Get first 10 EnvironmentalImpacts
+     * const environmentalImpacts = await prisma.environmentalImpact.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const environmentalImpactWithIdOnly = await prisma.environmentalImpact.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends EnvironmentalImpactFindManyArgs>(args?: SelectSubset<T, EnvironmentalImpactFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a EnvironmentalImpact.
+     * @param {EnvironmentalImpactCreateArgs} args - Arguments to create a EnvironmentalImpact.
+     * @example
+     * // Create one EnvironmentalImpact
+     * const EnvironmentalImpact = await prisma.environmentalImpact.create({
+     *   data: {
+     *     // ... data to create a EnvironmentalImpact
+     *   }
+     * })
+     * 
+     */
+    create<T extends EnvironmentalImpactCreateArgs>(args: SelectSubset<T, EnvironmentalImpactCreateArgs<ExtArgs>>): Prisma__EnvironmentalImpactClient<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many EnvironmentalImpacts.
+     * @param {EnvironmentalImpactCreateManyArgs} args - Arguments to create many EnvironmentalImpacts.
+     * @example
+     * // Create many EnvironmentalImpacts
+     * const environmentalImpact = await prisma.environmentalImpact.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends EnvironmentalImpactCreateManyArgs>(args?: SelectSubset<T, EnvironmentalImpactCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many EnvironmentalImpacts and returns the data saved in the database.
+     * @param {EnvironmentalImpactCreateManyAndReturnArgs} args - Arguments to create many EnvironmentalImpacts.
+     * @example
+     * // Create many EnvironmentalImpacts
+     * const environmentalImpact = await prisma.environmentalImpact.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many EnvironmentalImpacts and only return the `id`
+     * const environmentalImpactWithIdOnly = await prisma.environmentalImpact.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends EnvironmentalImpactCreateManyAndReturnArgs>(args?: SelectSubset<T, EnvironmentalImpactCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a EnvironmentalImpact.
+     * @param {EnvironmentalImpactDeleteArgs} args - Arguments to delete one EnvironmentalImpact.
+     * @example
+     * // Delete one EnvironmentalImpact
+     * const EnvironmentalImpact = await prisma.environmentalImpact.delete({
+     *   where: {
+     *     // ... filter to delete one EnvironmentalImpact
+     *   }
+     * })
+     * 
+     */
+    delete<T extends EnvironmentalImpactDeleteArgs>(args: SelectSubset<T, EnvironmentalImpactDeleteArgs<ExtArgs>>): Prisma__EnvironmentalImpactClient<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one EnvironmentalImpact.
+     * @param {EnvironmentalImpactUpdateArgs} args - Arguments to update one EnvironmentalImpact.
+     * @example
+     * // Update one EnvironmentalImpact
+     * const environmentalImpact = await prisma.environmentalImpact.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends EnvironmentalImpactUpdateArgs>(args: SelectSubset<T, EnvironmentalImpactUpdateArgs<ExtArgs>>): Prisma__EnvironmentalImpactClient<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more EnvironmentalImpacts.
+     * @param {EnvironmentalImpactDeleteManyArgs} args - Arguments to filter EnvironmentalImpacts to delete.
+     * @example
+     * // Delete a few EnvironmentalImpacts
+     * const { count } = await prisma.environmentalImpact.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends EnvironmentalImpactDeleteManyArgs>(args?: SelectSubset<T, EnvironmentalImpactDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EnvironmentalImpacts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EnvironmentalImpactUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many EnvironmentalImpacts
+     * const environmentalImpact = await prisma.environmentalImpact.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends EnvironmentalImpactUpdateManyArgs>(args: SelectSubset<T, EnvironmentalImpactUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more EnvironmentalImpacts and returns the data updated in the database.
+     * @param {EnvironmentalImpactUpdateManyAndReturnArgs} args - Arguments to update many EnvironmentalImpacts.
+     * @example
+     * // Update many EnvironmentalImpacts
+     * const environmentalImpact = await prisma.environmentalImpact.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more EnvironmentalImpacts and only return the `id`
+     * const environmentalImpactWithIdOnly = await prisma.environmentalImpact.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends EnvironmentalImpactUpdateManyAndReturnArgs>(args: SelectSubset<T, EnvironmentalImpactUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one EnvironmentalImpact.
+     * @param {EnvironmentalImpactUpsertArgs} args - Arguments to update or create a EnvironmentalImpact.
+     * @example
+     * // Update or create a EnvironmentalImpact
+     * const environmentalImpact = await prisma.environmentalImpact.upsert({
+     *   create: {
+     *     // ... data to create a EnvironmentalImpact
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the EnvironmentalImpact we want to update
+     *   }
+     * })
+     */
+    upsert<T extends EnvironmentalImpactUpsertArgs>(args: SelectSubset<T, EnvironmentalImpactUpsertArgs<ExtArgs>>): Prisma__EnvironmentalImpactClient<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of EnvironmentalImpacts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EnvironmentalImpactCountArgs} args - Arguments to filter EnvironmentalImpacts to count.
+     * @example
+     * // Count the number of EnvironmentalImpacts
+     * const count = await prisma.environmentalImpact.count({
+     *   where: {
+     *     // ... the filter for the EnvironmentalImpacts we want to count
+     *   }
+     * })
+    **/
+    count<T extends EnvironmentalImpactCountArgs>(
+      args?: Subset<T, EnvironmentalImpactCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], EnvironmentalImpactCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a EnvironmentalImpact.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EnvironmentalImpactAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends EnvironmentalImpactAggregateArgs>(args: Subset<T, EnvironmentalImpactAggregateArgs>): Prisma.PrismaPromise<GetEnvironmentalImpactAggregateType<T>>
+
+    /**
+     * Group by EnvironmentalImpact.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {EnvironmentalImpactGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends EnvironmentalImpactGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: EnvironmentalImpactGroupByArgs['orderBy'] }
+        : { orderBy?: EnvironmentalImpactGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, EnvironmentalImpactGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEnvironmentalImpactGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the EnvironmentalImpact model
+   */
+  readonly fields: EnvironmentalImpactFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for EnvironmentalImpact.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__EnvironmentalImpactClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    car<T extends CarDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CarDefaultArgs<ExtArgs>>): Prisma__CarClient<$Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the EnvironmentalImpact model
+   */
+  interface EnvironmentalImpactFieldRefs {
+    readonly id: FieldRef<"EnvironmentalImpact", 'String'>
+    readonly userId: FieldRef<"EnvironmentalImpact", 'String'>
+    readonly carId: FieldRef<"EnvironmentalImpact", 'String'>
+    readonly carbonFootprint: FieldRef<"EnvironmentalImpact", 'Json'>
+    readonly greenScore: FieldRef<"EnvironmentalImpact", 'Json'>
+    readonly environmentalMetrics: FieldRef<"EnvironmentalImpact", 'Json'>
+    readonly createdAt: FieldRef<"EnvironmentalImpact", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * EnvironmentalImpact findUnique
+   */
+  export type EnvironmentalImpactFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * Filter, which EnvironmentalImpact to fetch.
+     */
+    where: EnvironmentalImpactWhereUniqueInput
+  }
+
+  /**
+   * EnvironmentalImpact findUniqueOrThrow
+   */
+  export type EnvironmentalImpactFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * Filter, which EnvironmentalImpact to fetch.
+     */
+    where: EnvironmentalImpactWhereUniqueInput
+  }
+
+  /**
+   * EnvironmentalImpact findFirst
+   */
+  export type EnvironmentalImpactFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * Filter, which EnvironmentalImpact to fetch.
+     */
+    where?: EnvironmentalImpactWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EnvironmentalImpacts to fetch.
+     */
+    orderBy?: EnvironmentalImpactOrderByWithRelationInput | EnvironmentalImpactOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EnvironmentalImpacts.
+     */
+    cursor?: EnvironmentalImpactWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EnvironmentalImpacts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EnvironmentalImpacts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EnvironmentalImpacts.
+     */
+    distinct?: EnvironmentalImpactScalarFieldEnum | EnvironmentalImpactScalarFieldEnum[]
+  }
+
+  /**
+   * EnvironmentalImpact findFirstOrThrow
+   */
+  export type EnvironmentalImpactFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * Filter, which EnvironmentalImpact to fetch.
+     */
+    where?: EnvironmentalImpactWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EnvironmentalImpacts to fetch.
+     */
+    orderBy?: EnvironmentalImpactOrderByWithRelationInput | EnvironmentalImpactOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for EnvironmentalImpacts.
+     */
+    cursor?: EnvironmentalImpactWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EnvironmentalImpacts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EnvironmentalImpacts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of EnvironmentalImpacts.
+     */
+    distinct?: EnvironmentalImpactScalarFieldEnum | EnvironmentalImpactScalarFieldEnum[]
+  }
+
+  /**
+   * EnvironmentalImpact findMany
+   */
+  export type EnvironmentalImpactFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * Filter, which EnvironmentalImpacts to fetch.
+     */
+    where?: EnvironmentalImpactWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of EnvironmentalImpacts to fetch.
+     */
+    orderBy?: EnvironmentalImpactOrderByWithRelationInput | EnvironmentalImpactOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing EnvironmentalImpacts.
+     */
+    cursor?: EnvironmentalImpactWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` EnvironmentalImpacts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` EnvironmentalImpacts.
+     */
+    skip?: number
+    distinct?: EnvironmentalImpactScalarFieldEnum | EnvironmentalImpactScalarFieldEnum[]
+  }
+
+  /**
+   * EnvironmentalImpact create
+   */
+  export type EnvironmentalImpactCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * The data needed to create a EnvironmentalImpact.
+     */
+    data: XOR<EnvironmentalImpactCreateInput, EnvironmentalImpactUncheckedCreateInput>
+  }
+
+  /**
+   * EnvironmentalImpact createMany
+   */
+  export type EnvironmentalImpactCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many EnvironmentalImpacts.
+     */
+    data: EnvironmentalImpactCreateManyInput | EnvironmentalImpactCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * EnvironmentalImpact createManyAndReturn
+   */
+  export type EnvironmentalImpactCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * The data used to create many EnvironmentalImpacts.
+     */
+    data: EnvironmentalImpactCreateManyInput | EnvironmentalImpactCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EnvironmentalImpact update
+   */
+  export type EnvironmentalImpactUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * The data needed to update a EnvironmentalImpact.
+     */
+    data: XOR<EnvironmentalImpactUpdateInput, EnvironmentalImpactUncheckedUpdateInput>
+    /**
+     * Choose, which EnvironmentalImpact to update.
+     */
+    where: EnvironmentalImpactWhereUniqueInput
+  }
+
+  /**
+   * EnvironmentalImpact updateMany
+   */
+  export type EnvironmentalImpactUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update EnvironmentalImpacts.
+     */
+    data: XOR<EnvironmentalImpactUpdateManyMutationInput, EnvironmentalImpactUncheckedUpdateManyInput>
+    /**
+     * Filter which EnvironmentalImpacts to update
+     */
+    where?: EnvironmentalImpactWhereInput
+    /**
+     * Limit how many EnvironmentalImpacts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * EnvironmentalImpact updateManyAndReturn
+   */
+  export type EnvironmentalImpactUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * The data used to update EnvironmentalImpacts.
+     */
+    data: XOR<EnvironmentalImpactUpdateManyMutationInput, EnvironmentalImpactUncheckedUpdateManyInput>
+    /**
+     * Filter which EnvironmentalImpacts to update
+     */
+    where?: EnvironmentalImpactWhereInput
+    /**
+     * Limit how many EnvironmentalImpacts to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * EnvironmentalImpact upsert
+   */
+  export type EnvironmentalImpactUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * The filter to search for the EnvironmentalImpact to update in case it exists.
+     */
+    where: EnvironmentalImpactWhereUniqueInput
+    /**
+     * In case the EnvironmentalImpact found by the `where` argument doesn't exist, create a new EnvironmentalImpact with this data.
+     */
+    create: XOR<EnvironmentalImpactCreateInput, EnvironmentalImpactUncheckedCreateInput>
+    /**
+     * In case the EnvironmentalImpact was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<EnvironmentalImpactUpdateInput, EnvironmentalImpactUncheckedUpdateInput>
+  }
+
+  /**
+   * EnvironmentalImpact delete
+   */
+  export type EnvironmentalImpactDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    /**
+     * Filter which EnvironmentalImpact to delete.
+     */
+    where: EnvironmentalImpactWhereUniqueInput
+  }
+
+  /**
+   * EnvironmentalImpact deleteMany
+   */
+  export type EnvironmentalImpactDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which EnvironmentalImpacts to delete
+     */
+    where?: EnvironmentalImpactWhereInput
+    /**
+     * Limit how many EnvironmentalImpacts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * EnvironmentalImpact without action
+   */
+  export type EnvironmentalImpactDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+  }
+
 
   /**
    * Model User
@@ -1694,6 +5365,9 @@ export namespace Prisma {
     role?: boolean
     savedCars?: boolean | User$savedCarsArgs<ExtArgs>
     testDrives?: boolean | User$testDrivesArgs<ExtArgs>
+    chatInteractions?: boolean | User$chatInteractionsArgs<ExtArgs>
+    maintenancePredictions?: boolean | User$maintenancePredictionsArgs<ExtArgs>
+    environmentalImpacts?: boolean | User$environmentalImpactsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -1737,6 +5411,9 @@ export namespace Prisma {
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     savedCars?: boolean | User$savedCarsArgs<ExtArgs>
     testDrives?: boolean | User$testDrivesArgs<ExtArgs>
+    chatInteractions?: boolean | User$chatInteractionsArgs<ExtArgs>
+    maintenancePredictions?: boolean | User$maintenancePredictionsArgs<ExtArgs>
+    environmentalImpacts?: boolean | User$environmentalImpactsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -1747,6 +5424,9 @@ export namespace Prisma {
     objects: {
       savedCars: Prisma.$UserSavedCarPayload<ExtArgs>[]
       testDrives: Prisma.$TestDriveBookingPayload<ExtArgs>[]
+      chatInteractions: Prisma.$ChatInteractionPayload<ExtArgs>[]
+      maintenancePredictions: Prisma.$MaintenancePredictionPayload<ExtArgs>[]
+      environmentalImpacts: Prisma.$EnvironmentalImpactPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -2154,6 +5834,9 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     savedCars<T extends User$savedCarsArgs<ExtArgs> = {}>(args?: Subset<T, User$savedCarsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSavedCarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testDrives<T extends User$testDrivesArgs<ExtArgs> = {}>(args?: Subset<T, User$testDrivesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestDriveBookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    chatInteractions<T extends User$chatInteractionsArgs<ExtArgs> = {}>(args?: Subset<T, User$chatInteractionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    maintenancePredictions<T extends User$maintenancePredictionsArgs<ExtArgs> = {}>(args?: Subset<T, User$maintenancePredictionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    environmentalImpacts<T extends User$environmentalImpactsArgs<ExtArgs> = {}>(args?: Subset<T, User$environmentalImpactsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2628,6 +6311,78 @@ export namespace Prisma {
   }
 
   /**
+   * User.chatInteractions
+   */
+  export type User$chatInteractionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    where?: ChatInteractionWhereInput
+    orderBy?: ChatInteractionOrderByWithRelationInput | ChatInteractionOrderByWithRelationInput[]
+    cursor?: ChatInteractionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChatInteractionScalarFieldEnum | ChatInteractionScalarFieldEnum[]
+  }
+
+  /**
+   * User.maintenancePredictions
+   */
+  export type User$maintenancePredictionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    where?: MaintenancePredictionWhereInput
+    orderBy?: MaintenancePredictionOrderByWithRelationInput | MaintenancePredictionOrderByWithRelationInput[]
+    cursor?: MaintenancePredictionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MaintenancePredictionScalarFieldEnum | MaintenancePredictionScalarFieldEnum[]
+  }
+
+  /**
+   * User.environmentalImpacts
+   */
+  export type User$environmentalImpactsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    where?: EnvironmentalImpactWhereInput
+    orderBy?: EnvironmentalImpactOrderByWithRelationInput | EnvironmentalImpactOrderByWithRelationInput[]
+    cursor?: EnvironmentalImpactWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EnvironmentalImpactScalarFieldEnum | EnvironmentalImpactScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2663,6 +6418,7 @@ export namespace Prisma {
     price: Decimal | null
     mileage: number | null
     seats: number | null
+    greenScore: number | null
   }
 
   export type CarSumAggregateOutputType = {
@@ -2670,6 +6426,7 @@ export namespace Prisma {
     price: Decimal | null
     mileage: number | null
     seats: number | null
+    greenScore: number | null
   }
 
   export type CarMinAggregateOutputType = {
@@ -2689,6 +6446,7 @@ export namespace Prisma {
     featured: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    greenScore: number | null
   }
 
   export type CarMaxAggregateOutputType = {
@@ -2708,6 +6466,7 @@ export namespace Prisma {
     featured: boolean | null
     createdAt: Date | null
     updatedAt: Date | null
+    greenScore: number | null
   }
 
   export type CarCountAggregateOutputType = {
@@ -2728,6 +6487,8 @@ export namespace Prisma {
     images: number
     createdAt: number
     updatedAt: number
+    greenScore: number
+    environmentalMetrics: number
     _all: number
   }
 
@@ -2737,6 +6498,7 @@ export namespace Prisma {
     price?: true
     mileage?: true
     seats?: true
+    greenScore?: true
   }
 
   export type CarSumAggregateInputType = {
@@ -2744,6 +6506,7 @@ export namespace Prisma {
     price?: true
     mileage?: true
     seats?: true
+    greenScore?: true
   }
 
   export type CarMinAggregateInputType = {
@@ -2763,6 +6526,7 @@ export namespace Prisma {
     featured?: true
     createdAt?: true
     updatedAt?: true
+    greenScore?: true
   }
 
   export type CarMaxAggregateInputType = {
@@ -2782,6 +6546,7 @@ export namespace Prisma {
     featured?: true
     createdAt?: true
     updatedAt?: true
+    greenScore?: true
   }
 
   export type CarCountAggregateInputType = {
@@ -2802,6 +6567,8 @@ export namespace Prisma {
     images?: true
     createdAt?: true
     updatedAt?: true
+    greenScore?: true
+    environmentalMetrics?: true
     _all?: true
   }
 
@@ -2909,6 +6676,8 @@ export namespace Prisma {
     images: string[]
     createdAt: Date
     updatedAt: Date
+    greenScore: number | null
+    environmentalMetrics: JsonValue | null
     _count: CarCountAggregateOutputType | null
     _avg: CarAvgAggregateOutputType | null
     _sum: CarSumAggregateOutputType | null
@@ -2948,8 +6717,13 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    greenScore?: boolean
+    environmentalMetrics?: boolean
     savedBy?: boolean | Car$savedByArgs<ExtArgs>
     testDriveBookings?: boolean | Car$testDriveBookingsArgs<ExtArgs>
+    chatRecommendations?: boolean | Car$chatRecommendationsArgs<ExtArgs>
+    maintenancePredictions?: boolean | Car$maintenancePredictionsArgs<ExtArgs>
+    environmentalImpacts?: boolean | Car$environmentalImpactsArgs<ExtArgs>
     _count?: boolean | CarCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["car"]>
 
@@ -2971,6 +6745,8 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    greenScore?: boolean
+    environmentalMetrics?: boolean
   }, ExtArgs["result"]["car"]>
 
   export type CarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2991,6 +6767,8 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    greenScore?: boolean
+    environmentalMetrics?: boolean
   }, ExtArgs["result"]["car"]>
 
   export type CarSelectScalar = {
@@ -3011,12 +6789,17 @@ export namespace Prisma {
     images?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    greenScore?: boolean
+    environmentalMetrics?: boolean
   }
 
-  export type CarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "make" | "model" | "year" | "price" | "mileage" | "color" | "fuelType" | "transmission" | "bodyType" | "seats" | "description" | "status" | "featured" | "images" | "createdAt" | "updatedAt", ExtArgs["result"]["car"]>
+  export type CarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "make" | "model" | "year" | "price" | "mileage" | "color" | "fuelType" | "transmission" | "bodyType" | "seats" | "description" | "status" | "featured" | "images" | "createdAt" | "updatedAt" | "greenScore" | "environmentalMetrics", ExtArgs["result"]["car"]>
   export type CarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     savedBy?: boolean | Car$savedByArgs<ExtArgs>
     testDriveBookings?: boolean | Car$testDriveBookingsArgs<ExtArgs>
+    chatRecommendations?: boolean | Car$chatRecommendationsArgs<ExtArgs>
+    maintenancePredictions?: boolean | Car$maintenancePredictionsArgs<ExtArgs>
+    environmentalImpacts?: boolean | Car$environmentalImpactsArgs<ExtArgs>
     _count?: boolean | CarCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3027,6 +6810,9 @@ export namespace Prisma {
     objects: {
       savedBy: Prisma.$UserSavedCarPayload<ExtArgs>[]
       testDriveBookings: Prisma.$TestDriveBookingPayload<ExtArgs>[]
+      chatRecommendations: Prisma.$ChatInteractionPayload<ExtArgs>[]
+      maintenancePredictions: Prisma.$MaintenancePredictionPayload<ExtArgs>[]
+      environmentalImpacts: Prisma.$EnvironmentalImpactPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -3046,6 +6832,8 @@ export namespace Prisma {
       images: string[]
       createdAt: Date
       updatedAt: Date
+      greenScore: number | null
+      environmentalMetrics: Prisma.JsonValue | null
     }, ExtArgs["result"]["car"]>
     composites: {}
   }
@@ -3442,6 +7230,9 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     savedBy<T extends Car$savedByArgs<ExtArgs> = {}>(args?: Subset<T, Car$savedByArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSavedCarPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     testDriveBookings<T extends Car$testDriveBookingsArgs<ExtArgs> = {}>(args?: Subset<T, Car$testDriveBookingsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TestDriveBookingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    chatRecommendations<T extends Car$chatRecommendationsArgs<ExtArgs> = {}>(args?: Subset<T, Car$chatRecommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    maintenancePredictions<T extends Car$maintenancePredictionsArgs<ExtArgs> = {}>(args?: Subset<T, Car$maintenancePredictionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    environmentalImpacts<T extends Car$environmentalImpactsArgs<ExtArgs> = {}>(args?: Subset<T, Car$environmentalImpactsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3488,6 +7279,8 @@ export namespace Prisma {
     readonly images: FieldRef<"Car", 'String[]'>
     readonly createdAt: FieldRef<"Car", 'DateTime'>
     readonly updatedAt: FieldRef<"Car", 'DateTime'>
+    readonly greenScore: FieldRef<"Car", 'Float'>
+    readonly environmentalMetrics: FieldRef<"Car", 'Json'>
   }
     
 
@@ -3921,6 +7714,78 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: TestDriveBookingScalarFieldEnum | TestDriveBookingScalarFieldEnum[]
+  }
+
+  /**
+   * Car.chatRecommendations
+   */
+  export type Car$chatRecommendationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ChatInteraction
+     */
+    select?: ChatInteractionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ChatInteraction
+     */
+    omit?: ChatInteractionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ChatInteractionInclude<ExtArgs> | null
+    where?: ChatInteractionWhereInput
+    orderBy?: ChatInteractionOrderByWithRelationInput | ChatInteractionOrderByWithRelationInput[]
+    cursor?: ChatInteractionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ChatInteractionScalarFieldEnum | ChatInteractionScalarFieldEnum[]
+  }
+
+  /**
+   * Car.maintenancePredictions
+   */
+  export type Car$maintenancePredictionsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the MaintenancePrediction
+     */
+    select?: MaintenancePredictionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the MaintenancePrediction
+     */
+    omit?: MaintenancePredictionOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MaintenancePredictionInclude<ExtArgs> | null
+    where?: MaintenancePredictionWhereInput
+    orderBy?: MaintenancePredictionOrderByWithRelationInput | MaintenancePredictionOrderByWithRelationInput[]
+    cursor?: MaintenancePredictionWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MaintenancePredictionScalarFieldEnum | MaintenancePredictionScalarFieldEnum[]
+  }
+
+  /**
+   * Car.environmentalImpacts
+   */
+  export type Car$environmentalImpactsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the EnvironmentalImpact
+     */
+    select?: EnvironmentalImpactSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the EnvironmentalImpact
+     */
+    omit?: EnvironmentalImpactOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: EnvironmentalImpactInclude<ExtArgs> | null
+    where?: EnvironmentalImpactWhereInput
+    orderBy?: EnvironmentalImpactOrderByWithRelationInput | EnvironmentalImpactOrderByWithRelationInput[]
+    cursor?: EnvironmentalImpactWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: EnvironmentalImpactScalarFieldEnum | EnvironmentalImpactScalarFieldEnum[]
   }
 
   /**
@@ -8333,6 +12198,46 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const ChatInteractionScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    userMessage: 'userMessage',
+    aiResponse: 'aiResponse',
+    preferences: 'preferences',
+    recommendedCarIds: 'recommendedCarIds',
+    createdAt: 'createdAt'
+  };
+
+  export type ChatInteractionScalarFieldEnum = (typeof ChatInteractionScalarFieldEnum)[keyof typeof ChatInteractionScalarFieldEnum]
+
+
+  export const MaintenancePredictionScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    carId: 'carId',
+    nextServices: 'nextServices',
+    partsReplacement: 'partsReplacement',
+    totalMaintenanceCost: 'totalMaintenanceCost',
+    maintenanceSchedule: 'maintenanceSchedule',
+    createdAt: 'createdAt'
+  };
+
+  export type MaintenancePredictionScalarFieldEnum = (typeof MaintenancePredictionScalarFieldEnum)[keyof typeof MaintenancePredictionScalarFieldEnum]
+
+
+  export const EnvironmentalImpactScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    carId: 'carId',
+    carbonFootprint: 'carbonFootprint',
+    greenScore: 'greenScore',
+    environmentalMetrics: 'environmentalMetrics',
+    createdAt: 'createdAt'
+  };
+
+  export type EnvironmentalImpactScalarFieldEnum = (typeof EnvironmentalImpactScalarFieldEnum)[keyof typeof EnvironmentalImpactScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     clerkUserId: 'clerkUserId',
@@ -8365,7 +12270,9 @@ export namespace Prisma {
     featured: 'featured',
     images: 'images',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    greenScore: 'greenScore',
+    environmentalMetrics: 'environmentalMetrics'
   };
 
   export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
@@ -8432,12 +12339,36 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const JsonNullValueInput: {
+    JsonNull: typeof JsonNull
+  };
+
+  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput]
+
+
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
   export const QueryMode: {
     default: 'default',
     insensitive: 'insensitive'
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 
 
   export const NullsOrder: {
@@ -8468,6 +12399,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -8478,6 +12423,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
 
 
@@ -8570,24 +12529,221 @@ export namespace Prisma {
    */
   export type ListEnumBookingStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'BookingStatus[]'>
     
-
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
-    
   /**
    * Deep Input Types
    */
 
+
+  export type ChatInteractionWhereInput = {
+    AND?: ChatInteractionWhereInput | ChatInteractionWhereInput[]
+    OR?: ChatInteractionWhereInput[]
+    NOT?: ChatInteractionWhereInput | ChatInteractionWhereInput[]
+    id?: StringFilter<"ChatInteraction"> | string
+    userId?: StringFilter<"ChatInteraction"> | string
+    userMessage?: StringFilter<"ChatInteraction"> | string
+    aiResponse?: StringFilter<"ChatInteraction"> | string
+    preferences?: JsonFilter<"ChatInteraction">
+    recommendedCarIds?: StringNullableListFilter<"ChatInteraction">
+    createdAt?: DateTimeFilter<"ChatInteraction"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    recommendedCars?: CarListRelationFilter
+  }
+
+  export type ChatInteractionOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userMessage?: SortOrder
+    aiResponse?: SortOrder
+    preferences?: SortOrder
+    recommendedCarIds?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    recommendedCars?: CarOrderByRelationAggregateInput
+  }
+
+  export type ChatInteractionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ChatInteractionWhereInput | ChatInteractionWhereInput[]
+    OR?: ChatInteractionWhereInput[]
+    NOT?: ChatInteractionWhereInput | ChatInteractionWhereInput[]
+    userId?: StringFilter<"ChatInteraction"> | string
+    userMessage?: StringFilter<"ChatInteraction"> | string
+    aiResponse?: StringFilter<"ChatInteraction"> | string
+    preferences?: JsonFilter<"ChatInteraction">
+    recommendedCarIds?: StringNullableListFilter<"ChatInteraction">
+    createdAt?: DateTimeFilter<"ChatInteraction"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    recommendedCars?: CarListRelationFilter
+  }, "id">
+
+  export type ChatInteractionOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userMessage?: SortOrder
+    aiResponse?: SortOrder
+    preferences?: SortOrder
+    recommendedCarIds?: SortOrder
+    createdAt?: SortOrder
+    _count?: ChatInteractionCountOrderByAggregateInput
+    _max?: ChatInteractionMaxOrderByAggregateInput
+    _min?: ChatInteractionMinOrderByAggregateInput
+  }
+
+  export type ChatInteractionScalarWhereWithAggregatesInput = {
+    AND?: ChatInteractionScalarWhereWithAggregatesInput | ChatInteractionScalarWhereWithAggregatesInput[]
+    OR?: ChatInteractionScalarWhereWithAggregatesInput[]
+    NOT?: ChatInteractionScalarWhereWithAggregatesInput | ChatInteractionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ChatInteraction"> | string
+    userId?: StringWithAggregatesFilter<"ChatInteraction"> | string
+    userMessage?: StringWithAggregatesFilter<"ChatInteraction"> | string
+    aiResponse?: StringWithAggregatesFilter<"ChatInteraction"> | string
+    preferences?: JsonWithAggregatesFilter<"ChatInteraction">
+    recommendedCarIds?: StringNullableListFilter<"ChatInteraction">
+    createdAt?: DateTimeWithAggregatesFilter<"ChatInteraction"> | Date | string
+  }
+
+  export type MaintenancePredictionWhereInput = {
+    AND?: MaintenancePredictionWhereInput | MaintenancePredictionWhereInput[]
+    OR?: MaintenancePredictionWhereInput[]
+    NOT?: MaintenancePredictionWhereInput | MaintenancePredictionWhereInput[]
+    id?: StringFilter<"MaintenancePrediction"> | string
+    userId?: StringFilter<"MaintenancePrediction"> | string
+    carId?: StringFilter<"MaintenancePrediction"> | string
+    nextServices?: JsonFilter<"MaintenancePrediction">
+    partsReplacement?: JsonFilter<"MaintenancePrediction">
+    totalMaintenanceCost?: FloatFilter<"MaintenancePrediction"> | number
+    maintenanceSchedule?: JsonFilter<"MaintenancePrediction">
+    createdAt?: DateTimeFilter<"MaintenancePrediction"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    car?: XOR<CarScalarRelationFilter, CarWhereInput>
+  }
+
+  export type MaintenancePredictionOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    nextServices?: SortOrder
+    partsReplacement?: SortOrder
+    totalMaintenanceCost?: SortOrder
+    maintenanceSchedule?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    car?: CarOrderByWithRelationInput
+  }
+
+  export type MaintenancePredictionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: MaintenancePredictionWhereInput | MaintenancePredictionWhereInput[]
+    OR?: MaintenancePredictionWhereInput[]
+    NOT?: MaintenancePredictionWhereInput | MaintenancePredictionWhereInput[]
+    userId?: StringFilter<"MaintenancePrediction"> | string
+    carId?: StringFilter<"MaintenancePrediction"> | string
+    nextServices?: JsonFilter<"MaintenancePrediction">
+    partsReplacement?: JsonFilter<"MaintenancePrediction">
+    totalMaintenanceCost?: FloatFilter<"MaintenancePrediction"> | number
+    maintenanceSchedule?: JsonFilter<"MaintenancePrediction">
+    createdAt?: DateTimeFilter<"MaintenancePrediction"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    car?: XOR<CarScalarRelationFilter, CarWhereInput>
+  }, "id">
+
+  export type MaintenancePredictionOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    nextServices?: SortOrder
+    partsReplacement?: SortOrder
+    totalMaintenanceCost?: SortOrder
+    maintenanceSchedule?: SortOrder
+    createdAt?: SortOrder
+    _count?: MaintenancePredictionCountOrderByAggregateInput
+    _avg?: MaintenancePredictionAvgOrderByAggregateInput
+    _max?: MaintenancePredictionMaxOrderByAggregateInput
+    _min?: MaintenancePredictionMinOrderByAggregateInput
+    _sum?: MaintenancePredictionSumOrderByAggregateInput
+  }
+
+  export type MaintenancePredictionScalarWhereWithAggregatesInput = {
+    AND?: MaintenancePredictionScalarWhereWithAggregatesInput | MaintenancePredictionScalarWhereWithAggregatesInput[]
+    OR?: MaintenancePredictionScalarWhereWithAggregatesInput[]
+    NOT?: MaintenancePredictionScalarWhereWithAggregatesInput | MaintenancePredictionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"MaintenancePrediction"> | string
+    userId?: StringWithAggregatesFilter<"MaintenancePrediction"> | string
+    carId?: StringWithAggregatesFilter<"MaintenancePrediction"> | string
+    nextServices?: JsonWithAggregatesFilter<"MaintenancePrediction">
+    partsReplacement?: JsonWithAggregatesFilter<"MaintenancePrediction">
+    totalMaintenanceCost?: FloatWithAggregatesFilter<"MaintenancePrediction"> | number
+    maintenanceSchedule?: JsonWithAggregatesFilter<"MaintenancePrediction">
+    createdAt?: DateTimeWithAggregatesFilter<"MaintenancePrediction"> | Date | string
+  }
+
+  export type EnvironmentalImpactWhereInput = {
+    AND?: EnvironmentalImpactWhereInput | EnvironmentalImpactWhereInput[]
+    OR?: EnvironmentalImpactWhereInput[]
+    NOT?: EnvironmentalImpactWhereInput | EnvironmentalImpactWhereInput[]
+    id?: StringFilter<"EnvironmentalImpact"> | string
+    userId?: StringFilter<"EnvironmentalImpact"> | string
+    carId?: StringFilter<"EnvironmentalImpact"> | string
+    carbonFootprint?: JsonFilter<"EnvironmentalImpact">
+    greenScore?: JsonFilter<"EnvironmentalImpact">
+    environmentalMetrics?: JsonFilter<"EnvironmentalImpact">
+    createdAt?: DateTimeFilter<"EnvironmentalImpact"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    car?: XOR<CarScalarRelationFilter, CarWhereInput>
+  }
+
+  export type EnvironmentalImpactOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    carbonFootprint?: SortOrder
+    greenScore?: SortOrder
+    environmentalMetrics?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    car?: CarOrderByWithRelationInput
+  }
+
+  export type EnvironmentalImpactWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: EnvironmentalImpactWhereInput | EnvironmentalImpactWhereInput[]
+    OR?: EnvironmentalImpactWhereInput[]
+    NOT?: EnvironmentalImpactWhereInput | EnvironmentalImpactWhereInput[]
+    userId?: StringFilter<"EnvironmentalImpact"> | string
+    carId?: StringFilter<"EnvironmentalImpact"> | string
+    carbonFootprint?: JsonFilter<"EnvironmentalImpact">
+    greenScore?: JsonFilter<"EnvironmentalImpact">
+    environmentalMetrics?: JsonFilter<"EnvironmentalImpact">
+    createdAt?: DateTimeFilter<"EnvironmentalImpact"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    car?: XOR<CarScalarRelationFilter, CarWhereInput>
+  }, "id">
+
+  export type EnvironmentalImpactOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    carbonFootprint?: SortOrder
+    greenScore?: SortOrder
+    environmentalMetrics?: SortOrder
+    createdAt?: SortOrder
+    _count?: EnvironmentalImpactCountOrderByAggregateInput
+    _max?: EnvironmentalImpactMaxOrderByAggregateInput
+    _min?: EnvironmentalImpactMinOrderByAggregateInput
+  }
+
+  export type EnvironmentalImpactScalarWhereWithAggregatesInput = {
+    AND?: EnvironmentalImpactScalarWhereWithAggregatesInput | EnvironmentalImpactScalarWhereWithAggregatesInput[]
+    OR?: EnvironmentalImpactScalarWhereWithAggregatesInput[]
+    NOT?: EnvironmentalImpactScalarWhereWithAggregatesInput | EnvironmentalImpactScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"EnvironmentalImpact"> | string
+    userId?: StringWithAggregatesFilter<"EnvironmentalImpact"> | string
+    carId?: StringWithAggregatesFilter<"EnvironmentalImpact"> | string
+    carbonFootprint?: JsonWithAggregatesFilter<"EnvironmentalImpact">
+    greenScore?: JsonWithAggregatesFilter<"EnvironmentalImpact">
+    environmentalMetrics?: JsonWithAggregatesFilter<"EnvironmentalImpact">
+    createdAt?: DateTimeWithAggregatesFilter<"EnvironmentalImpact"> | Date | string
+  }
 
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
@@ -8604,6 +12760,9 @@ export namespace Prisma {
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     savedCars?: UserSavedCarListRelationFilter
     testDrives?: TestDriveBookingListRelationFilter
+    chatInteractions?: ChatInteractionListRelationFilter
+    maintenancePredictions?: MaintenancePredictionListRelationFilter
+    environmentalImpacts?: EnvironmentalImpactListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -8618,6 +12777,9 @@ export namespace Prisma {
     role?: SortOrder
     savedCars?: UserSavedCarOrderByRelationAggregateInput
     testDrives?: TestDriveBookingOrderByRelationAggregateInput
+    chatInteractions?: ChatInteractionOrderByRelationAggregateInput
+    maintenancePredictions?: MaintenancePredictionOrderByRelationAggregateInput
+    environmentalImpacts?: EnvironmentalImpactOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -8635,6 +12797,9 @@ export namespace Prisma {
     role?: EnumUserRoleFilter<"User"> | $Enums.UserRole
     savedCars?: UserSavedCarListRelationFilter
     testDrives?: TestDriveBookingListRelationFilter
+    chatInteractions?: ChatInteractionListRelationFilter
+    maintenancePredictions?: MaintenancePredictionListRelationFilter
+    environmentalImpacts?: EnvironmentalImpactListRelationFilter
   }, "id" | "clerkUserId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -8688,8 +12853,13 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Car">
     createdAt?: DateTimeFilter<"Car"> | Date | string
     updatedAt?: DateTimeFilter<"Car"> | Date | string
+    greenScore?: FloatNullableFilter<"Car"> | number | null
+    environmentalMetrics?: JsonNullableFilter<"Car">
     savedBy?: UserSavedCarListRelationFilter
     testDriveBookings?: TestDriveBookingListRelationFilter
+    chatRecommendations?: ChatInteractionListRelationFilter
+    maintenancePredictions?: MaintenancePredictionListRelationFilter
+    environmentalImpacts?: EnvironmentalImpactListRelationFilter
   }
 
   export type CarOrderByWithRelationInput = {
@@ -8710,8 +12880,13 @@ export namespace Prisma {
     images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    greenScore?: SortOrderInput | SortOrder
+    environmentalMetrics?: SortOrderInput | SortOrder
     savedBy?: UserSavedCarOrderByRelationAggregateInput
     testDriveBookings?: TestDriveBookingOrderByRelationAggregateInput
+    chatRecommendations?: ChatInteractionOrderByRelationAggregateInput
+    maintenancePredictions?: MaintenancePredictionOrderByRelationAggregateInput
+    environmentalImpacts?: EnvironmentalImpactOrderByRelationAggregateInput
   }
 
   export type CarWhereUniqueInput = Prisma.AtLeast<{
@@ -8735,8 +12910,13 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Car">
     createdAt?: DateTimeFilter<"Car"> | Date | string
     updatedAt?: DateTimeFilter<"Car"> | Date | string
+    greenScore?: FloatNullableFilter<"Car"> | number | null
+    environmentalMetrics?: JsonNullableFilter<"Car">
     savedBy?: UserSavedCarListRelationFilter
     testDriveBookings?: TestDriveBookingListRelationFilter
+    chatRecommendations?: ChatInteractionListRelationFilter
+    maintenancePredictions?: MaintenancePredictionListRelationFilter
+    environmentalImpacts?: EnvironmentalImpactListRelationFilter
   }, "id">
 
   export type CarOrderByWithAggregationInput = {
@@ -8757,6 +12937,8 @@ export namespace Prisma {
     images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    greenScore?: SortOrderInput | SortOrder
+    environmentalMetrics?: SortOrderInput | SortOrder
     _count?: CarCountOrderByAggregateInput
     _avg?: CarAvgOrderByAggregateInput
     _max?: CarMaxOrderByAggregateInput
@@ -8785,6 +12967,8 @@ export namespace Prisma {
     images?: StringNullableListFilter<"Car">
     createdAt?: DateTimeWithAggregatesFilter<"Car"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Car"> | Date | string
+    greenScore?: FloatNullableWithAggregatesFilter<"Car"> | number | null
+    environmentalMetrics?: JsonNullableWithAggregatesFilter<"Car">
   }
 
   export type DealershipInfoWhereInput = {
@@ -9060,6 +13244,222 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"TestDriveBooking"> | Date | string
   }
 
+  export type ChatInteractionCreateInput = {
+    id?: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionCreaterecommendedCarIdsInput | string[]
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutChatInteractionsInput
+    recommendedCars?: CarCreateNestedManyWithoutChatRecommendationsInput
+  }
+
+  export type ChatInteractionUncheckedCreateInput = {
+    id?: string
+    userId: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionCreaterecommendedCarIdsInput | string[]
+    createdAt?: Date | string
+    recommendedCars?: CarUncheckedCreateNestedManyWithoutChatRecommendationsInput
+  }
+
+  export type ChatInteractionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutChatInteractionsNestedInput
+    recommendedCars?: CarUpdateManyWithoutChatRecommendationsNestedInput
+  }
+
+  export type ChatInteractionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recommendedCars?: CarUncheckedUpdateManyWithoutChatRecommendationsNestedInput
+  }
+
+  export type ChatInteractionCreateManyInput = {
+    id?: string
+    userId: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionCreaterecommendedCarIdsInput | string[]
+    createdAt?: Date | string
+  }
+
+  export type ChatInteractionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChatInteractionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MaintenancePredictionCreateInput = {
+    id?: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutMaintenancePredictionsInput
+    car: CarCreateNestedOneWithoutMaintenancePredictionsInput
+  }
+
+  export type MaintenancePredictionUncheckedCreateInput = {
+    id?: string
+    userId: string
+    carId: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type MaintenancePredictionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMaintenancePredictionsNestedInput
+    car?: CarUpdateOneRequiredWithoutMaintenancePredictionsNestedInput
+  }
+
+  export type MaintenancePredictionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MaintenancePredictionCreateManyInput = {
+    id?: string
+    userId: string
+    carId: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type MaintenancePredictionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MaintenancePredictionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EnvironmentalImpactCreateInput = {
+    id?: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutEnvironmentalImpactsInput
+    car: CarCreateNestedOneWithoutEnvironmentalImpactsInput
+  }
+
+  export type EnvironmentalImpactUncheckedCreateInput = {
+    id?: string
+    userId: string
+    carId: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type EnvironmentalImpactUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutEnvironmentalImpactsNestedInput
+    car?: CarUpdateOneRequiredWithoutEnvironmentalImpactsNestedInput
+  }
+
+  export type EnvironmentalImpactUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EnvironmentalImpactCreateManyInput = {
+    id?: string
+    userId: string
+    carId: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type EnvironmentalImpactUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EnvironmentalImpactUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     clerkUserId: string
@@ -9072,6 +13472,9 @@ export namespace Prisma {
     role?: $Enums.UserRole
     savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
     testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -9086,6 +13489,9 @@ export namespace Prisma {
     role?: $Enums.UserRole
     savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
     testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -9100,6 +13506,9 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
     testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -9114,6 +13523,9 @@ export namespace Prisma {
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
     testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -9170,8 +13582,13 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateInput = {
@@ -9192,8 +13609,13 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarUpdateInput = {
@@ -9214,8 +13636,13 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateInput = {
@@ -9236,8 +13663,13 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type CarCreateManyInput = {
@@ -9258,6 +13690,8 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type CarUpdateManyMutationInput = {
@@ -9278,6 +13712,8 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type CarUncheckedUpdateManyInput = {
@@ -9298,6 +13734,8 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type DealershipInfoCreateInput = {
@@ -9600,6 +14038,238 @@ export namespace Prisma {
     mode?: QueryMode
     not?: NestedStringFilter<$PrismaModel> | string
   }
+  export type JsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type UserScalarRelationFilter = {
+    is?: UserWhereInput
+    isNot?: UserWhereInput
+  }
+
+  export type CarListRelationFilter = {
+    every?: CarWhereInput
+    some?: CarWhereInput
+    none?: CarWhereInput
+  }
+
+  export type CarOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ChatInteractionCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userMessage?: SortOrder
+    aiResponse?: SortOrder
+    preferences?: SortOrder
+    recommendedCarIds?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ChatInteractionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userMessage?: SortOrder
+    aiResponse?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ChatInteractionMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    userMessage?: SortOrder
+    aiResponse?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+  export type JsonWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedJsonFilter<$PrismaModel>
+    _max?: NestedJsonFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type CarScalarRelationFilter = {
+    is?: CarWhereInput
+    isNot?: CarWhereInput
+  }
+
+  export type MaintenancePredictionCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    nextServices?: SortOrder
+    partsReplacement?: SortOrder
+    totalMaintenanceCost?: SortOrder
+    maintenanceSchedule?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MaintenancePredictionAvgOrderByAggregateInput = {
+    totalMaintenanceCost?: SortOrder
+  }
+
+  export type MaintenancePredictionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    totalMaintenanceCost?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MaintenancePredictionMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    totalMaintenanceCost?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type MaintenancePredictionSumOrderByAggregateInput = {
+    totalMaintenanceCost?: SortOrder
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type EnvironmentalImpactCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    carbonFootprint?: SortOrder
+    greenScore?: SortOrder
+    environmentalMetrics?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnvironmentalImpactMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type EnvironmentalImpactMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    createdAt?: SortOrder
+  }
 
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
@@ -9614,17 +14284,6 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     mode?: QueryMode
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type EnumUserRoleFilter<$PrismaModel = never> = {
@@ -9646,6 +14305,24 @@ export namespace Prisma {
     none?: TestDriveBookingWhereInput
   }
 
+  export type ChatInteractionListRelationFilter = {
+    every?: ChatInteractionWhereInput
+    some?: ChatInteractionWhereInput
+    none?: ChatInteractionWhereInput
+  }
+
+  export type MaintenancePredictionListRelationFilter = {
+    every?: MaintenancePredictionWhereInput
+    some?: MaintenancePredictionWhereInput
+    none?: MaintenancePredictionWhereInput
+  }
+
+  export type EnvironmentalImpactListRelationFilter = {
+    every?: EnvironmentalImpactWhereInput
+    some?: EnvironmentalImpactWhereInput
+    none?: EnvironmentalImpactWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -9656,6 +14333,18 @@ export namespace Prisma {
   }
 
   export type TestDriveBookingOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ChatInteractionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type MaintenancePredictionOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type EnvironmentalImpactOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -9695,24 +14384,6 @@ export namespace Prisma {
     role?: SortOrder
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
   export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -9729,20 +14400,6 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedStringNullableFilter<$PrismaModel>
     _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type EnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -9800,12 +14457,38 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type StringNullableListFilter<$PrismaModel = never> = {
-    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    has?: string | StringFieldRefInput<$PrismaModel> | null
-    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
-    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
-    isEmpty?: boolean
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type CarCountOrderByAggregateInput = {
@@ -9826,6 +14509,8 @@ export namespace Prisma {
     images?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    greenScore?: SortOrder
+    environmentalMetrics?: SortOrder
   }
 
   export type CarAvgOrderByAggregateInput = {
@@ -9833,6 +14518,7 @@ export namespace Prisma {
     price?: SortOrder
     mileage?: SortOrder
     seats?: SortOrder
+    greenScore?: SortOrder
   }
 
   export type CarMaxOrderByAggregateInput = {
@@ -9852,6 +14538,7 @@ export namespace Prisma {
     featured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    greenScore?: SortOrder
   }
 
   export type CarMinOrderByAggregateInput = {
@@ -9871,6 +14558,7 @@ export namespace Prisma {
     featured?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    greenScore?: SortOrder
   }
 
   export type CarSumOrderByAggregateInput = {
@@ -9878,6 +14566,7 @@ export namespace Prisma {
     price?: SortOrder
     mileage?: SortOrder
     seats?: SortOrder
+    greenScore?: SortOrder
   }
 
   export type IntWithAggregatesFilter<$PrismaModel = never> = {
@@ -9944,6 +14633,48 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type WorkingHourListRelationFilter = {
@@ -10046,16 +14777,6 @@ export namespace Prisma {
     _max?: NestedEnumDayOfWeekFilter<$PrismaModel>
   }
 
-  export type UserScalarRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
-  export type CarScalarRelationFilter = {
-    is?: CarWhereInput
-    isNot?: CarWhereInput
-  }
-
   export type UserSavedCarUserIdCarIdCompoundUniqueInput = {
     userId: string
     carId: string
@@ -10138,6 +14859,139 @@ export namespace Prisma {
     _max?: NestedEnumBookingStatusFilter<$PrismaModel>
   }
 
+  export type ChatInteractionCreaterecommendedCarIdsInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutChatInteractionsInput = {
+    create?: XOR<UserCreateWithoutChatInteractionsInput, UserUncheckedCreateWithoutChatInteractionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutChatInteractionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CarCreateNestedManyWithoutChatRecommendationsInput = {
+    create?: XOR<CarCreateWithoutChatRecommendationsInput, CarUncheckedCreateWithoutChatRecommendationsInput> | CarCreateWithoutChatRecommendationsInput[] | CarUncheckedCreateWithoutChatRecommendationsInput[]
+    connectOrCreate?: CarCreateOrConnectWithoutChatRecommendationsInput | CarCreateOrConnectWithoutChatRecommendationsInput[]
+    connect?: CarWhereUniqueInput | CarWhereUniqueInput[]
+  }
+
+  export type CarUncheckedCreateNestedManyWithoutChatRecommendationsInput = {
+    create?: XOR<CarCreateWithoutChatRecommendationsInput, CarUncheckedCreateWithoutChatRecommendationsInput> | CarCreateWithoutChatRecommendationsInput[] | CarUncheckedCreateWithoutChatRecommendationsInput[]
+    connectOrCreate?: CarCreateOrConnectWithoutChatRecommendationsInput | CarCreateOrConnectWithoutChatRecommendationsInput[]
+    connect?: CarWhereUniqueInput | CarWhereUniqueInput[]
+  }
+
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
+  }
+
+  export type ChatInteractionUpdaterecommendedCarIdsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type UserUpdateOneRequiredWithoutChatInteractionsNestedInput = {
+    create?: XOR<UserCreateWithoutChatInteractionsInput, UserUncheckedCreateWithoutChatInteractionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutChatInteractionsInput
+    upsert?: UserUpsertWithoutChatInteractionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutChatInteractionsInput, UserUpdateWithoutChatInteractionsInput>, UserUncheckedUpdateWithoutChatInteractionsInput>
+  }
+
+  export type CarUpdateManyWithoutChatRecommendationsNestedInput = {
+    create?: XOR<CarCreateWithoutChatRecommendationsInput, CarUncheckedCreateWithoutChatRecommendationsInput> | CarCreateWithoutChatRecommendationsInput[] | CarUncheckedCreateWithoutChatRecommendationsInput[]
+    connectOrCreate?: CarCreateOrConnectWithoutChatRecommendationsInput | CarCreateOrConnectWithoutChatRecommendationsInput[]
+    upsert?: CarUpsertWithWhereUniqueWithoutChatRecommendationsInput | CarUpsertWithWhereUniqueWithoutChatRecommendationsInput[]
+    set?: CarWhereUniqueInput | CarWhereUniqueInput[]
+    disconnect?: CarWhereUniqueInput | CarWhereUniqueInput[]
+    delete?: CarWhereUniqueInput | CarWhereUniqueInput[]
+    connect?: CarWhereUniqueInput | CarWhereUniqueInput[]
+    update?: CarUpdateWithWhereUniqueWithoutChatRecommendationsInput | CarUpdateWithWhereUniqueWithoutChatRecommendationsInput[]
+    updateMany?: CarUpdateManyWithWhereWithoutChatRecommendationsInput | CarUpdateManyWithWhereWithoutChatRecommendationsInput[]
+    deleteMany?: CarScalarWhereInput | CarScalarWhereInput[]
+  }
+
+  export type CarUncheckedUpdateManyWithoutChatRecommendationsNestedInput = {
+    create?: XOR<CarCreateWithoutChatRecommendationsInput, CarUncheckedCreateWithoutChatRecommendationsInput> | CarCreateWithoutChatRecommendationsInput[] | CarUncheckedCreateWithoutChatRecommendationsInput[]
+    connectOrCreate?: CarCreateOrConnectWithoutChatRecommendationsInput | CarCreateOrConnectWithoutChatRecommendationsInput[]
+    upsert?: CarUpsertWithWhereUniqueWithoutChatRecommendationsInput | CarUpsertWithWhereUniqueWithoutChatRecommendationsInput[]
+    set?: CarWhereUniqueInput | CarWhereUniqueInput[]
+    disconnect?: CarWhereUniqueInput | CarWhereUniqueInput[]
+    delete?: CarWhereUniqueInput | CarWhereUniqueInput[]
+    connect?: CarWhereUniqueInput | CarWhereUniqueInput[]
+    update?: CarUpdateWithWhereUniqueWithoutChatRecommendationsInput | CarUpdateWithWhereUniqueWithoutChatRecommendationsInput[]
+    updateMany?: CarUpdateManyWithWhereWithoutChatRecommendationsInput | CarUpdateManyWithWhereWithoutChatRecommendationsInput[]
+    deleteMany?: CarScalarWhereInput | CarScalarWhereInput[]
+  }
+
+  export type UserCreateNestedOneWithoutMaintenancePredictionsInput = {
+    create?: XOR<UserCreateWithoutMaintenancePredictionsInput, UserUncheckedCreateWithoutMaintenancePredictionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMaintenancePredictionsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CarCreateNestedOneWithoutMaintenancePredictionsInput = {
+    create?: XOR<CarCreateWithoutMaintenancePredictionsInput, CarUncheckedCreateWithoutMaintenancePredictionsInput>
+    connectOrCreate?: CarCreateOrConnectWithoutMaintenancePredictionsInput
+    connect?: CarWhereUniqueInput
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type UserUpdateOneRequiredWithoutMaintenancePredictionsNestedInput = {
+    create?: XOR<UserCreateWithoutMaintenancePredictionsInput, UserUncheckedCreateWithoutMaintenancePredictionsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMaintenancePredictionsInput
+    upsert?: UserUpsertWithoutMaintenancePredictionsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMaintenancePredictionsInput, UserUpdateWithoutMaintenancePredictionsInput>, UserUncheckedUpdateWithoutMaintenancePredictionsInput>
+  }
+
+  export type CarUpdateOneRequiredWithoutMaintenancePredictionsNestedInput = {
+    create?: XOR<CarCreateWithoutMaintenancePredictionsInput, CarUncheckedCreateWithoutMaintenancePredictionsInput>
+    connectOrCreate?: CarCreateOrConnectWithoutMaintenancePredictionsInput
+    upsert?: CarUpsertWithoutMaintenancePredictionsInput
+    connect?: CarWhereUniqueInput
+    update?: XOR<XOR<CarUpdateToOneWithWhereWithoutMaintenancePredictionsInput, CarUpdateWithoutMaintenancePredictionsInput>, CarUncheckedUpdateWithoutMaintenancePredictionsInput>
+  }
+
+  export type UserCreateNestedOneWithoutEnvironmentalImpactsInput = {
+    create?: XOR<UserCreateWithoutEnvironmentalImpactsInput, UserUncheckedCreateWithoutEnvironmentalImpactsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEnvironmentalImpactsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CarCreateNestedOneWithoutEnvironmentalImpactsInput = {
+    create?: XOR<CarCreateWithoutEnvironmentalImpactsInput, CarUncheckedCreateWithoutEnvironmentalImpactsInput>
+    connectOrCreate?: CarCreateOrConnectWithoutEnvironmentalImpactsInput
+    connect?: CarWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutEnvironmentalImpactsNestedInput = {
+    create?: XOR<UserCreateWithoutEnvironmentalImpactsInput, UserUncheckedCreateWithoutEnvironmentalImpactsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutEnvironmentalImpactsInput
+    upsert?: UserUpsertWithoutEnvironmentalImpactsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutEnvironmentalImpactsInput, UserUpdateWithoutEnvironmentalImpactsInput>, UserUncheckedUpdateWithoutEnvironmentalImpactsInput>
+  }
+
+  export type CarUpdateOneRequiredWithoutEnvironmentalImpactsNestedInput = {
+    create?: XOR<CarCreateWithoutEnvironmentalImpactsInput, CarUncheckedCreateWithoutEnvironmentalImpactsInput>
+    connectOrCreate?: CarCreateOrConnectWithoutEnvironmentalImpactsInput
+    upsert?: CarUpsertWithoutEnvironmentalImpactsInput
+    connect?: CarWhereUniqueInput
+    update?: XOR<XOR<CarUpdateToOneWithWhereWithoutEnvironmentalImpactsInput, CarUpdateWithoutEnvironmentalImpactsInput>, CarUncheckedUpdateWithoutEnvironmentalImpactsInput>
+  }
+
   export type UserSavedCarCreateNestedManyWithoutUserInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
@@ -10150,6 +15004,27 @@ export namespace Prisma {
     connectOrCreate?: TestDriveBookingCreateOrConnectWithoutUserInput | TestDriveBookingCreateOrConnectWithoutUserInput[]
     createMany?: TestDriveBookingCreateManyUserInputEnvelope
     connect?: TestDriveBookingWhereUniqueInput | TestDriveBookingWhereUniqueInput[]
+  }
+
+  export type ChatInteractionCreateNestedManyWithoutUserInput = {
+    create?: XOR<ChatInteractionCreateWithoutUserInput, ChatInteractionUncheckedCreateWithoutUserInput> | ChatInteractionCreateWithoutUserInput[] | ChatInteractionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChatInteractionCreateOrConnectWithoutUserInput | ChatInteractionCreateOrConnectWithoutUserInput[]
+    createMany?: ChatInteractionCreateManyUserInputEnvelope
+    connect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+  }
+
+  export type MaintenancePredictionCreateNestedManyWithoutUserInput = {
+    create?: XOR<MaintenancePredictionCreateWithoutUserInput, MaintenancePredictionUncheckedCreateWithoutUserInput> | MaintenancePredictionCreateWithoutUserInput[] | MaintenancePredictionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MaintenancePredictionCreateOrConnectWithoutUserInput | MaintenancePredictionCreateOrConnectWithoutUserInput[]
+    createMany?: MaintenancePredictionCreateManyUserInputEnvelope
+    connect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+  }
+
+  export type EnvironmentalImpactCreateNestedManyWithoutUserInput = {
+    create?: XOR<EnvironmentalImpactCreateWithoutUserInput, EnvironmentalImpactUncheckedCreateWithoutUserInput> | EnvironmentalImpactCreateWithoutUserInput[] | EnvironmentalImpactUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutUserInput | EnvironmentalImpactCreateOrConnectWithoutUserInput[]
+    createMany?: EnvironmentalImpactCreateManyUserInputEnvelope
+    connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
   }
 
   export type UserSavedCarUncheckedCreateNestedManyWithoutUserInput = {
@@ -10166,16 +15041,29 @@ export namespace Prisma {
     connect?: TestDriveBookingWhereUniqueInput | TestDriveBookingWhereUniqueInput[]
   }
 
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
+  export type ChatInteractionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ChatInteractionCreateWithoutUserInput, ChatInteractionUncheckedCreateWithoutUserInput> | ChatInteractionCreateWithoutUserInput[] | ChatInteractionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChatInteractionCreateOrConnectWithoutUserInput | ChatInteractionCreateOrConnectWithoutUserInput[]
+    createMany?: ChatInteractionCreateManyUserInputEnvelope
+    connect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+  }
+
+  export type MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<MaintenancePredictionCreateWithoutUserInput, MaintenancePredictionUncheckedCreateWithoutUserInput> | MaintenancePredictionCreateWithoutUserInput[] | MaintenancePredictionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MaintenancePredictionCreateOrConnectWithoutUserInput | MaintenancePredictionCreateOrConnectWithoutUserInput[]
+    createMany?: MaintenancePredictionCreateManyUserInputEnvelope
+    connect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+  }
+
+  export type EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<EnvironmentalImpactCreateWithoutUserInput, EnvironmentalImpactUncheckedCreateWithoutUserInput> | EnvironmentalImpactCreateWithoutUserInput[] | EnvironmentalImpactUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutUserInput | EnvironmentalImpactCreateOrConnectWithoutUserInput[]
+    createMany?: EnvironmentalImpactCreateManyUserInputEnvelope
+    connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type EnumUserRoleFieldUpdateOperationsInput = {
@@ -10210,6 +15098,48 @@ export namespace Prisma {
     deleteMany?: TestDriveBookingScalarWhereInput | TestDriveBookingScalarWhereInput[]
   }
 
+  export type ChatInteractionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ChatInteractionCreateWithoutUserInput, ChatInteractionUncheckedCreateWithoutUserInput> | ChatInteractionCreateWithoutUserInput[] | ChatInteractionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChatInteractionCreateOrConnectWithoutUserInput | ChatInteractionCreateOrConnectWithoutUserInput[]
+    upsert?: ChatInteractionUpsertWithWhereUniqueWithoutUserInput | ChatInteractionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ChatInteractionCreateManyUserInputEnvelope
+    set?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    disconnect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    delete?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    connect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    update?: ChatInteractionUpdateWithWhereUniqueWithoutUserInput | ChatInteractionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ChatInteractionUpdateManyWithWhereWithoutUserInput | ChatInteractionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ChatInteractionScalarWhereInput | ChatInteractionScalarWhereInput[]
+  }
+
+  export type MaintenancePredictionUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MaintenancePredictionCreateWithoutUserInput, MaintenancePredictionUncheckedCreateWithoutUserInput> | MaintenancePredictionCreateWithoutUserInput[] | MaintenancePredictionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MaintenancePredictionCreateOrConnectWithoutUserInput | MaintenancePredictionCreateOrConnectWithoutUserInput[]
+    upsert?: MaintenancePredictionUpsertWithWhereUniqueWithoutUserInput | MaintenancePredictionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MaintenancePredictionCreateManyUserInputEnvelope
+    set?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    disconnect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    delete?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    connect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    update?: MaintenancePredictionUpdateWithWhereUniqueWithoutUserInput | MaintenancePredictionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MaintenancePredictionUpdateManyWithWhereWithoutUserInput | MaintenancePredictionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MaintenancePredictionScalarWhereInput | MaintenancePredictionScalarWhereInput[]
+  }
+
+  export type EnvironmentalImpactUpdateManyWithoutUserNestedInput = {
+    create?: XOR<EnvironmentalImpactCreateWithoutUserInput, EnvironmentalImpactUncheckedCreateWithoutUserInput> | EnvironmentalImpactCreateWithoutUserInput[] | EnvironmentalImpactUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutUserInput | EnvironmentalImpactCreateOrConnectWithoutUserInput[]
+    upsert?: EnvironmentalImpactUpsertWithWhereUniqueWithoutUserInput | EnvironmentalImpactUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: EnvironmentalImpactCreateManyUserInputEnvelope
+    set?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    disconnect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    delete?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    update?: EnvironmentalImpactUpdateWithWhereUniqueWithoutUserInput | EnvironmentalImpactUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: EnvironmentalImpactUpdateManyWithWhereWithoutUserInput | EnvironmentalImpactUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
+  }
+
   export type UserSavedCarUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
@@ -10238,6 +15168,48 @@ export namespace Prisma {
     deleteMany?: TestDriveBookingScalarWhereInput | TestDriveBookingScalarWhereInput[]
   }
 
+  export type ChatInteractionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ChatInteractionCreateWithoutUserInput, ChatInteractionUncheckedCreateWithoutUserInput> | ChatInteractionCreateWithoutUserInput[] | ChatInteractionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ChatInteractionCreateOrConnectWithoutUserInput | ChatInteractionCreateOrConnectWithoutUserInput[]
+    upsert?: ChatInteractionUpsertWithWhereUniqueWithoutUserInput | ChatInteractionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ChatInteractionCreateManyUserInputEnvelope
+    set?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    disconnect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    delete?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    connect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    update?: ChatInteractionUpdateWithWhereUniqueWithoutUserInput | ChatInteractionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ChatInteractionUpdateManyWithWhereWithoutUserInput | ChatInteractionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ChatInteractionScalarWhereInput | ChatInteractionScalarWhereInput[]
+  }
+
+  export type MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MaintenancePredictionCreateWithoutUserInput, MaintenancePredictionUncheckedCreateWithoutUserInput> | MaintenancePredictionCreateWithoutUserInput[] | MaintenancePredictionUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MaintenancePredictionCreateOrConnectWithoutUserInput | MaintenancePredictionCreateOrConnectWithoutUserInput[]
+    upsert?: MaintenancePredictionUpsertWithWhereUniqueWithoutUserInput | MaintenancePredictionUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MaintenancePredictionCreateManyUserInputEnvelope
+    set?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    disconnect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    delete?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    connect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    update?: MaintenancePredictionUpdateWithWhereUniqueWithoutUserInput | MaintenancePredictionUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MaintenancePredictionUpdateManyWithWhereWithoutUserInput | MaintenancePredictionUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MaintenancePredictionScalarWhereInput | MaintenancePredictionScalarWhereInput[]
+  }
+
+  export type EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<EnvironmentalImpactCreateWithoutUserInput, EnvironmentalImpactUncheckedCreateWithoutUserInput> | EnvironmentalImpactCreateWithoutUserInput[] | EnvironmentalImpactUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutUserInput | EnvironmentalImpactCreateOrConnectWithoutUserInput[]
+    upsert?: EnvironmentalImpactUpsertWithWhereUniqueWithoutUserInput | EnvironmentalImpactUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: EnvironmentalImpactCreateManyUserInputEnvelope
+    set?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    disconnect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    delete?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    update?: EnvironmentalImpactUpdateWithWhereUniqueWithoutUserInput | EnvironmentalImpactUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: EnvironmentalImpactUpdateManyWithWhereWithoutUserInput | EnvironmentalImpactUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
+  }
+
   export type CarCreateimagesInput = {
     set: string[]
   }
@@ -10256,6 +15228,26 @@ export namespace Prisma {
     connect?: TestDriveBookingWhereUniqueInput | TestDriveBookingWhereUniqueInput[]
   }
 
+  export type ChatInteractionCreateNestedManyWithoutRecommendedCarsInput = {
+    create?: XOR<ChatInteractionCreateWithoutRecommendedCarsInput, ChatInteractionUncheckedCreateWithoutRecommendedCarsInput> | ChatInteractionCreateWithoutRecommendedCarsInput[] | ChatInteractionUncheckedCreateWithoutRecommendedCarsInput[]
+    connectOrCreate?: ChatInteractionCreateOrConnectWithoutRecommendedCarsInput | ChatInteractionCreateOrConnectWithoutRecommendedCarsInput[]
+    connect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+  }
+
+  export type MaintenancePredictionCreateNestedManyWithoutCarInput = {
+    create?: XOR<MaintenancePredictionCreateWithoutCarInput, MaintenancePredictionUncheckedCreateWithoutCarInput> | MaintenancePredictionCreateWithoutCarInput[] | MaintenancePredictionUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: MaintenancePredictionCreateOrConnectWithoutCarInput | MaintenancePredictionCreateOrConnectWithoutCarInput[]
+    createMany?: MaintenancePredictionCreateManyCarInputEnvelope
+    connect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+  }
+
+  export type EnvironmentalImpactCreateNestedManyWithoutCarInput = {
+    create?: XOR<EnvironmentalImpactCreateWithoutCarInput, EnvironmentalImpactUncheckedCreateWithoutCarInput> | EnvironmentalImpactCreateWithoutCarInput[] | EnvironmentalImpactUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutCarInput | EnvironmentalImpactCreateOrConnectWithoutCarInput[]
+    createMany?: EnvironmentalImpactCreateManyCarInputEnvelope
+    connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+  }
+
   export type UserSavedCarUncheckedCreateNestedManyWithoutCarInput = {
     create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
@@ -10268,6 +15260,26 @@ export namespace Prisma {
     connectOrCreate?: TestDriveBookingCreateOrConnectWithoutCarInput | TestDriveBookingCreateOrConnectWithoutCarInput[]
     createMany?: TestDriveBookingCreateManyCarInputEnvelope
     connect?: TestDriveBookingWhereUniqueInput | TestDriveBookingWhereUniqueInput[]
+  }
+
+  export type ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput = {
+    create?: XOR<ChatInteractionCreateWithoutRecommendedCarsInput, ChatInteractionUncheckedCreateWithoutRecommendedCarsInput> | ChatInteractionCreateWithoutRecommendedCarsInput[] | ChatInteractionUncheckedCreateWithoutRecommendedCarsInput[]
+    connectOrCreate?: ChatInteractionCreateOrConnectWithoutRecommendedCarsInput | ChatInteractionCreateOrConnectWithoutRecommendedCarsInput[]
+    connect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+  }
+
+  export type MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput = {
+    create?: XOR<MaintenancePredictionCreateWithoutCarInput, MaintenancePredictionUncheckedCreateWithoutCarInput> | MaintenancePredictionCreateWithoutCarInput[] | MaintenancePredictionUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: MaintenancePredictionCreateOrConnectWithoutCarInput | MaintenancePredictionCreateOrConnectWithoutCarInput[]
+    createMany?: MaintenancePredictionCreateManyCarInputEnvelope
+    connect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+  }
+
+  export type EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput = {
+    create?: XOR<EnvironmentalImpactCreateWithoutCarInput, EnvironmentalImpactUncheckedCreateWithoutCarInput> | EnvironmentalImpactCreateWithoutCarInput[] | EnvironmentalImpactUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutCarInput | EnvironmentalImpactCreateOrConnectWithoutCarInput[]
+    createMany?: EnvironmentalImpactCreateManyCarInputEnvelope
+    connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -10307,6 +15319,14 @@ export namespace Prisma {
     push?: string | string[]
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type UserSavedCarUpdateManyWithoutCarNestedInput = {
     create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
@@ -10335,6 +15355,47 @@ export namespace Prisma {
     deleteMany?: TestDriveBookingScalarWhereInput | TestDriveBookingScalarWhereInput[]
   }
 
+  export type ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput = {
+    create?: XOR<ChatInteractionCreateWithoutRecommendedCarsInput, ChatInteractionUncheckedCreateWithoutRecommendedCarsInput> | ChatInteractionCreateWithoutRecommendedCarsInput[] | ChatInteractionUncheckedCreateWithoutRecommendedCarsInput[]
+    connectOrCreate?: ChatInteractionCreateOrConnectWithoutRecommendedCarsInput | ChatInteractionCreateOrConnectWithoutRecommendedCarsInput[]
+    upsert?: ChatInteractionUpsertWithWhereUniqueWithoutRecommendedCarsInput | ChatInteractionUpsertWithWhereUniqueWithoutRecommendedCarsInput[]
+    set?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    disconnect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    delete?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    connect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    update?: ChatInteractionUpdateWithWhereUniqueWithoutRecommendedCarsInput | ChatInteractionUpdateWithWhereUniqueWithoutRecommendedCarsInput[]
+    updateMany?: ChatInteractionUpdateManyWithWhereWithoutRecommendedCarsInput | ChatInteractionUpdateManyWithWhereWithoutRecommendedCarsInput[]
+    deleteMany?: ChatInteractionScalarWhereInput | ChatInteractionScalarWhereInput[]
+  }
+
+  export type MaintenancePredictionUpdateManyWithoutCarNestedInput = {
+    create?: XOR<MaintenancePredictionCreateWithoutCarInput, MaintenancePredictionUncheckedCreateWithoutCarInput> | MaintenancePredictionCreateWithoutCarInput[] | MaintenancePredictionUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: MaintenancePredictionCreateOrConnectWithoutCarInput | MaintenancePredictionCreateOrConnectWithoutCarInput[]
+    upsert?: MaintenancePredictionUpsertWithWhereUniqueWithoutCarInput | MaintenancePredictionUpsertWithWhereUniqueWithoutCarInput[]
+    createMany?: MaintenancePredictionCreateManyCarInputEnvelope
+    set?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    disconnect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    delete?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    connect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    update?: MaintenancePredictionUpdateWithWhereUniqueWithoutCarInput | MaintenancePredictionUpdateWithWhereUniqueWithoutCarInput[]
+    updateMany?: MaintenancePredictionUpdateManyWithWhereWithoutCarInput | MaintenancePredictionUpdateManyWithWhereWithoutCarInput[]
+    deleteMany?: MaintenancePredictionScalarWhereInput | MaintenancePredictionScalarWhereInput[]
+  }
+
+  export type EnvironmentalImpactUpdateManyWithoutCarNestedInput = {
+    create?: XOR<EnvironmentalImpactCreateWithoutCarInput, EnvironmentalImpactUncheckedCreateWithoutCarInput> | EnvironmentalImpactCreateWithoutCarInput[] | EnvironmentalImpactUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutCarInput | EnvironmentalImpactCreateOrConnectWithoutCarInput[]
+    upsert?: EnvironmentalImpactUpsertWithWhereUniqueWithoutCarInput | EnvironmentalImpactUpsertWithWhereUniqueWithoutCarInput[]
+    createMany?: EnvironmentalImpactCreateManyCarInputEnvelope
+    set?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    disconnect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    delete?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    update?: EnvironmentalImpactUpdateWithWhereUniqueWithoutCarInput | EnvironmentalImpactUpdateWithWhereUniqueWithoutCarInput[]
+    updateMany?: EnvironmentalImpactUpdateManyWithWhereWithoutCarInput | EnvironmentalImpactUpdateManyWithWhereWithoutCarInput[]
+    deleteMany?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
+  }
+
   export type UserSavedCarUncheckedUpdateManyWithoutCarNestedInput = {
     create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
@@ -10361,6 +15422,47 @@ export namespace Prisma {
     update?: TestDriveBookingUpdateWithWhereUniqueWithoutCarInput | TestDriveBookingUpdateWithWhereUniqueWithoutCarInput[]
     updateMany?: TestDriveBookingUpdateManyWithWhereWithoutCarInput | TestDriveBookingUpdateManyWithWhereWithoutCarInput[]
     deleteMany?: TestDriveBookingScalarWhereInput | TestDriveBookingScalarWhereInput[]
+  }
+
+  export type ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput = {
+    create?: XOR<ChatInteractionCreateWithoutRecommendedCarsInput, ChatInteractionUncheckedCreateWithoutRecommendedCarsInput> | ChatInteractionCreateWithoutRecommendedCarsInput[] | ChatInteractionUncheckedCreateWithoutRecommendedCarsInput[]
+    connectOrCreate?: ChatInteractionCreateOrConnectWithoutRecommendedCarsInput | ChatInteractionCreateOrConnectWithoutRecommendedCarsInput[]
+    upsert?: ChatInteractionUpsertWithWhereUniqueWithoutRecommendedCarsInput | ChatInteractionUpsertWithWhereUniqueWithoutRecommendedCarsInput[]
+    set?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    disconnect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    delete?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    connect?: ChatInteractionWhereUniqueInput | ChatInteractionWhereUniqueInput[]
+    update?: ChatInteractionUpdateWithWhereUniqueWithoutRecommendedCarsInput | ChatInteractionUpdateWithWhereUniqueWithoutRecommendedCarsInput[]
+    updateMany?: ChatInteractionUpdateManyWithWhereWithoutRecommendedCarsInput | ChatInteractionUpdateManyWithWhereWithoutRecommendedCarsInput[]
+    deleteMany?: ChatInteractionScalarWhereInput | ChatInteractionScalarWhereInput[]
+  }
+
+  export type MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput = {
+    create?: XOR<MaintenancePredictionCreateWithoutCarInput, MaintenancePredictionUncheckedCreateWithoutCarInput> | MaintenancePredictionCreateWithoutCarInput[] | MaintenancePredictionUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: MaintenancePredictionCreateOrConnectWithoutCarInput | MaintenancePredictionCreateOrConnectWithoutCarInput[]
+    upsert?: MaintenancePredictionUpsertWithWhereUniqueWithoutCarInput | MaintenancePredictionUpsertWithWhereUniqueWithoutCarInput[]
+    createMany?: MaintenancePredictionCreateManyCarInputEnvelope
+    set?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    disconnect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    delete?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    connect?: MaintenancePredictionWhereUniqueInput | MaintenancePredictionWhereUniqueInput[]
+    update?: MaintenancePredictionUpdateWithWhereUniqueWithoutCarInput | MaintenancePredictionUpdateWithWhereUniqueWithoutCarInput[]
+    updateMany?: MaintenancePredictionUpdateManyWithWhereWithoutCarInput | MaintenancePredictionUpdateManyWithWhereWithoutCarInput[]
+    deleteMany?: MaintenancePredictionScalarWhereInput | MaintenancePredictionScalarWhereInput[]
+  }
+
+  export type EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput = {
+    create?: XOR<EnvironmentalImpactCreateWithoutCarInput, EnvironmentalImpactUncheckedCreateWithoutCarInput> | EnvironmentalImpactCreateWithoutCarInput[] | EnvironmentalImpactUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutCarInput | EnvironmentalImpactCreateOrConnectWithoutCarInput[]
+    upsert?: EnvironmentalImpactUpsertWithWhereUniqueWithoutCarInput | EnvironmentalImpactUpsertWithWhereUniqueWithoutCarInput[]
+    createMany?: EnvironmentalImpactCreateManyCarInputEnvelope
+    set?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    disconnect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    delete?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+    update?: EnvironmentalImpactUpdateWithWhereUniqueWithoutCarInput | EnvironmentalImpactUpdateWithWhereUniqueWithoutCarInput[]
+    updateMany?: EnvironmentalImpactUpdateManyWithWhereWithoutCarInput | EnvironmentalImpactUpdateManyWithWhereWithoutCarInput[]
+    deleteMany?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
   }
 
   export type WorkingHourCreateNestedManyWithoutDealershipInput = {
@@ -10497,20 +15599,6 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -10520,13 +15608,6 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
-    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
-    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
-    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -10556,6 +15637,91 @@ export namespace Prisma {
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntFilter<$PrismaModel> | number
   }
+  export type NestedJsonFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  }
+
+  export type NestedEnumUserRoleFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserRole | EnumUserRoleFieldRefInput<$PrismaModel>
+    in?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserRole[] | ListEnumUserRoleFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserRoleFilter<$PrismaModel> | $Enums.UserRole
+  }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
@@ -10583,20 +15749,6 @@ export namespace Prisma {
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedEnumUserRoleWithAggregatesFilter<$PrismaModel = never> = {
@@ -10632,6 +15784,17 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[] | ListIntFieldRefInput<$PrismaModel>
@@ -10646,17 +15809,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -10691,17 +15843,6 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
   export type NestedEnumCarStatusWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.CarStatus | EnumCarStatusFieldRefInput<$PrismaModel>
     in?: $Enums.CarStatus[] | ListEnumCarStatusFieldRefInput<$PrismaModel>
@@ -10718,6 +15859,45 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string[]
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
   export type NestedEnumDayOfWeekFilter<$PrismaModel = never> = {
@@ -10752,6 +15932,584 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumBookingStatusFilter<$PrismaModel>
     _max?: NestedEnumBookingStatusFilter<$PrismaModel>
+  }
+
+  export type UserCreateWithoutChatInteractionsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutChatInteractionsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutChatInteractionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutChatInteractionsInput, UserUncheckedCreateWithoutChatInteractionsInput>
+  }
+
+  export type CarCreateWithoutChatRecommendationsInput = {
+    id?: string
+    make: string
+    model: string
+    year: number
+    price: Decimal | DecimalJsLike | number | string
+    mileage: number
+    color: string
+    fuelType: string
+    transmission: string
+    bodyType: string
+    seats?: number | null
+    description: string
+    status?: $Enums.CarStatus
+    featured?: boolean
+    images?: CarCreateimagesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
+    testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
+  }
+
+  export type CarUncheckedCreateWithoutChatRecommendationsInput = {
+    id?: string
+    make: string
+    model: string
+    year: number
+    price: Decimal | DecimalJsLike | number | string
+    mileage: number
+    color: string
+    fuelType: string
+    transmission: string
+    bodyType: string
+    seats?: number | null
+    description: string
+    status?: $Enums.CarStatus
+    featured?: boolean
+    images?: CarCreateimagesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
+    testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
+  }
+
+  export type CarCreateOrConnectWithoutChatRecommendationsInput = {
+    where: CarWhereUniqueInput
+    create: XOR<CarCreateWithoutChatRecommendationsInput, CarUncheckedCreateWithoutChatRecommendationsInput>
+  }
+
+  export type UserUpsertWithoutChatInteractionsInput = {
+    update: XOR<UserUpdateWithoutChatInteractionsInput, UserUncheckedUpdateWithoutChatInteractionsInput>
+    create: XOR<UserCreateWithoutChatInteractionsInput, UserUncheckedCreateWithoutChatInteractionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutChatInteractionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutChatInteractionsInput, UserUncheckedUpdateWithoutChatInteractionsInput>
+  }
+
+  export type UserUpdateWithoutChatInteractionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutChatInteractionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CarUpsertWithWhereUniqueWithoutChatRecommendationsInput = {
+    where: CarWhereUniqueInput
+    update: XOR<CarUpdateWithoutChatRecommendationsInput, CarUncheckedUpdateWithoutChatRecommendationsInput>
+    create: XOR<CarCreateWithoutChatRecommendationsInput, CarUncheckedCreateWithoutChatRecommendationsInput>
+  }
+
+  export type CarUpdateWithWhereUniqueWithoutChatRecommendationsInput = {
+    where: CarWhereUniqueInput
+    data: XOR<CarUpdateWithoutChatRecommendationsInput, CarUncheckedUpdateWithoutChatRecommendationsInput>
+  }
+
+  export type CarUpdateManyWithWhereWithoutChatRecommendationsInput = {
+    where: CarScalarWhereInput
+    data: XOR<CarUpdateManyMutationInput, CarUncheckedUpdateManyWithoutChatRecommendationsInput>
+  }
+
+  export type CarScalarWhereInput = {
+    AND?: CarScalarWhereInput | CarScalarWhereInput[]
+    OR?: CarScalarWhereInput[]
+    NOT?: CarScalarWhereInput | CarScalarWhereInput[]
+    id?: StringFilter<"Car"> | string
+    make?: StringFilter<"Car"> | string
+    model?: StringFilter<"Car"> | string
+    year?: IntFilter<"Car"> | number
+    price?: DecimalFilter<"Car"> | Decimal | DecimalJsLike | number | string
+    mileage?: IntFilter<"Car"> | number
+    color?: StringFilter<"Car"> | string
+    fuelType?: StringFilter<"Car"> | string
+    transmission?: StringFilter<"Car"> | string
+    bodyType?: StringFilter<"Car"> | string
+    seats?: IntNullableFilter<"Car"> | number | null
+    description?: StringFilter<"Car"> | string
+    status?: EnumCarStatusFilter<"Car"> | $Enums.CarStatus
+    featured?: BoolFilter<"Car"> | boolean
+    images?: StringNullableListFilter<"Car">
+    createdAt?: DateTimeFilter<"Car"> | Date | string
+    updatedAt?: DateTimeFilter<"Car"> | Date | string
+    greenScore?: FloatNullableFilter<"Car"> | number | null
+    environmentalMetrics?: JsonNullableFilter<"Car">
+  }
+
+  export type UserCreateWithoutMaintenancePredictionsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutMaintenancePredictionsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutMaintenancePredictionsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMaintenancePredictionsInput, UserUncheckedCreateWithoutMaintenancePredictionsInput>
+  }
+
+  export type CarCreateWithoutMaintenancePredictionsInput = {
+    id?: string
+    make: string
+    model: string
+    year: number
+    price: Decimal | DecimalJsLike | number | string
+    mileage: number
+    color: string
+    fuelType: string
+    transmission: string
+    bodyType: string
+    seats?: number | null
+    description: string
+    status?: $Enums.CarStatus
+    featured?: boolean
+    images?: CarCreateimagesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
+    testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
+  }
+
+  export type CarUncheckedCreateWithoutMaintenancePredictionsInput = {
+    id?: string
+    make: string
+    model: string
+    year: number
+    price: Decimal | DecimalJsLike | number | string
+    mileage: number
+    color: string
+    fuelType: string
+    transmission: string
+    bodyType: string
+    seats?: number | null
+    description: string
+    status?: $Enums.CarStatus
+    featured?: boolean
+    images?: CarCreateimagesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
+    testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
+  }
+
+  export type CarCreateOrConnectWithoutMaintenancePredictionsInput = {
+    where: CarWhereUniqueInput
+    create: XOR<CarCreateWithoutMaintenancePredictionsInput, CarUncheckedCreateWithoutMaintenancePredictionsInput>
+  }
+
+  export type UserUpsertWithoutMaintenancePredictionsInput = {
+    update: XOR<UserUpdateWithoutMaintenancePredictionsInput, UserUncheckedUpdateWithoutMaintenancePredictionsInput>
+    create: XOR<UserCreateWithoutMaintenancePredictionsInput, UserUncheckedCreateWithoutMaintenancePredictionsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMaintenancePredictionsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMaintenancePredictionsInput, UserUncheckedUpdateWithoutMaintenancePredictionsInput>
+  }
+
+  export type UserUpdateWithoutMaintenancePredictionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMaintenancePredictionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CarUpsertWithoutMaintenancePredictionsInput = {
+    update: XOR<CarUpdateWithoutMaintenancePredictionsInput, CarUncheckedUpdateWithoutMaintenancePredictionsInput>
+    create: XOR<CarCreateWithoutMaintenancePredictionsInput, CarUncheckedCreateWithoutMaintenancePredictionsInput>
+    where?: CarWhereInput
+  }
+
+  export type CarUpdateToOneWithWhereWithoutMaintenancePredictionsInput = {
+    where?: CarWhereInput
+    data: XOR<CarUpdateWithoutMaintenancePredictionsInput, CarUncheckedUpdateWithoutMaintenancePredictionsInput>
+  }
+
+  export type CarUpdateWithoutMaintenancePredictionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
+    testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
+  }
+
+  export type CarUncheckedUpdateWithoutMaintenancePredictionsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
+    testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
+  }
+
+  export type UserCreateWithoutEnvironmentalImpactsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutEnvironmentalImpactsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutEnvironmentalImpactsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutEnvironmentalImpactsInput, UserUncheckedCreateWithoutEnvironmentalImpactsInput>
+  }
+
+  export type CarCreateWithoutEnvironmentalImpactsInput = {
+    id?: string
+    make: string
+    model: string
+    year: number
+    price: Decimal | DecimalJsLike | number | string
+    mileage: number
+    color: string
+    fuelType: string
+    transmission: string
+    bodyType: string
+    seats?: number | null
+    description: string
+    status?: $Enums.CarStatus
+    featured?: boolean
+    images?: CarCreateimagesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
+    testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
+  }
+
+  export type CarUncheckedCreateWithoutEnvironmentalImpactsInput = {
+    id?: string
+    make: string
+    model: string
+    year: number
+    price: Decimal | DecimalJsLike | number | string
+    mileage: number
+    color: string
+    fuelType: string
+    transmission: string
+    bodyType: string
+    seats?: number | null
+    description: string
+    status?: $Enums.CarStatus
+    featured?: boolean
+    images?: CarCreateimagesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
+    testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
+  }
+
+  export type CarCreateOrConnectWithoutEnvironmentalImpactsInput = {
+    where: CarWhereUniqueInput
+    create: XOR<CarCreateWithoutEnvironmentalImpactsInput, CarUncheckedCreateWithoutEnvironmentalImpactsInput>
+  }
+
+  export type UserUpsertWithoutEnvironmentalImpactsInput = {
+    update: XOR<UserUpdateWithoutEnvironmentalImpactsInput, UserUncheckedUpdateWithoutEnvironmentalImpactsInput>
+    create: XOR<UserCreateWithoutEnvironmentalImpactsInput, UserUncheckedCreateWithoutEnvironmentalImpactsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutEnvironmentalImpactsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutEnvironmentalImpactsInput, UserUncheckedUpdateWithoutEnvironmentalImpactsInput>
+  }
+
+  export type UserUpdateWithoutEnvironmentalImpactsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutEnvironmentalImpactsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CarUpsertWithoutEnvironmentalImpactsInput = {
+    update: XOR<CarUpdateWithoutEnvironmentalImpactsInput, CarUncheckedUpdateWithoutEnvironmentalImpactsInput>
+    create: XOR<CarCreateWithoutEnvironmentalImpactsInput, CarUncheckedCreateWithoutEnvironmentalImpactsInput>
+    where?: CarWhereInput
+  }
+
+  export type CarUpdateToOneWithWhereWithoutEnvironmentalImpactsInput = {
+    where?: CarWhereInput
+    data: XOR<CarUpdateWithoutEnvironmentalImpactsInput, CarUncheckedUpdateWithoutEnvironmentalImpactsInput>
+  }
+
+  export type CarUpdateWithoutEnvironmentalImpactsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
+    testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
+  }
+
+  export type CarUncheckedUpdateWithoutEnvironmentalImpactsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
+    testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type UserSavedCarCreateWithoutUserInput = {
@@ -10807,6 +16565,94 @@ export namespace Prisma {
 
   export type TestDriveBookingCreateManyUserInputEnvelope = {
     data: TestDriveBookingCreateManyUserInput | TestDriveBookingCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ChatInteractionCreateWithoutUserInput = {
+    id?: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionCreaterecommendedCarIdsInput | string[]
+    createdAt?: Date | string
+    recommendedCars?: CarCreateNestedManyWithoutChatRecommendationsInput
+  }
+
+  export type ChatInteractionUncheckedCreateWithoutUserInput = {
+    id?: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionCreaterecommendedCarIdsInput | string[]
+    createdAt?: Date | string
+    recommendedCars?: CarUncheckedCreateNestedManyWithoutChatRecommendationsInput
+  }
+
+  export type ChatInteractionCreateOrConnectWithoutUserInput = {
+    where: ChatInteractionWhereUniqueInput
+    create: XOR<ChatInteractionCreateWithoutUserInput, ChatInteractionUncheckedCreateWithoutUserInput>
+  }
+
+  export type ChatInteractionCreateManyUserInputEnvelope = {
+    data: ChatInteractionCreateManyUserInput | ChatInteractionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type MaintenancePredictionCreateWithoutUserInput = {
+    id?: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    car: CarCreateNestedOneWithoutMaintenancePredictionsInput
+  }
+
+  export type MaintenancePredictionUncheckedCreateWithoutUserInput = {
+    id?: string
+    carId: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type MaintenancePredictionCreateOrConnectWithoutUserInput = {
+    where: MaintenancePredictionWhereUniqueInput
+    create: XOR<MaintenancePredictionCreateWithoutUserInput, MaintenancePredictionUncheckedCreateWithoutUserInput>
+  }
+
+  export type MaintenancePredictionCreateManyUserInputEnvelope = {
+    data: MaintenancePredictionCreateManyUserInput | MaintenancePredictionCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EnvironmentalImpactCreateWithoutUserInput = {
+    id?: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    car: CarCreateNestedOneWithoutEnvironmentalImpactsInput
+  }
+
+  export type EnvironmentalImpactUncheckedCreateWithoutUserInput = {
+    id?: string
+    carId: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type EnvironmentalImpactCreateOrConnectWithoutUserInput = {
+    where: EnvironmentalImpactWhereUniqueInput
+    create: XOR<EnvironmentalImpactCreateWithoutUserInput, EnvironmentalImpactUncheckedCreateWithoutUserInput>
+  }
+
+  export type EnvironmentalImpactCreateManyUserInputEnvelope = {
+    data: EnvironmentalImpactCreateManyUserInput | EnvironmentalImpactCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -10868,6 +16714,94 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"TestDriveBooking"> | Date | string
   }
 
+  export type ChatInteractionUpsertWithWhereUniqueWithoutUserInput = {
+    where: ChatInteractionWhereUniqueInput
+    update: XOR<ChatInteractionUpdateWithoutUserInput, ChatInteractionUncheckedUpdateWithoutUserInput>
+    create: XOR<ChatInteractionCreateWithoutUserInput, ChatInteractionUncheckedCreateWithoutUserInput>
+  }
+
+  export type ChatInteractionUpdateWithWhereUniqueWithoutUserInput = {
+    where: ChatInteractionWhereUniqueInput
+    data: XOR<ChatInteractionUpdateWithoutUserInput, ChatInteractionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ChatInteractionUpdateManyWithWhereWithoutUserInput = {
+    where: ChatInteractionScalarWhereInput
+    data: XOR<ChatInteractionUpdateManyMutationInput, ChatInteractionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ChatInteractionScalarWhereInput = {
+    AND?: ChatInteractionScalarWhereInput | ChatInteractionScalarWhereInput[]
+    OR?: ChatInteractionScalarWhereInput[]
+    NOT?: ChatInteractionScalarWhereInput | ChatInteractionScalarWhereInput[]
+    id?: StringFilter<"ChatInteraction"> | string
+    userId?: StringFilter<"ChatInteraction"> | string
+    userMessage?: StringFilter<"ChatInteraction"> | string
+    aiResponse?: StringFilter<"ChatInteraction"> | string
+    preferences?: JsonFilter<"ChatInteraction">
+    recommendedCarIds?: StringNullableListFilter<"ChatInteraction">
+    createdAt?: DateTimeFilter<"ChatInteraction"> | Date | string
+  }
+
+  export type MaintenancePredictionUpsertWithWhereUniqueWithoutUserInput = {
+    where: MaintenancePredictionWhereUniqueInput
+    update: XOR<MaintenancePredictionUpdateWithoutUserInput, MaintenancePredictionUncheckedUpdateWithoutUserInput>
+    create: XOR<MaintenancePredictionCreateWithoutUserInput, MaintenancePredictionUncheckedCreateWithoutUserInput>
+  }
+
+  export type MaintenancePredictionUpdateWithWhereUniqueWithoutUserInput = {
+    where: MaintenancePredictionWhereUniqueInput
+    data: XOR<MaintenancePredictionUpdateWithoutUserInput, MaintenancePredictionUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MaintenancePredictionUpdateManyWithWhereWithoutUserInput = {
+    where: MaintenancePredictionScalarWhereInput
+    data: XOR<MaintenancePredictionUpdateManyMutationInput, MaintenancePredictionUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type MaintenancePredictionScalarWhereInput = {
+    AND?: MaintenancePredictionScalarWhereInput | MaintenancePredictionScalarWhereInput[]
+    OR?: MaintenancePredictionScalarWhereInput[]
+    NOT?: MaintenancePredictionScalarWhereInput | MaintenancePredictionScalarWhereInput[]
+    id?: StringFilter<"MaintenancePrediction"> | string
+    userId?: StringFilter<"MaintenancePrediction"> | string
+    carId?: StringFilter<"MaintenancePrediction"> | string
+    nextServices?: JsonFilter<"MaintenancePrediction">
+    partsReplacement?: JsonFilter<"MaintenancePrediction">
+    totalMaintenanceCost?: FloatFilter<"MaintenancePrediction"> | number
+    maintenanceSchedule?: JsonFilter<"MaintenancePrediction">
+    createdAt?: DateTimeFilter<"MaintenancePrediction"> | Date | string
+  }
+
+  export type EnvironmentalImpactUpsertWithWhereUniqueWithoutUserInput = {
+    where: EnvironmentalImpactWhereUniqueInput
+    update: XOR<EnvironmentalImpactUpdateWithoutUserInput, EnvironmentalImpactUncheckedUpdateWithoutUserInput>
+    create: XOR<EnvironmentalImpactCreateWithoutUserInput, EnvironmentalImpactUncheckedCreateWithoutUserInput>
+  }
+
+  export type EnvironmentalImpactUpdateWithWhereUniqueWithoutUserInput = {
+    where: EnvironmentalImpactWhereUniqueInput
+    data: XOR<EnvironmentalImpactUpdateWithoutUserInput, EnvironmentalImpactUncheckedUpdateWithoutUserInput>
+  }
+
+  export type EnvironmentalImpactUpdateManyWithWhereWithoutUserInput = {
+    where: EnvironmentalImpactScalarWhereInput
+    data: XOR<EnvironmentalImpactUpdateManyMutationInput, EnvironmentalImpactUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type EnvironmentalImpactScalarWhereInput = {
+    AND?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
+    OR?: EnvironmentalImpactScalarWhereInput[]
+    NOT?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
+    id?: StringFilter<"EnvironmentalImpact"> | string
+    userId?: StringFilter<"EnvironmentalImpact"> | string
+    carId?: StringFilter<"EnvironmentalImpact"> | string
+    carbonFootprint?: JsonFilter<"EnvironmentalImpact">
+    greenScore?: JsonFilter<"EnvironmentalImpact">
+    environmentalMetrics?: JsonFilter<"EnvironmentalImpact">
+    createdAt?: DateTimeFilter<"EnvironmentalImpact"> | Date | string
+  }
+
   export type UserSavedCarCreateWithoutCarInput = {
     id?: string
     savedAt?: Date | string
@@ -10924,6 +16858,89 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type ChatInteractionCreateWithoutRecommendedCarsInput = {
+    id?: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionCreaterecommendedCarIdsInput | string[]
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutChatInteractionsInput
+  }
+
+  export type ChatInteractionUncheckedCreateWithoutRecommendedCarsInput = {
+    id?: string
+    userId: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionCreaterecommendedCarIdsInput | string[]
+    createdAt?: Date | string
+  }
+
+  export type ChatInteractionCreateOrConnectWithoutRecommendedCarsInput = {
+    where: ChatInteractionWhereUniqueInput
+    create: XOR<ChatInteractionCreateWithoutRecommendedCarsInput, ChatInteractionUncheckedCreateWithoutRecommendedCarsInput>
+  }
+
+  export type MaintenancePredictionCreateWithoutCarInput = {
+    id?: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutMaintenancePredictionsInput
+  }
+
+  export type MaintenancePredictionUncheckedCreateWithoutCarInput = {
+    id?: string
+    userId: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type MaintenancePredictionCreateOrConnectWithoutCarInput = {
+    where: MaintenancePredictionWhereUniqueInput
+    create: XOR<MaintenancePredictionCreateWithoutCarInput, MaintenancePredictionUncheckedCreateWithoutCarInput>
+  }
+
+  export type MaintenancePredictionCreateManyCarInputEnvelope = {
+    data: MaintenancePredictionCreateManyCarInput | MaintenancePredictionCreateManyCarInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type EnvironmentalImpactCreateWithoutCarInput = {
+    id?: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutEnvironmentalImpactsInput
+  }
+
+  export type EnvironmentalImpactUncheckedCreateWithoutCarInput = {
+    id?: string
+    userId: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type EnvironmentalImpactCreateOrConnectWithoutCarInput = {
+    where: EnvironmentalImpactWhereUniqueInput
+    create: XOR<EnvironmentalImpactCreateWithoutCarInput, EnvironmentalImpactUncheckedCreateWithoutCarInput>
+  }
+
+  export type EnvironmentalImpactCreateManyCarInputEnvelope = {
+    data: EnvironmentalImpactCreateManyCarInput | EnvironmentalImpactCreateManyCarInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserSavedCarUpsertWithWhereUniqueWithoutCarInput = {
     where: UserSavedCarWhereUniqueInput
     update: XOR<UserSavedCarUpdateWithoutCarInput, UserSavedCarUncheckedUpdateWithoutCarInput>
@@ -10954,6 +16971,54 @@ export namespace Prisma {
   export type TestDriveBookingUpdateManyWithWhereWithoutCarInput = {
     where: TestDriveBookingScalarWhereInput
     data: XOR<TestDriveBookingUpdateManyMutationInput, TestDriveBookingUncheckedUpdateManyWithoutCarInput>
+  }
+
+  export type ChatInteractionUpsertWithWhereUniqueWithoutRecommendedCarsInput = {
+    where: ChatInteractionWhereUniqueInput
+    update: XOR<ChatInteractionUpdateWithoutRecommendedCarsInput, ChatInteractionUncheckedUpdateWithoutRecommendedCarsInput>
+    create: XOR<ChatInteractionCreateWithoutRecommendedCarsInput, ChatInteractionUncheckedCreateWithoutRecommendedCarsInput>
+  }
+
+  export type ChatInteractionUpdateWithWhereUniqueWithoutRecommendedCarsInput = {
+    where: ChatInteractionWhereUniqueInput
+    data: XOR<ChatInteractionUpdateWithoutRecommendedCarsInput, ChatInteractionUncheckedUpdateWithoutRecommendedCarsInput>
+  }
+
+  export type ChatInteractionUpdateManyWithWhereWithoutRecommendedCarsInput = {
+    where: ChatInteractionScalarWhereInput
+    data: XOR<ChatInteractionUpdateManyMutationInput, ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsInput>
+  }
+
+  export type MaintenancePredictionUpsertWithWhereUniqueWithoutCarInput = {
+    where: MaintenancePredictionWhereUniqueInput
+    update: XOR<MaintenancePredictionUpdateWithoutCarInput, MaintenancePredictionUncheckedUpdateWithoutCarInput>
+    create: XOR<MaintenancePredictionCreateWithoutCarInput, MaintenancePredictionUncheckedCreateWithoutCarInput>
+  }
+
+  export type MaintenancePredictionUpdateWithWhereUniqueWithoutCarInput = {
+    where: MaintenancePredictionWhereUniqueInput
+    data: XOR<MaintenancePredictionUpdateWithoutCarInput, MaintenancePredictionUncheckedUpdateWithoutCarInput>
+  }
+
+  export type MaintenancePredictionUpdateManyWithWhereWithoutCarInput = {
+    where: MaintenancePredictionScalarWhereInput
+    data: XOR<MaintenancePredictionUpdateManyMutationInput, MaintenancePredictionUncheckedUpdateManyWithoutCarInput>
+  }
+
+  export type EnvironmentalImpactUpsertWithWhereUniqueWithoutCarInput = {
+    where: EnvironmentalImpactWhereUniqueInput
+    update: XOR<EnvironmentalImpactUpdateWithoutCarInput, EnvironmentalImpactUncheckedUpdateWithoutCarInput>
+    create: XOR<EnvironmentalImpactCreateWithoutCarInput, EnvironmentalImpactUncheckedCreateWithoutCarInput>
+  }
+
+  export type EnvironmentalImpactUpdateWithWhereUniqueWithoutCarInput = {
+    where: EnvironmentalImpactWhereUniqueInput
+    data: XOR<EnvironmentalImpactUpdateWithoutCarInput, EnvironmentalImpactUncheckedUpdateWithoutCarInput>
+  }
+
+  export type EnvironmentalImpactUpdateManyWithWhereWithoutCarInput = {
+    where: EnvironmentalImpactScalarWhereInput
+    data: XOR<EnvironmentalImpactUpdateManyMutationInput, EnvironmentalImpactUncheckedUpdateManyWithoutCarInput>
   }
 
   export type WorkingHourCreateWithoutDealershipInput = {
@@ -11083,6 +17148,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     role?: $Enums.UserRole
     testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSavedCarsInput = {
@@ -11096,6 +17164,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     role?: $Enums.UserRole
     testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSavedCarsInput = {
@@ -11121,7 +17192,12 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateWithoutSavedByInput = {
@@ -11142,7 +17218,12 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarCreateOrConnectWithoutSavedByInput = {
@@ -11172,6 +17253,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSavedCarsInput = {
@@ -11185,6 +17269,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutSavedByInput = {
@@ -11216,7 +17303,12 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateWithoutSavedByInput = {
@@ -11237,7 +17329,12 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type CarCreateWithoutTestDriveBookingsInput = {
@@ -11258,7 +17355,12 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateWithoutTestDriveBookingsInput = {
@@ -11279,7 +17381,12 @@ export namespace Prisma {
     images?: CarCreateimagesInput | string[]
     createdAt?: Date | string
     updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarCreateOrConnectWithoutTestDriveBookingsInput = {
@@ -11298,6 +17405,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     role?: $Enums.UserRole
     savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTestDrivesInput = {
@@ -11311,6 +17421,9 @@ export namespace Prisma {
     updatedAt?: Date | string
     role?: $Enums.UserRole
     savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTestDrivesInput = {
@@ -11347,7 +17460,12 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateWithoutTestDriveBookingsInput = {
@@ -11368,7 +17486,12 @@ export namespace Prisma {
     images?: CarUpdateimagesInput | string[]
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type UserUpsertWithoutTestDrivesInput = {
@@ -11393,6 +17516,9 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTestDrivesInput = {
@@ -11406,6 +17532,83 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
     savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CarUpdateWithoutChatRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
+    testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
+  }
+
+  export type CarUncheckedUpdateWithoutChatRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
+    testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
+  }
+
+  export type CarUncheckedUpdateManyWithoutChatRecommendationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserSavedCarCreateManyUserInput = {
@@ -11424,6 +17627,34 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type ChatInteractionCreateManyUserInput = {
+    id?: string
+    userMessage: string
+    aiResponse: string
+    preferences: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionCreaterecommendedCarIdsInput | string[]
+    createdAt?: Date | string
+  }
+
+  export type MaintenancePredictionCreateManyUserInput = {
+    id?: string
+    carId: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type EnvironmentalImpactCreateManyUserInput = {
+    id?: string
+    carId: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
   }
 
   export type UserSavedCarUpdateWithoutUserInput = {
@@ -11480,6 +17711,92 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ChatInteractionUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recommendedCars?: CarUpdateManyWithoutChatRecommendationsNestedInput
+  }
+
+  export type ChatInteractionUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    recommendedCars?: CarUncheckedUpdateManyWithoutChatRecommendationsNestedInput
+  }
+
+  export type ChatInteractionUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MaintenancePredictionUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    car?: CarUpdateOneRequiredWithoutMaintenancePredictionsNestedInput
+  }
+
+  export type MaintenancePredictionUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MaintenancePredictionUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EnvironmentalImpactUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    car?: CarUpdateOneRequiredWithoutEnvironmentalImpactsNestedInput
+  }
+
+  export type EnvironmentalImpactUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EnvironmentalImpactUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserSavedCarCreateManyCarInput = {
     id?: string
     userId: string
@@ -11496,6 +17813,25 @@ export namespace Prisma {
     notes?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type MaintenancePredictionCreateManyCarInput = {
+    id?: string
+    userId: string
+    nextServices: JsonNullValueInput | InputJsonValue
+    partsReplacement: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost: number
+    maintenanceSchedule: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type EnvironmentalImpactCreateManyCarInput = {
+    id?: string
+    userId: string
+    carbonFootprint: JsonNullValueInput | InputJsonValue
+    greenScore: JsonNullValueInput | InputJsonValue
+    environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
   }
 
   export type UserSavedCarUpdateWithoutCarInput = {
@@ -11550,6 +17886,93 @@ export namespace Prisma {
     notes?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChatInteractionUpdateWithoutRecommendedCarsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutChatInteractionsNestedInput
+  }
+
+  export type ChatInteractionUncheckedUpdateWithoutRecommendedCarsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    userMessage?: StringFieldUpdateOperationsInput | string
+    aiResponse?: StringFieldUpdateOperationsInput | string
+    preferences?: JsonNullValueInput | InputJsonValue
+    recommendedCarIds?: ChatInteractionUpdaterecommendedCarIdsInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MaintenancePredictionUpdateWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutMaintenancePredictionsNestedInput
+  }
+
+  export type MaintenancePredictionUncheckedUpdateWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MaintenancePredictionUncheckedUpdateManyWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    nextServices?: JsonNullValueInput | InputJsonValue
+    partsReplacement?: JsonNullValueInput | InputJsonValue
+    totalMaintenanceCost?: FloatFieldUpdateOperationsInput | number
+    maintenanceSchedule?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EnvironmentalImpactUpdateWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutEnvironmentalImpactsNestedInput
+  }
+
+  export type EnvironmentalImpactUncheckedUpdateWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type EnvironmentalImpactUncheckedUpdateManyWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carbonFootprint?: JsonNullValueInput | InputJsonValue
+    greenScore?: JsonNullValueInput | InputJsonValue
+    environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WorkingHourCreateManyDealershipInput = {
