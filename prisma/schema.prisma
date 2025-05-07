@@ -30,51 +30,68 @@ model ChatInteraction {
 }
 
 model MaintenancePrediction {
-  id                  String   @id @default(uuid())
-  userId              String
-  carId               String
-  nextServices        Json     // Array of service predictions
-  partsReplacement    Json     // Array of parts to replace
+  id                   String   @id @default(uuid())
+  userId               String
+  carId                String
+  nextServices         Json // Array of service predictions
+  partsReplacement     Json // Array of parts to replace
   totalMaintenanceCost Float
-  maintenanceSchedule Json     // Scheduled maintenance tasks
-  createdAt           DateTime @default(now())
-  user                User     @relation(fields: [userId], references: [id])
-  car                 Car      @relation(fields: [carId], references: [id])
+  maintenanceSchedule  Json // Scheduled maintenance tasks
+  createdAt            DateTime @default(now())
+  user                 User     @relation(fields: [userId], references: [id])
+  car                  Car      @relation(fields: [carId], references: [id])
 
   @@index([userId])
   @@index([carId])
 }
 
 model EnvironmentalImpact {
-  id                  String   @id @default(uuid())
-  userId              String
-  carId               String
-  carbonFootprint     Json
-  greenScore          Json
+  id                   String   @id @default(uuid())
+  userId               String
+  carId                String
+  carbonFootprint      Json
+  greenScore           Json
   environmentalMetrics Json
-  createdAt           DateTime @default(now())
-  user                User     @relation(fields: [userId], references: [id])
-  car                 Car      @relation(fields: [carId], references: [id])
+  createdAt            DateTime @default(now())
+  user                 User     @relation(fields: [userId], references: [id])
+  car                  Car      @relation(fields: [carId], references: [id])
+
+  @@index([userId])
+  @@index([carId])
+}
+
+model PriceAnalysis {
+  id                   String   @id @default(uuid())
+  userId               String
+  carId                String
+  marketValue          Json
+  priceAnalysis        Json
+  buyingRecommendation Json
+  seasonalTrends       Json
+  createdAt            DateTime @default(now())
+  user                 User     @relation(fields: [userId], references: [id])
+  car                  Car      @relation(fields: [carId], references: [id])
 
   @@index([userId])
   @@index([carId])
 }
 
 model User {
-  id          String             @id @default(uuid())
-  clerkUserId String             @unique // clerk user id
-  email       String             @unique
-  name        String?
-  imageUrl    String?
-  phone       String?
-  createdAt   DateTime           @default(now())
-  updatedAt   DateTime           @updatedAt
-  role        UserRole           @default(USER)
-  savedCars   UserSavedCar[]
-  testDrives  TestDriveBooking[]
-  chatInteractions ChatInteraction[]
+  id                     String                  @id @default(uuid())
+  clerkUserId            String                  @unique // clerk user id
+  email                  String                  @unique
+  name                   String?
+  imageUrl               String?
+  phone                  String?
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
+  role                   UserRole                @default(USER)
+  savedCars              UserSavedCar[]
+  testDrives             TestDriveBooking[]
+  chatInteractions       ChatInteraction[]
   maintenancePredictions MaintenancePrediction[]
-  environmentalImpacts EnvironmentalImpact[]
+  environmentalImpacts   EnvironmentalImpact[]
+  priceAnalyses          PriceAnalysis[]
 }
 
 enum UserRole {
@@ -83,30 +100,32 @@ enum UserRole {
 }
 
 model Car {
-  id                String             @id @default(uuid())
-  make              String
-  model             String
-  year              Int
-  price             Decimal            @db.Decimal(10, 2)
-  mileage           Int
-  color             String
-  fuelType          String
-  transmission      String
-  bodyType          String
-  seats             Int?
-  description       String
-  status            CarStatus          @default(AVAILABLE)
-  featured          Boolean            @default(false)
-  images            String[] // Array of Supabase storage URLs
-  savedBy           UserSavedCar[]
-  testDriveBookings TestDriveBooking[]
-  createdAt         DateTime           @default(now())
-  updatedAt         DateTime           @updatedAt
-  chatRecommendations ChatInteraction[] @relation("ChatRecommendations")
+  id                     String                  @id @default(uuid())
+  make                   String
+  model                  String
+  year                   Int
+  price                  Decimal                 @db.Decimal(10, 2)
+  mileage                Int
+  color                  String
+  fuelType               String
+  transmission           String
+  bodyType               String
+  seats                  Int?
+  description            String
+  status                 CarStatus               @default(AVAILABLE)
+  featured               Boolean                 @default(false)
+  images                 String[] // Array of Supabase storage URLs
+  savedBy                UserSavedCar[]
+  testDriveBookings      TestDriveBooking[]
+  createdAt              DateTime                @default(now())
+  updatedAt              DateTime                @updatedAt
+  chatRecommendations    ChatInteraction[]       @relation("ChatRecommendations")
   maintenancePredictions MaintenancePrediction[]
-    greenScore Float? @default(0)
-  environmentalMetrics Json?
-  environmentalImpacts EnvironmentalImpact[]
+  greenScore             Float?                  @default(0)
+  environmentalMetrics   Json?
+  environmentalImpacts   EnvironmentalImpact[]
+  priceHistory           Json? // Array of historical prices
+  priceAnalyses          PriceAnalysis[]
 
   @@index([make, model])
   @@index([bodyType])

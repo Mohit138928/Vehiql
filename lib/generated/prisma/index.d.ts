@@ -29,6 +29,11 @@ export type MaintenancePrediction = $Result.DefaultSelection<Prisma.$Maintenance
  */
 export type EnvironmentalImpact = $Result.DefaultSelection<Prisma.$EnvironmentalImpactPayload>
 /**
+ * Model PriceAnalysis
+ * 
+ */
+export type PriceAnalysis = $Result.DefaultSelection<Prisma.$PriceAnalysisPayload>
+/**
  * Model User
  * 
  */
@@ -275,6 +280,16 @@ export class PrismaClient<
     * ```
     */
   get environmentalImpact(): Prisma.EnvironmentalImpactDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.priceAnalysis`: Exposes CRUD operations for the **PriceAnalysis** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PriceAnalyses
+    * const priceAnalyses = await prisma.priceAnalysis.findMany()
+    * ```
+    */
+  get priceAnalysis(): Prisma.PriceAnalysisDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -778,6 +793,7 @@ export namespace Prisma {
     ChatInteraction: 'ChatInteraction',
     MaintenancePrediction: 'MaintenancePrediction',
     EnvironmentalImpact: 'EnvironmentalImpact',
+    PriceAnalysis: 'PriceAnalysis',
     User: 'User',
     Car: 'Car',
     DealershipInfo: 'DealershipInfo',
@@ -802,7 +818,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "chatInteraction" | "maintenancePrediction" | "environmentalImpact" | "user" | "car" | "dealershipInfo" | "workingHour" | "userSavedCar" | "testDriveBooking"
+      modelProps: "chatInteraction" | "maintenancePrediction" | "environmentalImpact" | "priceAnalysis" | "user" | "car" | "dealershipInfo" | "workingHour" | "userSavedCar" | "testDriveBooking"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1025,6 +1041,80 @@ export namespace Prisma {
           count: {
             args: Prisma.EnvironmentalImpactCountArgs<ExtArgs>
             result: $Utils.Optional<EnvironmentalImpactCountAggregateOutputType> | number
+          }
+        }
+      }
+      PriceAnalysis: {
+        payload: Prisma.$PriceAnalysisPayload<ExtArgs>
+        fields: Prisma.PriceAnalysisFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PriceAnalysisFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PriceAnalysisFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>
+          }
+          findFirst: {
+            args: Prisma.PriceAnalysisFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PriceAnalysisFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>
+          }
+          findMany: {
+            args: Prisma.PriceAnalysisFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>[]
+          }
+          create: {
+            args: Prisma.PriceAnalysisCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>
+          }
+          createMany: {
+            args: Prisma.PriceAnalysisCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PriceAnalysisCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>[]
+          }
+          delete: {
+            args: Prisma.PriceAnalysisDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>
+          }
+          update: {
+            args: Prisma.PriceAnalysisUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>
+          }
+          deleteMany: {
+            args: Prisma.PriceAnalysisDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PriceAnalysisUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PriceAnalysisUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>[]
+          }
+          upsert: {
+            args: Prisma.PriceAnalysisUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PriceAnalysisPayload>
+          }
+          aggregate: {
+            args: Prisma.PriceAnalysisAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePriceAnalysis>
+          }
+          groupBy: {
+            args: Prisma.PriceAnalysisGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PriceAnalysisGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PriceAnalysisCountArgs<ExtArgs>
+            result: $Utils.Optional<PriceAnalysisCountAggregateOutputType> | number
           }
         }
       }
@@ -1559,6 +1649,7 @@ export namespace Prisma {
     chatInteraction?: ChatInteractionOmit
     maintenancePrediction?: MaintenancePredictionOmit
     environmentalImpact?: EnvironmentalImpactOmit
+    priceAnalysis?: PriceAnalysisOmit
     user?: UserOmit
     car?: CarOmit
     dealershipInfo?: DealershipInfoOmit
@@ -1695,6 +1786,7 @@ export namespace Prisma {
     chatInteractions: number
     maintenancePredictions: number
     environmentalImpacts: number
+    priceAnalyses: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1703,6 +1795,7 @@ export namespace Prisma {
     chatInteractions?: boolean | UserCountOutputTypeCountChatInteractionsArgs
     maintenancePredictions?: boolean | UserCountOutputTypeCountMaintenancePredictionsArgs
     environmentalImpacts?: boolean | UserCountOutputTypeCountEnvironmentalImpactsArgs
+    priceAnalyses?: boolean | UserCountOutputTypeCountPriceAnalysesArgs
   }
 
   // Custom InputTypes
@@ -1751,6 +1844,13 @@ export namespace Prisma {
     where?: EnvironmentalImpactWhereInput
   }
 
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPriceAnalysesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PriceAnalysisWhereInput
+  }
+
 
   /**
    * Count Type CarCountOutputType
@@ -1762,6 +1862,7 @@ export namespace Prisma {
     chatRecommendations: number
     maintenancePredictions: number
     environmentalImpacts: number
+    priceAnalyses: number
   }
 
   export type CarCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1770,6 +1871,7 @@ export namespace Prisma {
     chatRecommendations?: boolean | CarCountOutputTypeCountChatRecommendationsArgs
     maintenancePredictions?: boolean | CarCountOutputTypeCountMaintenancePredictionsArgs
     environmentalImpacts?: boolean | CarCountOutputTypeCountEnvironmentalImpactsArgs
+    priceAnalyses?: boolean | CarCountOutputTypeCountPriceAnalysesArgs
   }
 
   // Custom InputTypes
@@ -1816,6 +1918,13 @@ export namespace Prisma {
    */
   export type CarCountOutputTypeCountEnvironmentalImpactsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: EnvironmentalImpactWhereInput
+  }
+
+  /**
+   * CarCountOutputType without action
+   */
+  export type CarCountOutputTypeCountPriceAnalysesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PriceAnalysisWhereInput
   }
 
 
@@ -5168,6 +5277,1095 @@ export namespace Prisma {
 
 
   /**
+   * Model PriceAnalysis
+   */
+
+  export type AggregatePriceAnalysis = {
+    _count: PriceAnalysisCountAggregateOutputType | null
+    _min: PriceAnalysisMinAggregateOutputType | null
+    _max: PriceAnalysisMaxAggregateOutputType | null
+  }
+
+  export type PriceAnalysisMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    carId: string | null
+    createdAt: Date | null
+  }
+
+  export type PriceAnalysisMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    carId: string | null
+    createdAt: Date | null
+  }
+
+  export type PriceAnalysisCountAggregateOutputType = {
+    id: number
+    userId: number
+    carId: number
+    marketValue: number
+    priceAnalysis: number
+    buyingRecommendation: number
+    seasonalTrends: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type PriceAnalysisMinAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    createdAt?: true
+  }
+
+  export type PriceAnalysisMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    createdAt?: true
+  }
+
+  export type PriceAnalysisCountAggregateInputType = {
+    id?: true
+    userId?: true
+    carId?: true
+    marketValue?: true
+    priceAnalysis?: true
+    buyingRecommendation?: true
+    seasonalTrends?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type PriceAnalysisAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PriceAnalysis to aggregate.
+     */
+    where?: PriceAnalysisWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PriceAnalyses to fetch.
+     */
+    orderBy?: PriceAnalysisOrderByWithRelationInput | PriceAnalysisOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PriceAnalysisWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PriceAnalyses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PriceAnalyses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PriceAnalyses
+    **/
+    _count?: true | PriceAnalysisCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PriceAnalysisMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PriceAnalysisMaxAggregateInputType
+  }
+
+  export type GetPriceAnalysisAggregateType<T extends PriceAnalysisAggregateArgs> = {
+        [P in keyof T & keyof AggregatePriceAnalysis]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePriceAnalysis[P]>
+      : GetScalarType<T[P], AggregatePriceAnalysis[P]>
+  }
+
+
+
+
+  export type PriceAnalysisGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PriceAnalysisWhereInput
+    orderBy?: PriceAnalysisOrderByWithAggregationInput | PriceAnalysisOrderByWithAggregationInput[]
+    by: PriceAnalysisScalarFieldEnum[] | PriceAnalysisScalarFieldEnum
+    having?: PriceAnalysisScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PriceAnalysisCountAggregateInputType | true
+    _min?: PriceAnalysisMinAggregateInputType
+    _max?: PriceAnalysisMaxAggregateInputType
+  }
+
+  export type PriceAnalysisGroupByOutputType = {
+    id: string
+    userId: string
+    carId: string
+    marketValue: JsonValue
+    priceAnalysis: JsonValue
+    buyingRecommendation: JsonValue
+    seasonalTrends: JsonValue
+    createdAt: Date
+    _count: PriceAnalysisCountAggregateOutputType | null
+    _min: PriceAnalysisMinAggregateOutputType | null
+    _max: PriceAnalysisMaxAggregateOutputType | null
+  }
+
+  type GetPriceAnalysisGroupByPayload<T extends PriceAnalysisGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PriceAnalysisGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PriceAnalysisGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PriceAnalysisGroupByOutputType[P]>
+            : GetScalarType<T[P], PriceAnalysisGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PriceAnalysisSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    marketValue?: boolean
+    priceAnalysis?: boolean
+    buyingRecommendation?: boolean
+    seasonalTrends?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["priceAnalysis"]>
+
+  export type PriceAnalysisSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    marketValue?: boolean
+    priceAnalysis?: boolean
+    buyingRecommendation?: boolean
+    seasonalTrends?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["priceAnalysis"]>
+
+  export type PriceAnalysisSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    marketValue?: boolean
+    priceAnalysis?: boolean
+    buyingRecommendation?: boolean
+    seasonalTrends?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["priceAnalysis"]>
+
+  export type PriceAnalysisSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    carId?: boolean
+    marketValue?: boolean
+    priceAnalysis?: boolean
+    buyingRecommendation?: boolean
+    seasonalTrends?: boolean
+    createdAt?: boolean
+  }
+
+  export type PriceAnalysisOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "carId" | "marketValue" | "priceAnalysis" | "buyingRecommendation" | "seasonalTrends" | "createdAt", ExtArgs["result"]["priceAnalysis"]>
+  export type PriceAnalysisInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+  export type PriceAnalysisIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+  export type PriceAnalysisIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+    car?: boolean | CarDefaultArgs<ExtArgs>
+  }
+
+  export type $PriceAnalysisPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PriceAnalysis"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+      car: Prisma.$CarPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      carId: string
+      marketValue: Prisma.JsonValue
+      priceAnalysis: Prisma.JsonValue
+      buyingRecommendation: Prisma.JsonValue
+      seasonalTrends: Prisma.JsonValue
+      createdAt: Date
+    }, ExtArgs["result"]["priceAnalysis"]>
+    composites: {}
+  }
+
+  type PriceAnalysisGetPayload<S extends boolean | null | undefined | PriceAnalysisDefaultArgs> = $Result.GetResult<Prisma.$PriceAnalysisPayload, S>
+
+  type PriceAnalysisCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PriceAnalysisFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PriceAnalysisCountAggregateInputType | true
+    }
+
+  export interface PriceAnalysisDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PriceAnalysis'], meta: { name: 'PriceAnalysis' } }
+    /**
+     * Find zero or one PriceAnalysis that matches the filter.
+     * @param {PriceAnalysisFindUniqueArgs} args - Arguments to find a PriceAnalysis
+     * @example
+     * // Get one PriceAnalysis
+     * const priceAnalysis = await prisma.priceAnalysis.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PriceAnalysisFindUniqueArgs>(args: SelectSubset<T, PriceAnalysisFindUniqueArgs<ExtArgs>>): Prisma__PriceAnalysisClient<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PriceAnalysis that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PriceAnalysisFindUniqueOrThrowArgs} args - Arguments to find a PriceAnalysis
+     * @example
+     * // Get one PriceAnalysis
+     * const priceAnalysis = await prisma.priceAnalysis.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PriceAnalysisFindUniqueOrThrowArgs>(args: SelectSubset<T, PriceAnalysisFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PriceAnalysisClient<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PriceAnalysis that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAnalysisFindFirstArgs} args - Arguments to find a PriceAnalysis
+     * @example
+     * // Get one PriceAnalysis
+     * const priceAnalysis = await prisma.priceAnalysis.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PriceAnalysisFindFirstArgs>(args?: SelectSubset<T, PriceAnalysisFindFirstArgs<ExtArgs>>): Prisma__PriceAnalysisClient<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PriceAnalysis that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAnalysisFindFirstOrThrowArgs} args - Arguments to find a PriceAnalysis
+     * @example
+     * // Get one PriceAnalysis
+     * const priceAnalysis = await prisma.priceAnalysis.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PriceAnalysisFindFirstOrThrowArgs>(args?: SelectSubset<T, PriceAnalysisFindFirstOrThrowArgs<ExtArgs>>): Prisma__PriceAnalysisClient<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PriceAnalyses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAnalysisFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PriceAnalyses
+     * const priceAnalyses = await prisma.priceAnalysis.findMany()
+     * 
+     * // Get first 10 PriceAnalyses
+     * const priceAnalyses = await prisma.priceAnalysis.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const priceAnalysisWithIdOnly = await prisma.priceAnalysis.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PriceAnalysisFindManyArgs>(args?: SelectSubset<T, PriceAnalysisFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PriceAnalysis.
+     * @param {PriceAnalysisCreateArgs} args - Arguments to create a PriceAnalysis.
+     * @example
+     * // Create one PriceAnalysis
+     * const PriceAnalysis = await prisma.priceAnalysis.create({
+     *   data: {
+     *     // ... data to create a PriceAnalysis
+     *   }
+     * })
+     * 
+     */
+    create<T extends PriceAnalysisCreateArgs>(args: SelectSubset<T, PriceAnalysisCreateArgs<ExtArgs>>): Prisma__PriceAnalysisClient<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PriceAnalyses.
+     * @param {PriceAnalysisCreateManyArgs} args - Arguments to create many PriceAnalyses.
+     * @example
+     * // Create many PriceAnalyses
+     * const priceAnalysis = await prisma.priceAnalysis.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PriceAnalysisCreateManyArgs>(args?: SelectSubset<T, PriceAnalysisCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PriceAnalyses and returns the data saved in the database.
+     * @param {PriceAnalysisCreateManyAndReturnArgs} args - Arguments to create many PriceAnalyses.
+     * @example
+     * // Create many PriceAnalyses
+     * const priceAnalysis = await prisma.priceAnalysis.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PriceAnalyses and only return the `id`
+     * const priceAnalysisWithIdOnly = await prisma.priceAnalysis.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PriceAnalysisCreateManyAndReturnArgs>(args?: SelectSubset<T, PriceAnalysisCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PriceAnalysis.
+     * @param {PriceAnalysisDeleteArgs} args - Arguments to delete one PriceAnalysis.
+     * @example
+     * // Delete one PriceAnalysis
+     * const PriceAnalysis = await prisma.priceAnalysis.delete({
+     *   where: {
+     *     // ... filter to delete one PriceAnalysis
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PriceAnalysisDeleteArgs>(args: SelectSubset<T, PriceAnalysisDeleteArgs<ExtArgs>>): Prisma__PriceAnalysisClient<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PriceAnalysis.
+     * @param {PriceAnalysisUpdateArgs} args - Arguments to update one PriceAnalysis.
+     * @example
+     * // Update one PriceAnalysis
+     * const priceAnalysis = await prisma.priceAnalysis.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PriceAnalysisUpdateArgs>(args: SelectSubset<T, PriceAnalysisUpdateArgs<ExtArgs>>): Prisma__PriceAnalysisClient<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PriceAnalyses.
+     * @param {PriceAnalysisDeleteManyArgs} args - Arguments to filter PriceAnalyses to delete.
+     * @example
+     * // Delete a few PriceAnalyses
+     * const { count } = await prisma.priceAnalysis.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PriceAnalysisDeleteManyArgs>(args?: SelectSubset<T, PriceAnalysisDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PriceAnalyses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAnalysisUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PriceAnalyses
+     * const priceAnalysis = await prisma.priceAnalysis.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PriceAnalysisUpdateManyArgs>(args: SelectSubset<T, PriceAnalysisUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PriceAnalyses and returns the data updated in the database.
+     * @param {PriceAnalysisUpdateManyAndReturnArgs} args - Arguments to update many PriceAnalyses.
+     * @example
+     * // Update many PriceAnalyses
+     * const priceAnalysis = await prisma.priceAnalysis.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PriceAnalyses and only return the `id`
+     * const priceAnalysisWithIdOnly = await prisma.priceAnalysis.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PriceAnalysisUpdateManyAndReturnArgs>(args: SelectSubset<T, PriceAnalysisUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PriceAnalysis.
+     * @param {PriceAnalysisUpsertArgs} args - Arguments to update or create a PriceAnalysis.
+     * @example
+     * // Update or create a PriceAnalysis
+     * const priceAnalysis = await prisma.priceAnalysis.upsert({
+     *   create: {
+     *     // ... data to create a PriceAnalysis
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PriceAnalysis we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PriceAnalysisUpsertArgs>(args: SelectSubset<T, PriceAnalysisUpsertArgs<ExtArgs>>): Prisma__PriceAnalysisClient<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PriceAnalyses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAnalysisCountArgs} args - Arguments to filter PriceAnalyses to count.
+     * @example
+     * // Count the number of PriceAnalyses
+     * const count = await prisma.priceAnalysis.count({
+     *   where: {
+     *     // ... the filter for the PriceAnalyses we want to count
+     *   }
+     * })
+    **/
+    count<T extends PriceAnalysisCountArgs>(
+      args?: Subset<T, PriceAnalysisCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PriceAnalysisCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PriceAnalysis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAnalysisAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PriceAnalysisAggregateArgs>(args: Subset<T, PriceAnalysisAggregateArgs>): Prisma.PrismaPromise<GetPriceAnalysisAggregateType<T>>
+
+    /**
+     * Group by PriceAnalysis.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PriceAnalysisGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PriceAnalysisGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PriceAnalysisGroupByArgs['orderBy'] }
+        : { orderBy?: PriceAnalysisGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PriceAnalysisGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPriceAnalysisGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PriceAnalysis model
+   */
+  readonly fields: PriceAnalysisFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PriceAnalysis.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PriceAnalysisClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    car<T extends CarDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CarDefaultArgs<ExtArgs>>): Prisma__CarClient<$Result.GetResult<Prisma.$CarPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PriceAnalysis model
+   */
+  interface PriceAnalysisFieldRefs {
+    readonly id: FieldRef<"PriceAnalysis", 'String'>
+    readonly userId: FieldRef<"PriceAnalysis", 'String'>
+    readonly carId: FieldRef<"PriceAnalysis", 'String'>
+    readonly marketValue: FieldRef<"PriceAnalysis", 'Json'>
+    readonly priceAnalysis: FieldRef<"PriceAnalysis", 'Json'>
+    readonly buyingRecommendation: FieldRef<"PriceAnalysis", 'Json'>
+    readonly seasonalTrends: FieldRef<"PriceAnalysis", 'Json'>
+    readonly createdAt: FieldRef<"PriceAnalysis", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PriceAnalysis findUnique
+   */
+  export type PriceAnalysisFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * Filter, which PriceAnalysis to fetch.
+     */
+    where: PriceAnalysisWhereUniqueInput
+  }
+
+  /**
+   * PriceAnalysis findUniqueOrThrow
+   */
+  export type PriceAnalysisFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * Filter, which PriceAnalysis to fetch.
+     */
+    where: PriceAnalysisWhereUniqueInput
+  }
+
+  /**
+   * PriceAnalysis findFirst
+   */
+  export type PriceAnalysisFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * Filter, which PriceAnalysis to fetch.
+     */
+    where?: PriceAnalysisWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PriceAnalyses to fetch.
+     */
+    orderBy?: PriceAnalysisOrderByWithRelationInput | PriceAnalysisOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PriceAnalyses.
+     */
+    cursor?: PriceAnalysisWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PriceAnalyses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PriceAnalyses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PriceAnalyses.
+     */
+    distinct?: PriceAnalysisScalarFieldEnum | PriceAnalysisScalarFieldEnum[]
+  }
+
+  /**
+   * PriceAnalysis findFirstOrThrow
+   */
+  export type PriceAnalysisFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * Filter, which PriceAnalysis to fetch.
+     */
+    where?: PriceAnalysisWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PriceAnalyses to fetch.
+     */
+    orderBy?: PriceAnalysisOrderByWithRelationInput | PriceAnalysisOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PriceAnalyses.
+     */
+    cursor?: PriceAnalysisWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PriceAnalyses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PriceAnalyses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PriceAnalyses.
+     */
+    distinct?: PriceAnalysisScalarFieldEnum | PriceAnalysisScalarFieldEnum[]
+  }
+
+  /**
+   * PriceAnalysis findMany
+   */
+  export type PriceAnalysisFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * Filter, which PriceAnalyses to fetch.
+     */
+    where?: PriceAnalysisWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PriceAnalyses to fetch.
+     */
+    orderBy?: PriceAnalysisOrderByWithRelationInput | PriceAnalysisOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PriceAnalyses.
+     */
+    cursor?: PriceAnalysisWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PriceAnalyses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PriceAnalyses.
+     */
+    skip?: number
+    distinct?: PriceAnalysisScalarFieldEnum | PriceAnalysisScalarFieldEnum[]
+  }
+
+  /**
+   * PriceAnalysis create
+   */
+  export type PriceAnalysisCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PriceAnalysis.
+     */
+    data: XOR<PriceAnalysisCreateInput, PriceAnalysisUncheckedCreateInput>
+  }
+
+  /**
+   * PriceAnalysis createMany
+   */
+  export type PriceAnalysisCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PriceAnalyses.
+     */
+    data: PriceAnalysisCreateManyInput | PriceAnalysisCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PriceAnalysis createManyAndReturn
+   */
+  export type PriceAnalysisCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * The data used to create many PriceAnalyses.
+     */
+    data: PriceAnalysisCreateManyInput | PriceAnalysisCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PriceAnalysis update
+   */
+  export type PriceAnalysisUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PriceAnalysis.
+     */
+    data: XOR<PriceAnalysisUpdateInput, PriceAnalysisUncheckedUpdateInput>
+    /**
+     * Choose, which PriceAnalysis to update.
+     */
+    where: PriceAnalysisWhereUniqueInput
+  }
+
+  /**
+   * PriceAnalysis updateMany
+   */
+  export type PriceAnalysisUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PriceAnalyses.
+     */
+    data: XOR<PriceAnalysisUpdateManyMutationInput, PriceAnalysisUncheckedUpdateManyInput>
+    /**
+     * Filter which PriceAnalyses to update
+     */
+    where?: PriceAnalysisWhereInput
+    /**
+     * Limit how many PriceAnalyses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PriceAnalysis updateManyAndReturn
+   */
+  export type PriceAnalysisUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * The data used to update PriceAnalyses.
+     */
+    data: XOR<PriceAnalysisUpdateManyMutationInput, PriceAnalysisUncheckedUpdateManyInput>
+    /**
+     * Filter which PriceAnalyses to update
+     */
+    where?: PriceAnalysisWhereInput
+    /**
+     * Limit how many PriceAnalyses to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PriceAnalysis upsert
+   */
+  export type PriceAnalysisUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PriceAnalysis to update in case it exists.
+     */
+    where: PriceAnalysisWhereUniqueInput
+    /**
+     * In case the PriceAnalysis found by the `where` argument doesn't exist, create a new PriceAnalysis with this data.
+     */
+    create: XOR<PriceAnalysisCreateInput, PriceAnalysisUncheckedCreateInput>
+    /**
+     * In case the PriceAnalysis was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PriceAnalysisUpdateInput, PriceAnalysisUncheckedUpdateInput>
+  }
+
+  /**
+   * PriceAnalysis delete
+   */
+  export type PriceAnalysisDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    /**
+     * Filter which PriceAnalysis to delete.
+     */
+    where: PriceAnalysisWhereUniqueInput
+  }
+
+  /**
+   * PriceAnalysis deleteMany
+   */
+  export type PriceAnalysisDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PriceAnalyses to delete
+     */
+    where?: PriceAnalysisWhereInput
+    /**
+     * Limit how many PriceAnalyses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PriceAnalysis without action
+   */
+  export type PriceAnalysisDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model User
    */
 
@@ -5368,6 +6566,7 @@ export namespace Prisma {
     chatInteractions?: boolean | User$chatInteractionsArgs<ExtArgs>
     maintenancePredictions?: boolean | User$maintenancePredictionsArgs<ExtArgs>
     environmentalImpacts?: boolean | User$environmentalImpactsArgs<ExtArgs>
+    priceAnalyses?: boolean | User$priceAnalysesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -5414,6 +6613,7 @@ export namespace Prisma {
     chatInteractions?: boolean | User$chatInteractionsArgs<ExtArgs>
     maintenancePredictions?: boolean | User$maintenancePredictionsArgs<ExtArgs>
     environmentalImpacts?: boolean | User$environmentalImpactsArgs<ExtArgs>
+    priceAnalyses?: boolean | User$priceAnalysesArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -5427,6 +6627,7 @@ export namespace Prisma {
       chatInteractions: Prisma.$ChatInteractionPayload<ExtArgs>[]
       maintenancePredictions: Prisma.$MaintenancePredictionPayload<ExtArgs>[]
       environmentalImpacts: Prisma.$EnvironmentalImpactPayload<ExtArgs>[]
+      priceAnalyses: Prisma.$PriceAnalysisPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -5837,6 +7038,7 @@ export namespace Prisma {
     chatInteractions<T extends User$chatInteractionsArgs<ExtArgs> = {}>(args?: Subset<T, User$chatInteractionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     maintenancePredictions<T extends User$maintenancePredictionsArgs<ExtArgs> = {}>(args?: Subset<T, User$maintenancePredictionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     environmentalImpacts<T extends User$environmentalImpactsArgs<ExtArgs> = {}>(args?: Subset<T, User$environmentalImpactsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    priceAnalyses<T extends User$priceAnalysesArgs<ExtArgs> = {}>(args?: Subset<T, User$priceAnalysesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6383,6 +7585,30 @@ export namespace Prisma {
   }
 
   /**
+   * User.priceAnalyses
+   */
+  export type User$priceAnalysesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    where?: PriceAnalysisWhereInput
+    orderBy?: PriceAnalysisOrderByWithRelationInput | PriceAnalysisOrderByWithRelationInput[]
+    cursor?: PriceAnalysisWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PriceAnalysisScalarFieldEnum | PriceAnalysisScalarFieldEnum[]
+  }
+
+  /**
    * User without action
    */
   export type UserDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6489,6 +7715,7 @@ export namespace Prisma {
     updatedAt: number
     greenScore: number
     environmentalMetrics: number
+    priceHistory: number
     _all: number
   }
 
@@ -6569,6 +7796,7 @@ export namespace Prisma {
     updatedAt?: true
     greenScore?: true
     environmentalMetrics?: true
+    priceHistory?: true
     _all?: true
   }
 
@@ -6678,6 +7906,7 @@ export namespace Prisma {
     updatedAt: Date
     greenScore: number | null
     environmentalMetrics: JsonValue | null
+    priceHistory: JsonValue | null
     _count: CarCountAggregateOutputType | null
     _avg: CarAvgAggregateOutputType | null
     _sum: CarSumAggregateOutputType | null
@@ -6719,11 +7948,13 @@ export namespace Prisma {
     updatedAt?: boolean
     greenScore?: boolean
     environmentalMetrics?: boolean
+    priceHistory?: boolean
     savedBy?: boolean | Car$savedByArgs<ExtArgs>
     testDriveBookings?: boolean | Car$testDriveBookingsArgs<ExtArgs>
     chatRecommendations?: boolean | Car$chatRecommendationsArgs<ExtArgs>
     maintenancePredictions?: boolean | Car$maintenancePredictionsArgs<ExtArgs>
     environmentalImpacts?: boolean | Car$environmentalImpactsArgs<ExtArgs>
+    priceAnalyses?: boolean | Car$priceAnalysesArgs<ExtArgs>
     _count?: boolean | CarCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["car"]>
 
@@ -6747,6 +7978,7 @@ export namespace Prisma {
     updatedAt?: boolean
     greenScore?: boolean
     environmentalMetrics?: boolean
+    priceHistory?: boolean
   }, ExtArgs["result"]["car"]>
 
   export type CarSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6769,6 +8001,7 @@ export namespace Prisma {
     updatedAt?: boolean
     greenScore?: boolean
     environmentalMetrics?: boolean
+    priceHistory?: boolean
   }, ExtArgs["result"]["car"]>
 
   export type CarSelectScalar = {
@@ -6791,15 +8024,17 @@ export namespace Prisma {
     updatedAt?: boolean
     greenScore?: boolean
     environmentalMetrics?: boolean
+    priceHistory?: boolean
   }
 
-  export type CarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "make" | "model" | "year" | "price" | "mileage" | "color" | "fuelType" | "transmission" | "bodyType" | "seats" | "description" | "status" | "featured" | "images" | "createdAt" | "updatedAt" | "greenScore" | "environmentalMetrics", ExtArgs["result"]["car"]>
+  export type CarOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "make" | "model" | "year" | "price" | "mileage" | "color" | "fuelType" | "transmission" | "bodyType" | "seats" | "description" | "status" | "featured" | "images" | "createdAt" | "updatedAt" | "greenScore" | "environmentalMetrics" | "priceHistory", ExtArgs["result"]["car"]>
   export type CarInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     savedBy?: boolean | Car$savedByArgs<ExtArgs>
     testDriveBookings?: boolean | Car$testDriveBookingsArgs<ExtArgs>
     chatRecommendations?: boolean | Car$chatRecommendationsArgs<ExtArgs>
     maintenancePredictions?: boolean | Car$maintenancePredictionsArgs<ExtArgs>
     environmentalImpacts?: boolean | Car$environmentalImpactsArgs<ExtArgs>
+    priceAnalyses?: boolean | Car$priceAnalysesArgs<ExtArgs>
     _count?: boolean | CarCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type CarIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6813,6 +8048,7 @@ export namespace Prisma {
       chatRecommendations: Prisma.$ChatInteractionPayload<ExtArgs>[]
       maintenancePredictions: Prisma.$MaintenancePredictionPayload<ExtArgs>[]
       environmentalImpacts: Prisma.$EnvironmentalImpactPayload<ExtArgs>[]
+      priceAnalyses: Prisma.$PriceAnalysisPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6834,6 +8070,7 @@ export namespace Prisma {
       updatedAt: Date
       greenScore: number | null
       environmentalMetrics: Prisma.JsonValue | null
+      priceHistory: Prisma.JsonValue | null
     }, ExtArgs["result"]["car"]>
     composites: {}
   }
@@ -7233,6 +8470,7 @@ export namespace Prisma {
     chatRecommendations<T extends Car$chatRecommendationsArgs<ExtArgs> = {}>(args?: Subset<T, Car$chatRecommendationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ChatInteractionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     maintenancePredictions<T extends Car$maintenancePredictionsArgs<ExtArgs> = {}>(args?: Subset<T, Car$maintenancePredictionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     environmentalImpacts<T extends Car$environmentalImpactsArgs<ExtArgs> = {}>(args?: Subset<T, Car$environmentalImpactsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    priceAnalyses<T extends Car$priceAnalysesArgs<ExtArgs> = {}>(args?: Subset<T, Car$priceAnalysesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7281,6 +8519,7 @@ export namespace Prisma {
     readonly updatedAt: FieldRef<"Car", 'DateTime'>
     readonly greenScore: FieldRef<"Car", 'Float'>
     readonly environmentalMetrics: FieldRef<"Car", 'Json'>
+    readonly priceHistory: FieldRef<"Car", 'Json'>
   }
     
 
@@ -7786,6 +9025,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: EnvironmentalImpactScalarFieldEnum | EnvironmentalImpactScalarFieldEnum[]
+  }
+
+  /**
+   * Car.priceAnalyses
+   */
+  export type Car$priceAnalysesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PriceAnalysis
+     */
+    select?: PriceAnalysisSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PriceAnalysis
+     */
+    omit?: PriceAnalysisOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PriceAnalysisInclude<ExtArgs> | null
+    where?: PriceAnalysisWhereInput
+    orderBy?: PriceAnalysisOrderByWithRelationInput | PriceAnalysisOrderByWithRelationInput[]
+    cursor?: PriceAnalysisWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PriceAnalysisScalarFieldEnum | PriceAnalysisScalarFieldEnum[]
   }
 
   /**
@@ -12238,6 +13501,20 @@ export namespace Prisma {
   export type EnvironmentalImpactScalarFieldEnum = (typeof EnvironmentalImpactScalarFieldEnum)[keyof typeof EnvironmentalImpactScalarFieldEnum]
 
 
+  export const PriceAnalysisScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    carId: 'carId',
+    marketValue: 'marketValue',
+    priceAnalysis: 'priceAnalysis',
+    buyingRecommendation: 'buyingRecommendation',
+    seasonalTrends: 'seasonalTrends',
+    createdAt: 'createdAt'
+  };
+
+  export type PriceAnalysisScalarFieldEnum = (typeof PriceAnalysisScalarFieldEnum)[keyof typeof PriceAnalysisScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     clerkUserId: 'clerkUserId',
@@ -12272,7 +13549,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
     greenScore: 'greenScore',
-    environmentalMetrics: 'environmentalMetrics'
+    environmentalMetrics: 'environmentalMetrics',
+    priceHistory: 'priceHistory'
   };
 
   export type CarScalarFieldEnum = (typeof CarScalarFieldEnum)[keyof typeof CarScalarFieldEnum]
@@ -12745,6 +14023,79 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"EnvironmentalImpact"> | Date | string
   }
 
+  export type PriceAnalysisWhereInput = {
+    AND?: PriceAnalysisWhereInput | PriceAnalysisWhereInput[]
+    OR?: PriceAnalysisWhereInput[]
+    NOT?: PriceAnalysisWhereInput | PriceAnalysisWhereInput[]
+    id?: StringFilter<"PriceAnalysis"> | string
+    userId?: StringFilter<"PriceAnalysis"> | string
+    carId?: StringFilter<"PriceAnalysis"> | string
+    marketValue?: JsonFilter<"PriceAnalysis">
+    priceAnalysis?: JsonFilter<"PriceAnalysis">
+    buyingRecommendation?: JsonFilter<"PriceAnalysis">
+    seasonalTrends?: JsonFilter<"PriceAnalysis">
+    createdAt?: DateTimeFilter<"PriceAnalysis"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    car?: XOR<CarScalarRelationFilter, CarWhereInput>
+  }
+
+  export type PriceAnalysisOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    marketValue?: SortOrder
+    priceAnalysis?: SortOrder
+    buyingRecommendation?: SortOrder
+    seasonalTrends?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+    car?: CarOrderByWithRelationInput
+  }
+
+  export type PriceAnalysisWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PriceAnalysisWhereInput | PriceAnalysisWhereInput[]
+    OR?: PriceAnalysisWhereInput[]
+    NOT?: PriceAnalysisWhereInput | PriceAnalysisWhereInput[]
+    userId?: StringFilter<"PriceAnalysis"> | string
+    carId?: StringFilter<"PriceAnalysis"> | string
+    marketValue?: JsonFilter<"PriceAnalysis">
+    priceAnalysis?: JsonFilter<"PriceAnalysis">
+    buyingRecommendation?: JsonFilter<"PriceAnalysis">
+    seasonalTrends?: JsonFilter<"PriceAnalysis">
+    createdAt?: DateTimeFilter<"PriceAnalysis"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+    car?: XOR<CarScalarRelationFilter, CarWhereInput>
+  }, "id">
+
+  export type PriceAnalysisOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    marketValue?: SortOrder
+    priceAnalysis?: SortOrder
+    buyingRecommendation?: SortOrder
+    seasonalTrends?: SortOrder
+    createdAt?: SortOrder
+    _count?: PriceAnalysisCountOrderByAggregateInput
+    _max?: PriceAnalysisMaxOrderByAggregateInput
+    _min?: PriceAnalysisMinOrderByAggregateInput
+  }
+
+  export type PriceAnalysisScalarWhereWithAggregatesInput = {
+    AND?: PriceAnalysisScalarWhereWithAggregatesInput | PriceAnalysisScalarWhereWithAggregatesInput[]
+    OR?: PriceAnalysisScalarWhereWithAggregatesInput[]
+    NOT?: PriceAnalysisScalarWhereWithAggregatesInput | PriceAnalysisScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PriceAnalysis"> | string
+    userId?: StringWithAggregatesFilter<"PriceAnalysis"> | string
+    carId?: StringWithAggregatesFilter<"PriceAnalysis"> | string
+    marketValue?: JsonWithAggregatesFilter<"PriceAnalysis">
+    priceAnalysis?: JsonWithAggregatesFilter<"PriceAnalysis">
+    buyingRecommendation?: JsonWithAggregatesFilter<"PriceAnalysis">
+    seasonalTrends?: JsonWithAggregatesFilter<"PriceAnalysis">
+    createdAt?: DateTimeWithAggregatesFilter<"PriceAnalysis"> | Date | string
+  }
+
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -12763,6 +14114,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionListRelationFilter
     maintenancePredictions?: MaintenancePredictionListRelationFilter
     environmentalImpacts?: EnvironmentalImpactListRelationFilter
+    priceAnalyses?: PriceAnalysisListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -12780,6 +14132,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionOrderByRelationAggregateInput
     maintenancePredictions?: MaintenancePredictionOrderByRelationAggregateInput
     environmentalImpacts?: EnvironmentalImpactOrderByRelationAggregateInput
+    priceAnalyses?: PriceAnalysisOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -12800,6 +14153,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionListRelationFilter
     maintenancePredictions?: MaintenancePredictionListRelationFilter
     environmentalImpacts?: EnvironmentalImpactListRelationFilter
+    priceAnalyses?: PriceAnalysisListRelationFilter
   }, "id" | "clerkUserId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -12855,11 +14209,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Car"> | Date | string
     greenScore?: FloatNullableFilter<"Car"> | number | null
     environmentalMetrics?: JsonNullableFilter<"Car">
+    priceHistory?: JsonNullableFilter<"Car">
     savedBy?: UserSavedCarListRelationFilter
     testDriveBookings?: TestDriveBookingListRelationFilter
     chatRecommendations?: ChatInteractionListRelationFilter
     maintenancePredictions?: MaintenancePredictionListRelationFilter
     environmentalImpacts?: EnvironmentalImpactListRelationFilter
+    priceAnalyses?: PriceAnalysisListRelationFilter
   }
 
   export type CarOrderByWithRelationInput = {
@@ -12882,11 +14238,13 @@ export namespace Prisma {
     updatedAt?: SortOrder
     greenScore?: SortOrderInput | SortOrder
     environmentalMetrics?: SortOrderInput | SortOrder
+    priceHistory?: SortOrderInput | SortOrder
     savedBy?: UserSavedCarOrderByRelationAggregateInput
     testDriveBookings?: TestDriveBookingOrderByRelationAggregateInput
     chatRecommendations?: ChatInteractionOrderByRelationAggregateInput
     maintenancePredictions?: MaintenancePredictionOrderByRelationAggregateInput
     environmentalImpacts?: EnvironmentalImpactOrderByRelationAggregateInput
+    priceAnalyses?: PriceAnalysisOrderByRelationAggregateInput
   }
 
   export type CarWhereUniqueInput = Prisma.AtLeast<{
@@ -12912,11 +14270,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Car"> | Date | string
     greenScore?: FloatNullableFilter<"Car"> | number | null
     environmentalMetrics?: JsonNullableFilter<"Car">
+    priceHistory?: JsonNullableFilter<"Car">
     savedBy?: UserSavedCarListRelationFilter
     testDriveBookings?: TestDriveBookingListRelationFilter
     chatRecommendations?: ChatInteractionListRelationFilter
     maintenancePredictions?: MaintenancePredictionListRelationFilter
     environmentalImpacts?: EnvironmentalImpactListRelationFilter
+    priceAnalyses?: PriceAnalysisListRelationFilter
   }, "id">
 
   export type CarOrderByWithAggregationInput = {
@@ -12939,6 +14299,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     greenScore?: SortOrderInput | SortOrder
     environmentalMetrics?: SortOrderInput | SortOrder
+    priceHistory?: SortOrderInput | SortOrder
     _count?: CarCountOrderByAggregateInput
     _avg?: CarAvgOrderByAggregateInput
     _max?: CarMaxOrderByAggregateInput
@@ -12969,6 +14330,7 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"Car"> | Date | string
     greenScore?: FloatNullableWithAggregatesFilter<"Car"> | number | null
     environmentalMetrics?: JsonNullableWithAggregatesFilter<"Car">
+    priceHistory?: JsonNullableWithAggregatesFilter<"Car">
   }
 
   export type DealershipInfoWhereInput = {
@@ -13460,6 +14822,81 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PriceAnalysisCreateInput = {
+    id?: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutPriceAnalysesInput
+    car: CarCreateNestedOneWithoutPriceAnalysesInput
+  }
+
+  export type PriceAnalysisUncheckedCreateInput = {
+    id?: string
+    userId: string
+    carId: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PriceAnalysisUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutPriceAnalysesNestedInput
+    car?: CarUpdateOneRequiredWithoutPriceAnalysesNestedInput
+  }
+
+  export type PriceAnalysisUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PriceAnalysisCreateManyInput = {
+    id?: string
+    userId: string
+    carId: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PriceAnalysisUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PriceAnalysisUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     clerkUserId: string
@@ -13475,6 +14912,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -13492,6 +14930,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -13509,6 +14948,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -13526,6 +14966,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -13584,11 +15025,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateInput = {
@@ -13611,11 +15054,13 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarUpdateInput = {
@@ -13638,11 +15083,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateInput = {
@@ -13665,11 +15112,13 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type CarCreateManyInput = {
@@ -13692,6 +15141,7 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type CarUpdateManyMutationInput = {
@@ -13714,6 +15164,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type CarUncheckedUpdateManyInput = {
@@ -13736,6 +15187,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type DealershipInfoCreateInput = {
@@ -14271,6 +15723,31 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type PriceAnalysisCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    marketValue?: SortOrder
+    priceAnalysis?: SortOrder
+    buyingRecommendation?: SortOrder
+    seasonalTrends?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PriceAnalysisMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PriceAnalysisMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carId?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -14323,6 +15800,12 @@ export namespace Prisma {
     none?: EnvironmentalImpactWhereInput
   }
 
+  export type PriceAnalysisListRelationFilter = {
+    every?: PriceAnalysisWhereInput
+    some?: PriceAnalysisWhereInput
+    none?: PriceAnalysisWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -14345,6 +15828,10 @@ export namespace Prisma {
   }
 
   export type EnvironmentalImpactOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PriceAnalysisOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -14511,6 +15998,7 @@ export namespace Prisma {
     updatedAt?: SortOrder
     greenScore?: SortOrder
     environmentalMetrics?: SortOrder
+    priceHistory?: SortOrder
   }
 
   export type CarAvgOrderByAggregateInput = {
@@ -14992,6 +16480,34 @@ export namespace Prisma {
     update?: XOR<XOR<CarUpdateToOneWithWhereWithoutEnvironmentalImpactsInput, CarUpdateWithoutEnvironmentalImpactsInput>, CarUncheckedUpdateWithoutEnvironmentalImpactsInput>
   }
 
+  export type UserCreateNestedOneWithoutPriceAnalysesInput = {
+    create?: XOR<UserCreateWithoutPriceAnalysesInput, UserUncheckedCreateWithoutPriceAnalysesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPriceAnalysesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type CarCreateNestedOneWithoutPriceAnalysesInput = {
+    create?: XOR<CarCreateWithoutPriceAnalysesInput, CarUncheckedCreateWithoutPriceAnalysesInput>
+    connectOrCreate?: CarCreateOrConnectWithoutPriceAnalysesInput
+    connect?: CarWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutPriceAnalysesNestedInput = {
+    create?: XOR<UserCreateWithoutPriceAnalysesInput, UserUncheckedCreateWithoutPriceAnalysesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPriceAnalysesInput
+    upsert?: UserUpsertWithoutPriceAnalysesInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPriceAnalysesInput, UserUpdateWithoutPriceAnalysesInput>, UserUncheckedUpdateWithoutPriceAnalysesInput>
+  }
+
+  export type CarUpdateOneRequiredWithoutPriceAnalysesNestedInput = {
+    create?: XOR<CarCreateWithoutPriceAnalysesInput, CarUncheckedCreateWithoutPriceAnalysesInput>
+    connectOrCreate?: CarCreateOrConnectWithoutPriceAnalysesInput
+    upsert?: CarUpsertWithoutPriceAnalysesInput
+    connect?: CarWhereUniqueInput
+    update?: XOR<XOR<CarUpdateToOneWithWhereWithoutPriceAnalysesInput, CarUpdateWithoutPriceAnalysesInput>, CarUncheckedUpdateWithoutPriceAnalysesInput>
+  }
+
   export type UserSavedCarCreateNestedManyWithoutUserInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
@@ -15027,6 +16543,13 @@ export namespace Prisma {
     connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
   }
 
+  export type PriceAnalysisCreateNestedManyWithoutUserInput = {
+    create?: XOR<PriceAnalysisCreateWithoutUserInput, PriceAnalysisUncheckedCreateWithoutUserInput> | PriceAnalysisCreateWithoutUserInput[] | PriceAnalysisUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PriceAnalysisCreateOrConnectWithoutUserInput | PriceAnalysisCreateOrConnectWithoutUserInput[]
+    createMany?: PriceAnalysisCreateManyUserInputEnvelope
+    connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+  }
+
   export type UserSavedCarUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
@@ -15060,6 +16583,13 @@ export namespace Prisma {
     connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutUserInput | EnvironmentalImpactCreateOrConnectWithoutUserInput[]
     createMany?: EnvironmentalImpactCreateManyUserInputEnvelope
     connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+  }
+
+  export type PriceAnalysisUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<PriceAnalysisCreateWithoutUserInput, PriceAnalysisUncheckedCreateWithoutUserInput> | PriceAnalysisCreateWithoutUserInput[] | PriceAnalysisUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PriceAnalysisCreateOrConnectWithoutUserInput | PriceAnalysisCreateOrConnectWithoutUserInput[]
+    createMany?: PriceAnalysisCreateManyUserInputEnvelope
+    connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -15140,6 +16670,20 @@ export namespace Prisma {
     deleteMany?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
   }
 
+  export type PriceAnalysisUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PriceAnalysisCreateWithoutUserInput, PriceAnalysisUncheckedCreateWithoutUserInput> | PriceAnalysisCreateWithoutUserInput[] | PriceAnalysisUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PriceAnalysisCreateOrConnectWithoutUserInput | PriceAnalysisCreateOrConnectWithoutUserInput[]
+    upsert?: PriceAnalysisUpsertWithWhereUniqueWithoutUserInput | PriceAnalysisUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PriceAnalysisCreateManyUserInputEnvelope
+    set?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    disconnect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    delete?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    update?: PriceAnalysisUpdateWithWhereUniqueWithoutUserInput | PriceAnalysisUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PriceAnalysisUpdateManyWithWhereWithoutUserInput | PriceAnalysisUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PriceAnalysisScalarWhereInput | PriceAnalysisScalarWhereInput[]
+  }
+
   export type UserSavedCarUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
@@ -15210,6 +16754,20 @@ export namespace Prisma {
     deleteMany?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
   }
 
+  export type PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<PriceAnalysisCreateWithoutUserInput, PriceAnalysisUncheckedCreateWithoutUserInput> | PriceAnalysisCreateWithoutUserInput[] | PriceAnalysisUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: PriceAnalysisCreateOrConnectWithoutUserInput | PriceAnalysisCreateOrConnectWithoutUserInput[]
+    upsert?: PriceAnalysisUpsertWithWhereUniqueWithoutUserInput | PriceAnalysisUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: PriceAnalysisCreateManyUserInputEnvelope
+    set?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    disconnect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    delete?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    update?: PriceAnalysisUpdateWithWhereUniqueWithoutUserInput | PriceAnalysisUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: PriceAnalysisUpdateManyWithWhereWithoutUserInput | PriceAnalysisUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: PriceAnalysisScalarWhereInput | PriceAnalysisScalarWhereInput[]
+  }
+
   export type CarCreateimagesInput = {
     set: string[]
   }
@@ -15248,6 +16806,13 @@ export namespace Prisma {
     connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
   }
 
+  export type PriceAnalysisCreateNestedManyWithoutCarInput = {
+    create?: XOR<PriceAnalysisCreateWithoutCarInput, PriceAnalysisUncheckedCreateWithoutCarInput> | PriceAnalysisCreateWithoutCarInput[] | PriceAnalysisUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: PriceAnalysisCreateOrConnectWithoutCarInput | PriceAnalysisCreateOrConnectWithoutCarInput[]
+    createMany?: PriceAnalysisCreateManyCarInputEnvelope
+    connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+  }
+
   export type UserSavedCarUncheckedCreateNestedManyWithoutCarInput = {
     create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
@@ -15280,6 +16845,13 @@ export namespace Prisma {
     connectOrCreate?: EnvironmentalImpactCreateOrConnectWithoutCarInput | EnvironmentalImpactCreateOrConnectWithoutCarInput[]
     createMany?: EnvironmentalImpactCreateManyCarInputEnvelope
     connect?: EnvironmentalImpactWhereUniqueInput | EnvironmentalImpactWhereUniqueInput[]
+  }
+
+  export type PriceAnalysisUncheckedCreateNestedManyWithoutCarInput = {
+    create?: XOR<PriceAnalysisCreateWithoutCarInput, PriceAnalysisUncheckedCreateWithoutCarInput> | PriceAnalysisCreateWithoutCarInput[] | PriceAnalysisUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: PriceAnalysisCreateOrConnectWithoutCarInput | PriceAnalysisCreateOrConnectWithoutCarInput[]
+    createMany?: PriceAnalysisCreateManyCarInputEnvelope
+    connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -15396,6 +16968,20 @@ export namespace Prisma {
     deleteMany?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
   }
 
+  export type PriceAnalysisUpdateManyWithoutCarNestedInput = {
+    create?: XOR<PriceAnalysisCreateWithoutCarInput, PriceAnalysisUncheckedCreateWithoutCarInput> | PriceAnalysisCreateWithoutCarInput[] | PriceAnalysisUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: PriceAnalysisCreateOrConnectWithoutCarInput | PriceAnalysisCreateOrConnectWithoutCarInput[]
+    upsert?: PriceAnalysisUpsertWithWhereUniqueWithoutCarInput | PriceAnalysisUpsertWithWhereUniqueWithoutCarInput[]
+    createMany?: PriceAnalysisCreateManyCarInputEnvelope
+    set?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    disconnect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    delete?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    update?: PriceAnalysisUpdateWithWhereUniqueWithoutCarInput | PriceAnalysisUpdateWithWhereUniqueWithoutCarInput[]
+    updateMany?: PriceAnalysisUpdateManyWithWhereWithoutCarInput | PriceAnalysisUpdateManyWithWhereWithoutCarInput[]
+    deleteMany?: PriceAnalysisScalarWhereInput | PriceAnalysisScalarWhereInput[]
+  }
+
   export type UserSavedCarUncheckedUpdateManyWithoutCarNestedInput = {
     create?: XOR<UserSavedCarCreateWithoutCarInput, UserSavedCarUncheckedCreateWithoutCarInput> | UserSavedCarCreateWithoutCarInput[] | UserSavedCarUncheckedCreateWithoutCarInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutCarInput | UserSavedCarCreateOrConnectWithoutCarInput[]
@@ -15463,6 +17049,20 @@ export namespace Prisma {
     update?: EnvironmentalImpactUpdateWithWhereUniqueWithoutCarInput | EnvironmentalImpactUpdateWithWhereUniqueWithoutCarInput[]
     updateMany?: EnvironmentalImpactUpdateManyWithWhereWithoutCarInput | EnvironmentalImpactUpdateManyWithWhereWithoutCarInput[]
     deleteMany?: EnvironmentalImpactScalarWhereInput | EnvironmentalImpactScalarWhereInput[]
+  }
+
+  export type PriceAnalysisUncheckedUpdateManyWithoutCarNestedInput = {
+    create?: XOR<PriceAnalysisCreateWithoutCarInput, PriceAnalysisUncheckedCreateWithoutCarInput> | PriceAnalysisCreateWithoutCarInput[] | PriceAnalysisUncheckedCreateWithoutCarInput[]
+    connectOrCreate?: PriceAnalysisCreateOrConnectWithoutCarInput | PriceAnalysisCreateOrConnectWithoutCarInput[]
+    upsert?: PriceAnalysisUpsertWithWhereUniqueWithoutCarInput | PriceAnalysisUpsertWithWhereUniqueWithoutCarInput[]
+    createMany?: PriceAnalysisCreateManyCarInputEnvelope
+    set?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    disconnect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    delete?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+    update?: PriceAnalysisUpdateWithWhereUniqueWithoutCarInput | PriceAnalysisUpdateWithWhereUniqueWithoutCarInput[]
+    updateMany?: PriceAnalysisUpdateManyWithWhereWithoutCarInput | PriceAnalysisUpdateManyWithWhereWithoutCarInput[]
+    deleteMany?: PriceAnalysisScalarWhereInput | PriceAnalysisScalarWhereInput[]
   }
 
   export type WorkingHourCreateNestedManyWithoutDealershipInput = {
@@ -15948,6 +17548,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutChatInteractionsInput = {
@@ -15964,6 +17565,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutChatInteractionsInput = {
@@ -15991,10 +17593,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateWithoutChatRecommendationsInput = {
@@ -16017,10 +17621,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarCreateOrConnectWithoutChatRecommendationsInput = {
@@ -16053,6 +17659,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutChatInteractionsInput = {
@@ -16069,6 +17676,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithWhereUniqueWithoutChatRecommendationsInput = {
@@ -16110,6 +17718,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Car"> | Date | string
     greenScore?: FloatNullableFilter<"Car"> | number | null
     environmentalMetrics?: JsonNullableFilter<"Car">
+    priceHistory?: JsonNullableFilter<"Car">
   }
 
   export type UserCreateWithoutMaintenancePredictionsInput = {
@@ -16126,6 +17735,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
     chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMaintenancePredictionsInput = {
@@ -16142,6 +17752,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
     chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMaintenancePredictionsInput = {
@@ -16169,10 +17780,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateWithoutMaintenancePredictionsInput = {
@@ -16195,10 +17808,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarCreateOrConnectWithoutMaintenancePredictionsInput = {
@@ -16231,6 +17846,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
     chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMaintenancePredictionsInput = {
@@ -16247,6 +17863,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
     chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutMaintenancePredictionsInput = {
@@ -16280,10 +17897,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateWithoutMaintenancePredictionsInput = {
@@ -16306,10 +17925,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type UserCreateWithoutEnvironmentalImpactsInput = {
@@ -16326,6 +17947,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
     chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutEnvironmentalImpactsInput = {
@@ -16342,6 +17964,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
     chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutEnvironmentalImpactsInput = {
@@ -16369,10 +17992,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateWithoutEnvironmentalImpactsInput = {
@@ -16395,10 +18020,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
     testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarCreateOrConnectWithoutEnvironmentalImpactsInput = {
@@ -16431,6 +18058,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
     chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEnvironmentalImpactsInput = {
@@ -16447,6 +18075,7 @@ export namespace Prisma {
     testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
     chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutEnvironmentalImpactsInput = {
@@ -16480,10 +18109,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateWithoutEnvironmentalImpactsInput = {
@@ -16506,10 +18137,224 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutCarNestedInput
+  }
+
+  export type UserCreateWithoutPriceAnalysesInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPriceAnalysesInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPriceAnalysesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPriceAnalysesInput, UserUncheckedCreateWithoutPriceAnalysesInput>
+  }
+
+  export type CarCreateWithoutPriceAnalysesInput = {
+    id?: string
+    make: string
+    model: string
+    year: number
+    price: Decimal | DecimalJsLike | number | string
+    mileage: number
+    color: string
+    fuelType: string
+    transmission: string
+    bodyType: string
+    seats?: number | null
+    description: string
+    status?: $Enums.CarStatus
+    featured?: boolean
+    images?: CarCreateimagesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
+    testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
+  }
+
+  export type CarUncheckedCreateWithoutPriceAnalysesInput = {
+    id?: string
+    make: string
+    model: string
+    year: number
+    price: Decimal | DecimalJsLike | number | string
+    mileage: number
+    color: string
+    fuelType: string
+    transmission: string
+    bodyType: string
+    seats?: number | null
+    description: string
+    status?: $Enums.CarStatus
+    featured?: boolean
+    images?: CarCreateimagesInput | string[]
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    greenScore?: number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
+    testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
+    chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
+  }
+
+  export type CarCreateOrConnectWithoutPriceAnalysesInput = {
+    where: CarWhereUniqueInput
+    create: XOR<CarCreateWithoutPriceAnalysesInput, CarUncheckedCreateWithoutPriceAnalysesInput>
+  }
+
+  export type UserUpsertWithoutPriceAnalysesInput = {
+    update: XOR<UserUpdateWithoutPriceAnalysesInput, UserUncheckedUpdateWithoutPriceAnalysesInput>
+    create: XOR<UserCreateWithoutPriceAnalysesInput, UserUncheckedCreateWithoutPriceAnalysesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPriceAnalysesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPriceAnalysesInput, UserUncheckedUpdateWithoutPriceAnalysesInput>
+  }
+
+  export type UserUpdateWithoutPriceAnalysesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPriceAnalysesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+  }
+
+  export type CarUpsertWithoutPriceAnalysesInput = {
+    update: XOR<CarUpdateWithoutPriceAnalysesInput, CarUncheckedUpdateWithoutPriceAnalysesInput>
+    create: XOR<CarCreateWithoutPriceAnalysesInput, CarUncheckedCreateWithoutPriceAnalysesInput>
+    where?: CarWhereInput
+  }
+
+  export type CarUpdateToOneWithWhereWithoutPriceAnalysesInput = {
+    where?: CarWhereInput
+    data: XOR<CarUpdateWithoutPriceAnalysesInput, CarUncheckedUpdateWithoutPriceAnalysesInput>
+  }
+
+  export type CarUpdateWithoutPriceAnalysesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
+    testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
+  }
+
+  export type CarUncheckedUpdateWithoutPriceAnalysesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    make?: StringFieldUpdateOperationsInput | string
+    model?: StringFieldUpdateOperationsInput | string
+    year?: IntFieldUpdateOperationsInput | number
+    price?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
+    mileage?: IntFieldUpdateOperationsInput | number
+    color?: StringFieldUpdateOperationsInput | string
+    fuelType?: StringFieldUpdateOperationsInput | string
+    transmission?: StringFieldUpdateOperationsInput | string
+    bodyType?: StringFieldUpdateOperationsInput | string
+    seats?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: StringFieldUpdateOperationsInput | string
+    status?: EnumCarStatusFieldUpdateOperationsInput | $Enums.CarStatus
+    featured?: BoolFieldUpdateOperationsInput | boolean
+    images?: CarUpdateimagesInput | string[]
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
+    environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
+    savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
+    testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
+    chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type UserSavedCarCreateWithoutUserInput = {
@@ -16653,6 +18498,36 @@ export namespace Prisma {
 
   export type EnvironmentalImpactCreateManyUserInputEnvelope = {
     data: EnvironmentalImpactCreateManyUserInput | EnvironmentalImpactCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PriceAnalysisCreateWithoutUserInput = {
+    id?: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    car: CarCreateNestedOneWithoutPriceAnalysesInput
+  }
+
+  export type PriceAnalysisUncheckedCreateWithoutUserInput = {
+    id?: string
+    carId: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PriceAnalysisCreateOrConnectWithoutUserInput = {
+    where: PriceAnalysisWhereUniqueInput
+    create: XOR<PriceAnalysisCreateWithoutUserInput, PriceAnalysisUncheckedCreateWithoutUserInput>
+  }
+
+  export type PriceAnalysisCreateManyUserInputEnvelope = {
+    data: PriceAnalysisCreateManyUserInput | PriceAnalysisCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -16802,6 +18677,36 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"EnvironmentalImpact"> | Date | string
   }
 
+  export type PriceAnalysisUpsertWithWhereUniqueWithoutUserInput = {
+    where: PriceAnalysisWhereUniqueInput
+    update: XOR<PriceAnalysisUpdateWithoutUserInput, PriceAnalysisUncheckedUpdateWithoutUserInput>
+    create: XOR<PriceAnalysisCreateWithoutUserInput, PriceAnalysisUncheckedCreateWithoutUserInput>
+  }
+
+  export type PriceAnalysisUpdateWithWhereUniqueWithoutUserInput = {
+    where: PriceAnalysisWhereUniqueInput
+    data: XOR<PriceAnalysisUpdateWithoutUserInput, PriceAnalysisUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PriceAnalysisUpdateManyWithWhereWithoutUserInput = {
+    where: PriceAnalysisScalarWhereInput
+    data: XOR<PriceAnalysisUpdateManyMutationInput, PriceAnalysisUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type PriceAnalysisScalarWhereInput = {
+    AND?: PriceAnalysisScalarWhereInput | PriceAnalysisScalarWhereInput[]
+    OR?: PriceAnalysisScalarWhereInput[]
+    NOT?: PriceAnalysisScalarWhereInput | PriceAnalysisScalarWhereInput[]
+    id?: StringFilter<"PriceAnalysis"> | string
+    userId?: StringFilter<"PriceAnalysis"> | string
+    carId?: StringFilter<"PriceAnalysis"> | string
+    marketValue?: JsonFilter<"PriceAnalysis">
+    priceAnalysis?: JsonFilter<"PriceAnalysis">
+    buyingRecommendation?: JsonFilter<"PriceAnalysis">
+    seasonalTrends?: JsonFilter<"PriceAnalysis">
+    createdAt?: DateTimeFilter<"PriceAnalysis"> | Date | string
+  }
+
   export type UserSavedCarCreateWithoutCarInput = {
     id?: string
     savedAt?: Date | string
@@ -16941,6 +18846,36 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type PriceAnalysisCreateWithoutCarInput = {
+    id?: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutPriceAnalysesInput
+  }
+
+  export type PriceAnalysisUncheckedCreateWithoutCarInput = {
+    id?: string
+    userId: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PriceAnalysisCreateOrConnectWithoutCarInput = {
+    where: PriceAnalysisWhereUniqueInput
+    create: XOR<PriceAnalysisCreateWithoutCarInput, PriceAnalysisUncheckedCreateWithoutCarInput>
+  }
+
+  export type PriceAnalysisCreateManyCarInputEnvelope = {
+    data: PriceAnalysisCreateManyCarInput | PriceAnalysisCreateManyCarInput[]
+    skipDuplicates?: boolean
+  }
+
   export type UserSavedCarUpsertWithWhereUniqueWithoutCarInput = {
     where: UserSavedCarWhereUniqueInput
     update: XOR<UserSavedCarUpdateWithoutCarInput, UserSavedCarUncheckedUpdateWithoutCarInput>
@@ -17019,6 +18954,22 @@ export namespace Prisma {
   export type EnvironmentalImpactUpdateManyWithWhereWithoutCarInput = {
     where: EnvironmentalImpactScalarWhereInput
     data: XOR<EnvironmentalImpactUpdateManyMutationInput, EnvironmentalImpactUncheckedUpdateManyWithoutCarInput>
+  }
+
+  export type PriceAnalysisUpsertWithWhereUniqueWithoutCarInput = {
+    where: PriceAnalysisWhereUniqueInput
+    update: XOR<PriceAnalysisUpdateWithoutCarInput, PriceAnalysisUncheckedUpdateWithoutCarInput>
+    create: XOR<PriceAnalysisCreateWithoutCarInput, PriceAnalysisUncheckedCreateWithoutCarInput>
+  }
+
+  export type PriceAnalysisUpdateWithWhereUniqueWithoutCarInput = {
+    where: PriceAnalysisWhereUniqueInput
+    data: XOR<PriceAnalysisUpdateWithoutCarInput, PriceAnalysisUncheckedUpdateWithoutCarInput>
+  }
+
+  export type PriceAnalysisUpdateManyWithWhereWithoutCarInput = {
+    where: PriceAnalysisScalarWhereInput
+    data: XOR<PriceAnalysisUpdateManyMutationInput, PriceAnalysisUncheckedUpdateManyWithoutCarInput>
   }
 
   export type WorkingHourCreateWithoutDealershipInput = {
@@ -17151,6 +19102,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSavedCarsInput = {
@@ -17167,6 +19119,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSavedCarsInput = {
@@ -17194,10 +19147,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     testDriveBookings?: TestDriveBookingCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateWithoutSavedByInput = {
@@ -17220,10 +19175,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     testDriveBookings?: TestDriveBookingUncheckedCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarCreateOrConnectWithoutSavedByInput = {
@@ -17256,6 +19213,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSavedCarsInput = {
@@ -17272,6 +19230,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutSavedByInput = {
@@ -17305,10 +19264,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateWithoutSavedByInput = {
@@ -17331,10 +19292,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type CarCreateWithoutTestDriveBookingsInput = {
@@ -17357,10 +19320,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionCreateNestedManyWithoutRecommendedCarsInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutCarInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutCarInput
   }
 
   export type CarUncheckedCreateWithoutTestDriveBookingsInput = {
@@ -17383,10 +19348,12 @@ export namespace Prisma {
     updatedAt?: Date | string
     greenScore?: number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedCreateNestedManyWithoutCarInput
     chatRecommendations?: ChatInteractionUncheckedCreateNestedManyWithoutRecommendedCarsInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutCarInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutCarInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutCarInput
   }
 
   export type CarCreateOrConnectWithoutTestDriveBookingsInput = {
@@ -17408,6 +19375,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTestDrivesInput = {
@@ -17424,6 +19392,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTestDrivesInput = {
@@ -17462,10 +19431,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateWithoutTestDriveBookingsInput = {
@@ -17488,10 +19459,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
     chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type UserUpsertWithoutTestDrivesInput = {
@@ -17519,6 +19492,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTestDrivesInput = {
@@ -17535,6 +19509,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpdateWithoutChatRecommendationsInput = {
@@ -17557,10 +19532,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUpdateManyWithoutCarNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateWithoutChatRecommendationsInput = {
@@ -17583,10 +19560,12 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
     savedBy?: UserSavedCarUncheckedUpdateManyWithoutCarNestedInput
     testDriveBookings?: TestDriveBookingUncheckedUpdateManyWithoutCarNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutCarNestedInput
   }
 
   export type CarUncheckedUpdateManyWithoutChatRecommendationsInput = {
@@ -17609,6 +19588,7 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     greenScore?: NullableFloatFieldUpdateOperationsInput | number | null
     environmentalMetrics?: NullableJsonNullValueInput | InputJsonValue
+    priceHistory?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type UserSavedCarCreateManyUserInput = {
@@ -17654,6 +19634,16 @@ export namespace Prisma {
     carbonFootprint: JsonNullValueInput | InputJsonValue
     greenScore: JsonNullValueInput | InputJsonValue
     environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PriceAnalysisCreateManyUserInput = {
+    id?: string
+    carId: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
 
@@ -17797,6 +19787,36 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PriceAnalysisUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    car?: CarUpdateOneRequiredWithoutPriceAnalysesNestedInput
+  }
+
+  export type PriceAnalysisUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PriceAnalysisUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carId?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserSavedCarCreateManyCarInput = {
     id?: string
     userId: string
@@ -17831,6 +19851,16 @@ export namespace Prisma {
     carbonFootprint: JsonNullValueInput | InputJsonValue
     greenScore: JsonNullValueInput | InputJsonValue
     environmentalMetrics: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PriceAnalysisCreateManyCarInput = {
+    id?: string
+    userId: string
+    marketValue: JsonNullValueInput | InputJsonValue
+    priceAnalysis: JsonNullValueInput | InputJsonValue
+    buyingRecommendation: JsonNullValueInput | InputJsonValue
+    seasonalTrends: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
 
@@ -17972,6 +20002,36 @@ export namespace Prisma {
     carbonFootprint?: JsonNullValueInput | InputJsonValue
     greenScore?: JsonNullValueInput | InputJsonValue
     environmentalMetrics?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PriceAnalysisUpdateWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutPriceAnalysesNestedInput
+  }
+
+  export type PriceAnalysisUncheckedUpdateWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PriceAnalysisUncheckedUpdateManyWithoutCarInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    marketValue?: JsonNullValueInput | InputJsonValue
+    priceAnalysis?: JsonNullValueInput | InputJsonValue
+    buyingRecommendation?: JsonNullValueInput | InputJsonValue
+    seasonalTrends?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

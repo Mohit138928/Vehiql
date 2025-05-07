@@ -60,6 +60,22 @@ model EnvironmentalImpact {
   @@index([carId])
 }
 
+model PriceAnalysis {
+  id                   String   @id @default(uuid())
+  userId               String
+  carId                String
+  marketValue          Json
+  priceAnalysis        Json
+  buyingRecommendation Json
+  seasonalTrends       Json
+  createdAt            DateTime @default(now())
+  user                 User     @relation(fields: [userId], references: [id])
+  car                  Car      @relation(fields: [carId], references: [id])
+
+  @@index([userId])
+  @@index([carId])
+}
+
 model User {
   id                     String                  @id @default(uuid())
   clerkUserId            String                  @unique // clerk user id
@@ -75,6 +91,7 @@ model User {
   chatInteractions       ChatInteraction[]
   maintenancePredictions MaintenancePrediction[]
   environmentalImpacts   EnvironmentalImpact[]
+  priceAnalyses          PriceAnalysis[]
 }
 
 enum UserRole {
@@ -107,6 +124,8 @@ model Car {
   greenScore             Float?                  @default(0)
   environmentalMetrics   Json?
   environmentalImpacts   EnvironmentalImpact[]
+  priceHistory           Json? // Array of historical prices
+  priceAnalyses          PriceAnalysis[]
 
   @@index([make, model])
   @@index([bodyType])

@@ -3,6 +3,7 @@ import { CarDetails } from "./_components/car-details";
 import { MaintenanceCalculator } from "@/components/maintenance/MaintenanceCalculator";
 import { EnvironmentalDashboard } from "@/components/environmental/EnvironmentalDashboard";
 import { notFound } from "next/navigation";
+import { PriceAnalysis } from "@/components/price-analysis/PriceAnalysis";
 
 // ✅ Correct: no await needed here
 export async function generateMetadata({ params }) {
@@ -39,6 +40,12 @@ export default async function CarDetailsPage({ params }) {
   return (
     <div className="container mx-auto px-10 py-12">
       <CarDetails car={result.data} testDriveInfo={result.data.testDriveInfo} />
+
+      {/* Price Analysis Section */}
+      <div className="mt-16">
+        <h2 className="text-3xl font-bold mb-8">Price Analysis</h2>
+        <PriceAnalysis car={result.data} />
+      </div>
       
       {/* Environmental Impact Section */}
       <div className="mt-16">
