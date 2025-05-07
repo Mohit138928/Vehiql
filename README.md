@@ -2,45 +2,78 @@
 
 ![AutoVolt](public/about-mission.jpg)
 
-AutoVolt is a modern car marketplace platform that uses AI technology to help users find their perfect vehicle. The platform offers advanced search capabilities, test drive scheduling, and a seamless car buying experience.
+AutoVolt is a next-generation car marketplace that leverages AI technology to provide an intelligent, personalized car buying experience. Our platform combines advanced AI features with user-friendly interfaces to revolutionize how people search for and purchase vehicles.
 
-## 🚀 Features
+## 🚀 Key Features
 
-### For Buyers
-- **AI-Powered Image Search**: Upload a car image to find similar vehicles
-- **Advanced Filtering**: Search by make, model, price, body type, and more
-- **Test Drive Booking**: Schedule test drives with real-time availability
-- **Car Wishlist**: Save favorite cars for later viewing
-- **Detailed Car Profiles**: Comprehensive vehicle information and images
+### Intelligent Search & Discovery
+- 🔍 AI-powered smart search with natural language understanding
+- 🎯 Personalized car recommendations based on user preferences
+- 🏷️ Advanced filtering and sorting capabilities
 
-### For Dealers/Admin
-- **Dashboard Analytics**: Track listings and test drive bookings
-- **Inventory Management**: Add and manage car listings
-- **Booking Management**: Handle test drive requests
-- **User Management**: Monitor user activities and interactions
+### Smart Analysis Tools
+- 📊 Comparative Analysis Tool
+  - Side-by-side vehicle comparison
+  - Feature matching analysis
+  - Total cost of ownership calculator
+  - Interactive comparison charts
+
+- 💰 Smart Price Analysis
+  - Market value predictor
+  - Price history tracking
+  - Depreciation calculator
+  - Best time to buy indicators
+
+- 🌱 Environmental Impact Dashboard
+  - Carbon footprint calculator
+  - Eco-friendly recommendations
+  - Green score comparison
+  - Environmental impact metrics
+
+### Maintenance & Value Features
+- 🔧 AI-Powered Maintenance Calculator
+  - Predictive maintenance scheduling
+  - Cost estimates
+  - Service reminders
+  - Parts replacement timeline
+
+- 💎 Value Analysis Tools
+  - Market value tracking
+  - Price trend analysis
+  - Investment potential calculator
+  - Resale value predictions
+
+### User Experience
+- 🚗 Virtual Test Drive Booking System
+- 💖 Personalized Wishlists
+- 💬 AI Chat Assistant
+- 📱 Responsive Design
+
+## 🏆 Competitive Analysis
+
+### AutoVolt vs Traditional Car Sites
+
+| Feature | AutoVolt | Traditional Sites |
+|---------|----------|------------------|
+| AI Integration | Comprehensive AI features | Basic or no AI |
+| Price Analysis | Advanced predictive analytics | Basic price comparisons |
+| Environmental Impact | Detailed sustainability metrics | Limited or no eco-data |
+| Maintenance Predictions | AI-powered predictions | Basic service schedules |
+| Cost Analysis | Total ownership cost calculator | Basic price information |
+| User Experience | Modern, intuitive interface | Traditional interfaces |
+| Mobile Responsiveness | Fully responsive design | Varies |
+| Feature Comparison | Interactive & detailed | Basic comparison tables |
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: 
-  - Next.js 14 with App Router
-  - TailwindCSS for styling
-  - Shadcn UI components
-  - TypeScript for type safety
-
-- **Backend**:
-  - Prisma ORM
-  - PostgreSQL (Supabase)
-  - Next.js API routes
-
-- **Authentication**:
-  - Clerk Authentication
-
-- **AI/ML**:
-  - Google's Gemini AI for image analysis
-  - AI-powered car recommendations
-
-- **Cloud Storage**:
-  - Supabase Storage for images
+- **Frontend**: Next.js 14, React, Tailwind CSS
+- **Backend**: Node.js, Prisma ORM
+- **Database**: PostgreSQL
+- **AI/ML**: Google Gemini Pro
+- **Authentication**: Clerk
+- **Cloud**: Vercel
+- **Storage**: Upload Thing
+- **UI Components**: Shadcn UI
 
 ## 🚦 Getting Started
 
@@ -82,49 +115,37 @@ npm run dev
 autovolt/
 ├── app/
 │   ├── (main)/         # Main user routes
-│   ├── (admin)/        # Admin dashboard routes
-│   └── api/            # API routes
+│   ├── (admin)/        # Admin dashboard
+│   └── api/            # API endpoints
 ├── components/         # Reusable components
-├── lib/               # Utility functions
-├── prisma/            # Database schema
-└── public/            # Static assets
+│   ├── ui/            # UI components
+│   ├── comparison/    # Comparison tools
+│   ├── maintenance/   # Maintenance calculator
+│   └── environmental/ # Environmental dashboard
+├── actions/           # Server actions
+├── lib/              # Utilities
+├── prisma/           # Database schema
+└── public/           # Static assets
 ```
 
-## 📱 Key Pages
-
-- `/` - Homepage
-- `/cars` - Car listings
-- `/cars/[id]` - Car details
-- `/saved-cars` - Wishlisted cars
-- `/test-drive` - Test drive bookings
-- `/admin` - Admin dashboard
-- `/about` - About page
-- `/contact` - Contact page
-
-## 🔐 Authentication
-
-- User authentication handled by Clerk
-- Role-based access control:
-  - Public users
-  - Registered users
-  - Admin users
-
-## 🔄 Database Schema
-
-Core models include:
-- User
-- Car
-- TestDriveBooking
-- UserSavedCar
-
-## 🛡️ Security Features
+## 🔐 Security & Authentication
 
 - Secure authentication with Clerk
+- Role-based access control
 - Protected API routes
 - Input validation
+- Rate limiting
 - XSS protection
 - CORS configuration
-- Rate limiting
+
+## 🚀 Future Roadmap
+
+- Virtual Reality car tours
+- AI-powered negotiation assistant
+- Blockchain integration for transactions
+- Advanced vehicle history analysis
+- Real-time market insights
+- Mobile app development
 
 ## 📄 License
 
@@ -132,10 +153,11 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) first.
+We welcome contributions! Please read our [Contributing Guidelines](CONTRIBUTING.md).
 
 ## 📞 Support
 
-For support, email [Mohit Maurya](mauryamohit138@gmail.com) or create an issue in this repository.
-
----
+For support:
+- Email: [Mohit Maurya](mauryamohit138@gmail.com)
+- Create an issue in this repository
+- Documentation: [Project Wiki](wiki)
