@@ -76,6 +76,17 @@ model PriceAnalysis {
   @@index([carId])
 }
 
+model Comparison {
+  id             String   @id @default(uuid())
+  userId         String
+  carIds         String[]
+  comparisonData Json
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
 model User {
   id                     String                  @id @default(uuid())
   clerkUserId            String                  @unique // clerk user id
@@ -92,6 +103,7 @@ model User {
   maintenancePredictions MaintenancePrediction[]
   environmentalImpacts   EnvironmentalImpact[]
   priceAnalyses          PriceAnalysis[]
+  comparisons            Comparison[]
 }
 
 enum UserRole {

@@ -34,6 +34,11 @@ export type EnvironmentalImpact = $Result.DefaultSelection<Prisma.$Environmental
  */
 export type PriceAnalysis = $Result.DefaultSelection<Prisma.$PriceAnalysisPayload>
 /**
+ * Model Comparison
+ * 
+ */
+export type Comparison = $Result.DefaultSelection<Prisma.$ComparisonPayload>
+/**
  * Model User
  * 
  */
@@ -290,6 +295,16 @@ export class PrismaClient<
     * ```
     */
   get priceAnalysis(): Prisma.PriceAnalysisDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.comparison`: Exposes CRUD operations for the **Comparison** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Comparisons
+    * const comparisons = await prisma.comparison.findMany()
+    * ```
+    */
+  get comparison(): Prisma.ComparisonDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
@@ -794,6 +809,7 @@ export namespace Prisma {
     MaintenancePrediction: 'MaintenancePrediction',
     EnvironmentalImpact: 'EnvironmentalImpact',
     PriceAnalysis: 'PriceAnalysis',
+    Comparison: 'Comparison',
     User: 'User',
     Car: 'Car',
     DealershipInfo: 'DealershipInfo',
@@ -818,7 +834,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "chatInteraction" | "maintenancePrediction" | "environmentalImpact" | "priceAnalysis" | "user" | "car" | "dealershipInfo" | "workingHour" | "userSavedCar" | "testDriveBooking"
+      modelProps: "chatInteraction" | "maintenancePrediction" | "environmentalImpact" | "priceAnalysis" | "comparison" | "user" | "car" | "dealershipInfo" | "workingHour" | "userSavedCar" | "testDriveBooking"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1115,6 +1131,80 @@ export namespace Prisma {
           count: {
             args: Prisma.PriceAnalysisCountArgs<ExtArgs>
             result: $Utils.Optional<PriceAnalysisCountAggregateOutputType> | number
+          }
+        }
+      }
+      Comparison: {
+        payload: Prisma.$ComparisonPayload<ExtArgs>
+        fields: Prisma.ComparisonFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ComparisonFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ComparisonFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          findFirst: {
+            args: Prisma.ComparisonFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ComparisonFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          findMany: {
+            args: Prisma.ComparisonFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>[]
+          }
+          create: {
+            args: Prisma.ComparisonCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          createMany: {
+            args: Prisma.ComparisonCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ComparisonCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>[]
+          }
+          delete: {
+            args: Prisma.ComparisonDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          update: {
+            args: Prisma.ComparisonUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          deleteMany: {
+            args: Prisma.ComparisonDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ComparisonUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ComparisonUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>[]
+          }
+          upsert: {
+            args: Prisma.ComparisonUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ComparisonPayload>
+          }
+          aggregate: {
+            args: Prisma.ComparisonAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateComparison>
+          }
+          groupBy: {
+            args: Prisma.ComparisonGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ComparisonGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ComparisonCountArgs<ExtArgs>
+            result: $Utils.Optional<ComparisonCountAggregateOutputType> | number
           }
         }
       }
@@ -1650,6 +1740,7 @@ export namespace Prisma {
     maintenancePrediction?: MaintenancePredictionOmit
     environmentalImpact?: EnvironmentalImpactOmit
     priceAnalysis?: PriceAnalysisOmit
+    comparison?: ComparisonOmit
     user?: UserOmit
     car?: CarOmit
     dealershipInfo?: DealershipInfoOmit
@@ -1787,6 +1878,7 @@ export namespace Prisma {
     maintenancePredictions: number
     environmentalImpacts: number
     priceAnalyses: number
+    comparisons: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -1796,6 +1888,7 @@ export namespace Prisma {
     maintenancePredictions?: boolean | UserCountOutputTypeCountMaintenancePredictionsArgs
     environmentalImpacts?: boolean | UserCountOutputTypeCountEnvironmentalImpactsArgs
     priceAnalyses?: boolean | UserCountOutputTypeCountPriceAnalysesArgs
+    comparisons?: boolean | UserCountOutputTypeCountComparisonsArgs
   }
 
   // Custom InputTypes
@@ -1849,6 +1942,13 @@ export namespace Prisma {
    */
   export type UserCountOutputTypeCountPriceAnalysesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PriceAnalysisWhereInput
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountComparisonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComparisonWhereInput
   }
 
 
@@ -6366,6 +6466,1056 @@ export namespace Prisma {
 
 
   /**
+   * Model Comparison
+   */
+
+  export type AggregateComparison = {
+    _count: ComparisonCountAggregateOutputType | null
+    _min: ComparisonMinAggregateOutputType | null
+    _max: ComparisonMaxAggregateOutputType | null
+  }
+
+  export type ComparisonMinAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    createdAt: Date | null
+  }
+
+  export type ComparisonMaxAggregateOutputType = {
+    id: string | null
+    userId: string | null
+    createdAt: Date | null
+  }
+
+  export type ComparisonCountAggregateOutputType = {
+    id: number
+    userId: number
+    carIds: number
+    comparisonData: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ComparisonMinAggregateInputType = {
+    id?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type ComparisonMaxAggregateInputType = {
+    id?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type ComparisonCountAggregateInputType = {
+    id?: true
+    userId?: true
+    carIds?: true
+    comparisonData?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ComparisonAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comparison to aggregate.
+     */
+    where?: ComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comparisons to fetch.
+     */
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Comparisons
+    **/
+    _count?: true | ComparisonCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ComparisonMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ComparisonMaxAggregateInputType
+  }
+
+  export type GetComparisonAggregateType<T extends ComparisonAggregateArgs> = {
+        [P in keyof T & keyof AggregateComparison]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateComparison[P]>
+      : GetScalarType<T[P], AggregateComparison[P]>
+  }
+
+
+
+
+  export type ComparisonGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ComparisonWhereInput
+    orderBy?: ComparisonOrderByWithAggregationInput | ComparisonOrderByWithAggregationInput[]
+    by: ComparisonScalarFieldEnum[] | ComparisonScalarFieldEnum
+    having?: ComparisonScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ComparisonCountAggregateInputType | true
+    _min?: ComparisonMinAggregateInputType
+    _max?: ComparisonMaxAggregateInputType
+  }
+
+  export type ComparisonGroupByOutputType = {
+    id: string
+    userId: string
+    carIds: string[]
+    comparisonData: JsonValue
+    createdAt: Date
+    _count: ComparisonCountAggregateOutputType | null
+    _min: ComparisonMinAggregateOutputType | null
+    _max: ComparisonMaxAggregateOutputType | null
+  }
+
+  type GetComparisonGroupByPayload<T extends ComparisonGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ComparisonGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ComparisonGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ComparisonGroupByOutputType[P]>
+            : GetScalarType<T[P], ComparisonGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ComparisonSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carIds?: boolean
+    comparisonData?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comparison"]>
+
+  export type ComparisonSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carIds?: boolean
+    comparisonData?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comparison"]>
+
+  export type ComparisonSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    userId?: boolean
+    carIds?: boolean
+    comparisonData?: boolean
+    createdAt?: boolean
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["comparison"]>
+
+  export type ComparisonSelectScalar = {
+    id?: boolean
+    userId?: boolean
+    carIds?: boolean
+    comparisonData?: boolean
+    createdAt?: boolean
+  }
+
+  export type ComparisonOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "carIds" | "comparisonData" | "createdAt", ExtArgs["result"]["comparison"]>
+  export type ComparisonInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ComparisonIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type ComparisonIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $ComparisonPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Comparison"
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      userId: string
+      carIds: string[]
+      comparisonData: Prisma.JsonValue
+      createdAt: Date
+    }, ExtArgs["result"]["comparison"]>
+    composites: {}
+  }
+
+  type ComparisonGetPayload<S extends boolean | null | undefined | ComparisonDefaultArgs> = $Result.GetResult<Prisma.$ComparisonPayload, S>
+
+  type ComparisonCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ComparisonFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ComparisonCountAggregateInputType | true
+    }
+
+  export interface ComparisonDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Comparison'], meta: { name: 'Comparison' } }
+    /**
+     * Find zero or one Comparison that matches the filter.
+     * @param {ComparisonFindUniqueArgs} args - Arguments to find a Comparison
+     * @example
+     * // Get one Comparison
+     * const comparison = await prisma.comparison.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ComparisonFindUniqueArgs>(args: SelectSubset<T, ComparisonFindUniqueArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Comparison that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ComparisonFindUniqueOrThrowArgs} args - Arguments to find a Comparison
+     * @example
+     * // Get one Comparison
+     * const comparison = await prisma.comparison.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ComparisonFindUniqueOrThrowArgs>(args: SelectSubset<T, ComparisonFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comparison that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonFindFirstArgs} args - Arguments to find a Comparison
+     * @example
+     * // Get one Comparison
+     * const comparison = await prisma.comparison.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ComparisonFindFirstArgs>(args?: SelectSubset<T, ComparisonFindFirstArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Comparison that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonFindFirstOrThrowArgs} args - Arguments to find a Comparison
+     * @example
+     * // Get one Comparison
+     * const comparison = await prisma.comparison.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ComparisonFindFirstOrThrowArgs>(args?: SelectSubset<T, ComparisonFindFirstOrThrowArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Comparisons that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Comparisons
+     * const comparisons = await prisma.comparison.findMany()
+     * 
+     * // Get first 10 Comparisons
+     * const comparisons = await prisma.comparison.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const comparisonWithIdOnly = await prisma.comparison.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ComparisonFindManyArgs>(args?: SelectSubset<T, ComparisonFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Comparison.
+     * @param {ComparisonCreateArgs} args - Arguments to create a Comparison.
+     * @example
+     * // Create one Comparison
+     * const Comparison = await prisma.comparison.create({
+     *   data: {
+     *     // ... data to create a Comparison
+     *   }
+     * })
+     * 
+     */
+    create<T extends ComparisonCreateArgs>(args: SelectSubset<T, ComparisonCreateArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Comparisons.
+     * @param {ComparisonCreateManyArgs} args - Arguments to create many Comparisons.
+     * @example
+     * // Create many Comparisons
+     * const comparison = await prisma.comparison.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ComparisonCreateManyArgs>(args?: SelectSubset<T, ComparisonCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Comparisons and returns the data saved in the database.
+     * @param {ComparisonCreateManyAndReturnArgs} args - Arguments to create many Comparisons.
+     * @example
+     * // Create many Comparisons
+     * const comparison = await prisma.comparison.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Comparisons and only return the `id`
+     * const comparisonWithIdOnly = await prisma.comparison.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ComparisonCreateManyAndReturnArgs>(args?: SelectSubset<T, ComparisonCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Comparison.
+     * @param {ComparisonDeleteArgs} args - Arguments to delete one Comparison.
+     * @example
+     * // Delete one Comparison
+     * const Comparison = await prisma.comparison.delete({
+     *   where: {
+     *     // ... filter to delete one Comparison
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ComparisonDeleteArgs>(args: SelectSubset<T, ComparisonDeleteArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Comparison.
+     * @param {ComparisonUpdateArgs} args - Arguments to update one Comparison.
+     * @example
+     * // Update one Comparison
+     * const comparison = await prisma.comparison.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ComparisonUpdateArgs>(args: SelectSubset<T, ComparisonUpdateArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Comparisons.
+     * @param {ComparisonDeleteManyArgs} args - Arguments to filter Comparisons to delete.
+     * @example
+     * // Delete a few Comparisons
+     * const { count } = await prisma.comparison.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ComparisonDeleteManyArgs>(args?: SelectSubset<T, ComparisonDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comparisons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Comparisons
+     * const comparison = await prisma.comparison.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ComparisonUpdateManyArgs>(args: SelectSubset<T, ComparisonUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Comparisons and returns the data updated in the database.
+     * @param {ComparisonUpdateManyAndReturnArgs} args - Arguments to update many Comparisons.
+     * @example
+     * // Update many Comparisons
+     * const comparison = await prisma.comparison.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Comparisons and only return the `id`
+     * const comparisonWithIdOnly = await prisma.comparison.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ComparisonUpdateManyAndReturnArgs>(args: SelectSubset<T, ComparisonUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Comparison.
+     * @param {ComparisonUpsertArgs} args - Arguments to update or create a Comparison.
+     * @example
+     * // Update or create a Comparison
+     * const comparison = await prisma.comparison.upsert({
+     *   create: {
+     *     // ... data to create a Comparison
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Comparison we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ComparisonUpsertArgs>(args: SelectSubset<T, ComparisonUpsertArgs<ExtArgs>>): Prisma__ComparisonClient<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Comparisons.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonCountArgs} args - Arguments to filter Comparisons to count.
+     * @example
+     * // Count the number of Comparisons
+     * const count = await prisma.comparison.count({
+     *   where: {
+     *     // ... the filter for the Comparisons we want to count
+     *   }
+     * })
+    **/
+    count<T extends ComparisonCountArgs>(
+      args?: Subset<T, ComparisonCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ComparisonCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Comparison.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ComparisonAggregateArgs>(args: Subset<T, ComparisonAggregateArgs>): Prisma.PrismaPromise<GetComparisonAggregateType<T>>
+
+    /**
+     * Group by Comparison.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ComparisonGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ComparisonGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ComparisonGroupByArgs['orderBy'] }
+        : { orderBy?: ComparisonGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ComparisonGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetComparisonGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Comparison model
+   */
+  readonly fields: ComparisonFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Comparison.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ComparisonClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Comparison model
+   */
+  interface ComparisonFieldRefs {
+    readonly id: FieldRef<"Comparison", 'String'>
+    readonly userId: FieldRef<"Comparison", 'String'>
+    readonly carIds: FieldRef<"Comparison", 'String[]'>
+    readonly comparisonData: FieldRef<"Comparison", 'Json'>
+    readonly createdAt: FieldRef<"Comparison", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Comparison findUnique
+   */
+  export type ComparisonFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparison to fetch.
+     */
+    where: ComparisonWhereUniqueInput
+  }
+
+  /**
+   * Comparison findUniqueOrThrow
+   */
+  export type ComparisonFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparison to fetch.
+     */
+    where: ComparisonWhereUniqueInput
+  }
+
+  /**
+   * Comparison findFirst
+   */
+  export type ComparisonFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparison to fetch.
+     */
+    where?: ComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comparisons to fetch.
+     */
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comparisons.
+     */
+    cursor?: ComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comparisons.
+     */
+    distinct?: ComparisonScalarFieldEnum | ComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * Comparison findFirstOrThrow
+   */
+  export type ComparisonFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparison to fetch.
+     */
+    where?: ComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comparisons to fetch.
+     */
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Comparisons.
+     */
+    cursor?: ComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comparisons.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Comparisons.
+     */
+    distinct?: ComparisonScalarFieldEnum | ComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * Comparison findMany
+   */
+  export type ComparisonFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter, which Comparisons to fetch.
+     */
+    where?: ComparisonWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Comparisons to fetch.
+     */
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Comparisons.
+     */
+    cursor?: ComparisonWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Comparisons from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Comparisons.
+     */
+    skip?: number
+    distinct?: ComparisonScalarFieldEnum | ComparisonScalarFieldEnum[]
+  }
+
+  /**
+   * Comparison create
+   */
+  export type ComparisonCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Comparison.
+     */
+    data: XOR<ComparisonCreateInput, ComparisonUncheckedCreateInput>
+  }
+
+  /**
+   * Comparison createMany
+   */
+  export type ComparisonCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Comparisons.
+     */
+    data: ComparisonCreateManyInput | ComparisonCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Comparison createManyAndReturn
+   */
+  export type ComparisonCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * The data used to create many Comparisons.
+     */
+    data: ComparisonCreateManyInput | ComparisonCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Comparison update
+   */
+  export type ComparisonUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Comparison.
+     */
+    data: XOR<ComparisonUpdateInput, ComparisonUncheckedUpdateInput>
+    /**
+     * Choose, which Comparison to update.
+     */
+    where: ComparisonWhereUniqueInput
+  }
+
+  /**
+   * Comparison updateMany
+   */
+  export type ComparisonUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Comparisons.
+     */
+    data: XOR<ComparisonUpdateManyMutationInput, ComparisonUncheckedUpdateManyInput>
+    /**
+     * Filter which Comparisons to update
+     */
+    where?: ComparisonWhereInput
+    /**
+     * Limit how many Comparisons to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comparison updateManyAndReturn
+   */
+  export type ComparisonUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * The data used to update Comparisons.
+     */
+    data: XOR<ComparisonUpdateManyMutationInput, ComparisonUncheckedUpdateManyInput>
+    /**
+     * Filter which Comparisons to update
+     */
+    where?: ComparisonWhereInput
+    /**
+     * Limit how many Comparisons to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Comparison upsert
+   */
+  export type ComparisonUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Comparison to update in case it exists.
+     */
+    where: ComparisonWhereUniqueInput
+    /**
+     * In case the Comparison found by the `where` argument doesn't exist, create a new Comparison with this data.
+     */
+    create: XOR<ComparisonCreateInput, ComparisonUncheckedCreateInput>
+    /**
+     * In case the Comparison was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ComparisonUpdateInput, ComparisonUncheckedUpdateInput>
+  }
+
+  /**
+   * Comparison delete
+   */
+  export type ComparisonDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    /**
+     * Filter which Comparison to delete.
+     */
+    where: ComparisonWhereUniqueInput
+  }
+
+  /**
+   * Comparison deleteMany
+   */
+  export type ComparisonDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Comparisons to delete
+     */
+    where?: ComparisonWhereInput
+    /**
+     * Limit how many Comparisons to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Comparison without action
+   */
+  export type ComparisonDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model User
    */
 
@@ -6567,6 +7717,7 @@ export namespace Prisma {
     maintenancePredictions?: boolean | User$maintenancePredictionsArgs<ExtArgs>
     environmentalImpacts?: boolean | User$environmentalImpactsArgs<ExtArgs>
     priceAnalyses?: boolean | User$priceAnalysesArgs<ExtArgs>
+    comparisons?: boolean | User$comparisonsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
@@ -6614,6 +7765,7 @@ export namespace Prisma {
     maintenancePredictions?: boolean | User$maintenancePredictionsArgs<ExtArgs>
     environmentalImpacts?: boolean | User$environmentalImpactsArgs<ExtArgs>
     priceAnalyses?: boolean | User$priceAnalysesArgs<ExtArgs>
+    comparisons?: boolean | User$comparisonsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -6628,6 +7780,7 @@ export namespace Prisma {
       maintenancePredictions: Prisma.$MaintenancePredictionPayload<ExtArgs>[]
       environmentalImpacts: Prisma.$EnvironmentalImpactPayload<ExtArgs>[]
       priceAnalyses: Prisma.$PriceAnalysisPayload<ExtArgs>[]
+      comparisons: Prisma.$ComparisonPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7039,6 +8192,7 @@ export namespace Prisma {
     maintenancePredictions<T extends User$maintenancePredictionsArgs<ExtArgs> = {}>(args?: Subset<T, User$maintenancePredictionsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MaintenancePredictionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     environmentalImpacts<T extends User$environmentalImpactsArgs<ExtArgs> = {}>(args?: Subset<T, User$environmentalImpactsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EnvironmentalImpactPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     priceAnalyses<T extends User$priceAnalysesArgs<ExtArgs> = {}>(args?: Subset<T, User$priceAnalysesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PriceAnalysisPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    comparisons<T extends User$comparisonsArgs<ExtArgs> = {}>(args?: Subset<T, User$comparisonsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ComparisonPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7606,6 +8760,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: PriceAnalysisScalarFieldEnum | PriceAnalysisScalarFieldEnum[]
+  }
+
+  /**
+   * User.comparisons
+   */
+  export type User$comparisonsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Comparison
+     */
+    select?: ComparisonSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Comparison
+     */
+    omit?: ComparisonOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ComparisonInclude<ExtArgs> | null
+    where?: ComparisonWhereInput
+    orderBy?: ComparisonOrderByWithRelationInput | ComparisonOrderByWithRelationInput[]
+    cursor?: ComparisonWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ComparisonScalarFieldEnum | ComparisonScalarFieldEnum[]
   }
 
   /**
@@ -13515,6 +14693,17 @@ export namespace Prisma {
   export type PriceAnalysisScalarFieldEnum = (typeof PriceAnalysisScalarFieldEnum)[keyof typeof PriceAnalysisScalarFieldEnum]
 
 
+  export const ComparisonScalarFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    carIds: 'carIds',
+    comparisonData: 'comparisonData',
+    createdAt: 'createdAt'
+  };
+
+  export type ComparisonScalarFieldEnum = (typeof ComparisonScalarFieldEnum)[keyof typeof ComparisonScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     clerkUserId: 'clerkUserId',
@@ -14096,6 +15285,61 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"PriceAnalysis"> | Date | string
   }
 
+  export type ComparisonWhereInput = {
+    AND?: ComparisonWhereInput | ComparisonWhereInput[]
+    OR?: ComparisonWhereInput[]
+    NOT?: ComparisonWhereInput | ComparisonWhereInput[]
+    id?: StringFilter<"Comparison"> | string
+    userId?: StringFilter<"Comparison"> | string
+    carIds?: StringNullableListFilter<"Comparison">
+    comparisonData?: JsonFilter<"Comparison">
+    createdAt?: DateTimeFilter<"Comparison"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type ComparisonOrderByWithRelationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carIds?: SortOrder
+    comparisonData?: SortOrder
+    createdAt?: SortOrder
+    user?: UserOrderByWithRelationInput
+  }
+
+  export type ComparisonWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ComparisonWhereInput | ComparisonWhereInput[]
+    OR?: ComparisonWhereInput[]
+    NOT?: ComparisonWhereInput | ComparisonWhereInput[]
+    userId?: StringFilter<"Comparison"> | string
+    carIds?: StringNullableListFilter<"Comparison">
+    comparisonData?: JsonFilter<"Comparison">
+    createdAt?: DateTimeFilter<"Comparison"> | Date | string
+    user?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id">
+
+  export type ComparisonOrderByWithAggregationInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carIds?: SortOrder
+    comparisonData?: SortOrder
+    createdAt?: SortOrder
+    _count?: ComparisonCountOrderByAggregateInput
+    _max?: ComparisonMaxOrderByAggregateInput
+    _min?: ComparisonMinOrderByAggregateInput
+  }
+
+  export type ComparisonScalarWhereWithAggregatesInput = {
+    AND?: ComparisonScalarWhereWithAggregatesInput | ComparisonScalarWhereWithAggregatesInput[]
+    OR?: ComparisonScalarWhereWithAggregatesInput[]
+    NOT?: ComparisonScalarWhereWithAggregatesInput | ComparisonScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Comparison"> | string
+    userId?: StringWithAggregatesFilter<"Comparison"> | string
+    carIds?: StringNullableListFilter<"Comparison">
+    comparisonData?: JsonWithAggregatesFilter<"Comparison">
+    createdAt?: DateTimeWithAggregatesFilter<"Comparison"> | Date | string
+  }
+
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -14115,6 +15359,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionListRelationFilter
     environmentalImpacts?: EnvironmentalImpactListRelationFilter
     priceAnalyses?: PriceAnalysisListRelationFilter
+    comparisons?: ComparisonListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -14133,6 +15378,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionOrderByRelationAggregateInput
     environmentalImpacts?: EnvironmentalImpactOrderByRelationAggregateInput
     priceAnalyses?: PriceAnalysisOrderByRelationAggregateInput
+    comparisons?: ComparisonOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -14154,6 +15400,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionListRelationFilter
     environmentalImpacts?: EnvironmentalImpactListRelationFilter
     priceAnalyses?: PriceAnalysisListRelationFilter
+    comparisons?: ComparisonListRelationFilter
   }, "id" | "clerkUserId" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -14897,6 +16144,61 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ComparisonCreateInput = {
+    id?: string
+    carIds?: ComparisonCreatecarIdsInput | string[]
+    comparisonData: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+    user: UserCreateNestedOneWithoutComparisonsInput
+  }
+
+  export type ComparisonUncheckedCreateInput = {
+    id?: string
+    userId: string
+    carIds?: ComparisonCreatecarIdsInput | string[]
+    comparisonData: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type ComparisonUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carIds?: ComparisonUpdatecarIdsInput | string[]
+    comparisonData?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneRequiredWithoutComparisonsNestedInput
+  }
+
+  export type ComparisonUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carIds?: ComparisonUpdatecarIdsInput | string[]
+    comparisonData?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonCreateManyInput = {
+    id?: string
+    userId: string
+    carIds?: ComparisonCreatecarIdsInput | string[]
+    comparisonData: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type ComparisonUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carIds?: ComparisonUpdatecarIdsInput | string[]
+    comparisonData?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    carIds?: ComparisonUpdatecarIdsInput | string[]
+    comparisonData?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     clerkUserId: string
@@ -14913,6 +16215,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -14931,6 +16234,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -14949,6 +16253,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -14967,6 +16272,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -15748,6 +17054,26 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type ComparisonCountOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    carIds?: SortOrder
+    comparisonData?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ComparisonMaxOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ComparisonMinOrderByAggregateInput = {
+    id?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
   export type StringNullableFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel> | null
     in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
@@ -15806,6 +17132,12 @@ export namespace Prisma {
     none?: PriceAnalysisWhereInput
   }
 
+  export type ComparisonListRelationFilter = {
+    every?: ComparisonWhereInput
+    some?: ComparisonWhereInput
+    none?: ComparisonWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
@@ -15832,6 +17164,10 @@ export namespace Prisma {
   }
 
   export type PriceAnalysisOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ComparisonOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -16508,6 +17844,29 @@ export namespace Prisma {
     update?: XOR<XOR<CarUpdateToOneWithWhereWithoutPriceAnalysesInput, CarUpdateWithoutPriceAnalysesInput>, CarUncheckedUpdateWithoutPriceAnalysesInput>
   }
 
+  export type ComparisonCreatecarIdsInput = {
+    set: string[]
+  }
+
+  export type UserCreateNestedOneWithoutComparisonsInput = {
+    create?: XOR<UserCreateWithoutComparisonsInput, UserUncheckedCreateWithoutComparisonsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutComparisonsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type ComparisonUpdatecarIdsInput = {
+    set?: string[]
+    push?: string | string[]
+  }
+
+  export type UserUpdateOneRequiredWithoutComparisonsNestedInput = {
+    create?: XOR<UserCreateWithoutComparisonsInput, UserUncheckedCreateWithoutComparisonsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutComparisonsInput
+    upsert?: UserUpsertWithoutComparisonsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutComparisonsInput, UserUpdateWithoutComparisonsInput>, UserUncheckedUpdateWithoutComparisonsInput>
+  }
+
   export type UserSavedCarCreateNestedManyWithoutUserInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
@@ -16550,6 +17909,13 @@ export namespace Prisma {
     connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
   }
 
+  export type ComparisonCreateNestedManyWithoutUserInput = {
+    create?: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput> | ComparisonCreateWithoutUserInput[] | ComparisonUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ComparisonCreateOrConnectWithoutUserInput | ComparisonCreateOrConnectWithoutUserInput[]
+    createMany?: ComparisonCreateManyUserInputEnvelope
+    connect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+  }
+
   export type UserSavedCarUncheckedCreateNestedManyWithoutUserInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
@@ -16590,6 +17956,13 @@ export namespace Prisma {
     connectOrCreate?: PriceAnalysisCreateOrConnectWithoutUserInput | PriceAnalysisCreateOrConnectWithoutUserInput[]
     createMany?: PriceAnalysisCreateManyUserInputEnvelope
     connect?: PriceAnalysisWhereUniqueInput | PriceAnalysisWhereUniqueInput[]
+  }
+
+  export type ComparisonUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput> | ComparisonCreateWithoutUserInput[] | ComparisonUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ComparisonCreateOrConnectWithoutUserInput | ComparisonCreateOrConnectWithoutUserInput[]
+    createMany?: ComparisonCreateManyUserInputEnvelope
+    connect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
   }
 
   export type NullableStringFieldUpdateOperationsInput = {
@@ -16684,6 +18057,20 @@ export namespace Prisma {
     deleteMany?: PriceAnalysisScalarWhereInput | PriceAnalysisScalarWhereInput[]
   }
 
+  export type ComparisonUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput> | ComparisonCreateWithoutUserInput[] | ComparisonUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ComparisonCreateOrConnectWithoutUserInput | ComparisonCreateOrConnectWithoutUserInput[]
+    upsert?: ComparisonUpsertWithWhereUniqueWithoutUserInput | ComparisonUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ComparisonCreateManyUserInputEnvelope
+    set?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    disconnect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    delete?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    connect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    update?: ComparisonUpdateWithWhereUniqueWithoutUserInput | ComparisonUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ComparisonUpdateManyWithWhereWithoutUserInput | ComparisonUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ComparisonScalarWhereInput | ComparisonScalarWhereInput[]
+  }
+
   export type UserSavedCarUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<UserSavedCarCreateWithoutUserInput, UserSavedCarUncheckedCreateWithoutUserInput> | UserSavedCarCreateWithoutUserInput[] | UserSavedCarUncheckedCreateWithoutUserInput[]
     connectOrCreate?: UserSavedCarCreateOrConnectWithoutUserInput | UserSavedCarCreateOrConnectWithoutUserInput[]
@@ -16766,6 +18153,20 @@ export namespace Prisma {
     update?: PriceAnalysisUpdateWithWhereUniqueWithoutUserInput | PriceAnalysisUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: PriceAnalysisUpdateManyWithWhereWithoutUserInput | PriceAnalysisUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: PriceAnalysisScalarWhereInput | PriceAnalysisScalarWhereInput[]
+  }
+
+  export type ComparisonUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput> | ComparisonCreateWithoutUserInput[] | ComparisonUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: ComparisonCreateOrConnectWithoutUserInput | ComparisonCreateOrConnectWithoutUserInput[]
+    upsert?: ComparisonUpsertWithWhereUniqueWithoutUserInput | ComparisonUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: ComparisonCreateManyUserInputEnvelope
+    set?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    disconnect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    delete?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    connect?: ComparisonWhereUniqueInput | ComparisonWhereUniqueInput[]
+    update?: ComparisonUpdateWithWhereUniqueWithoutUserInput | ComparisonUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: ComparisonUpdateManyWithWhereWithoutUserInput | ComparisonUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: ComparisonScalarWhereInput | ComparisonScalarWhereInput[]
   }
 
   export type CarCreateimagesInput = {
@@ -17549,6 +18950,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutChatInteractionsInput = {
@@ -17566,6 +18968,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutChatInteractionsInput = {
@@ -17660,6 +19063,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutChatInteractionsInput = {
@@ -17677,6 +19081,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithWhereUniqueWithoutChatRecommendationsInput = {
@@ -17736,6 +19141,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutMaintenancePredictionsInput = {
@@ -17753,6 +19159,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutMaintenancePredictionsInput = {
@@ -17847,6 +19254,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutMaintenancePredictionsInput = {
@@ -17864,6 +19272,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutMaintenancePredictionsInput = {
@@ -17948,6 +19357,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutEnvironmentalImpactsInput = {
@@ -17965,6 +19375,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutEnvironmentalImpactsInput = {
@@ -18059,6 +19470,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutEnvironmentalImpactsInput = {
@@ -18076,6 +19488,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutEnvironmentalImpactsInput = {
@@ -18160,6 +19573,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutPriceAnalysesInput = {
@@ -18177,6 +19591,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutPriceAnalysesInput = {
@@ -18271,6 +19686,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutPriceAnalysesInput = {
@@ -18288,6 +19704,7 @@ export namespace Prisma {
     chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutPriceAnalysesInput = {
@@ -18355,6 +19772,94 @@ export namespace Prisma {
     chatRecommendations?: ChatInteractionUncheckedUpdateManyWithoutRecommendedCarsNestedInput
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutCarNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutCarNestedInput
+  }
+
+  export type UserCreateWithoutComparisonsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutComparisonsInput = {
+    id?: string
+    clerkUserId: string
+    email: string
+    name?: string | null
+    imageUrl?: string | null
+    phone?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    role?: $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedCreateNestedManyWithoutUserInput
+    testDrives?: TestDriveBookingUncheckedCreateNestedManyWithoutUserInput
+    chatInteractions?: ChatInteractionUncheckedCreateNestedManyWithoutUserInput
+    maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
+    priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutComparisonsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutComparisonsInput, UserUncheckedCreateWithoutComparisonsInput>
+  }
+
+  export type UserUpsertWithoutComparisonsInput = {
+    update: XOR<UserUpdateWithoutComparisonsInput, UserUncheckedUpdateWithoutComparisonsInput>
+    create: XOR<UserCreateWithoutComparisonsInput, UserUncheckedCreateWithoutComparisonsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutComparisonsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutComparisonsInput, UserUncheckedUpdateWithoutComparisonsInput>
+  }
+
+  export type UserUpdateWithoutComparisonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutComparisonsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    clerkUserId?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    imageUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    phone?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    role?: EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+    savedCars?: UserSavedCarUncheckedUpdateManyWithoutUserNestedInput
+    testDrives?: TestDriveBookingUncheckedUpdateManyWithoutUserNestedInput
+    chatInteractions?: ChatInteractionUncheckedUpdateManyWithoutUserNestedInput
+    maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
+    environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
+    priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserSavedCarCreateWithoutUserInput = {
@@ -18528,6 +20033,30 @@ export namespace Prisma {
 
   export type PriceAnalysisCreateManyUserInputEnvelope = {
     data: PriceAnalysisCreateManyUserInput | PriceAnalysisCreateManyUserInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type ComparisonCreateWithoutUserInput = {
+    id?: string
+    carIds?: ComparisonCreatecarIdsInput | string[]
+    comparisonData: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type ComparisonUncheckedCreateWithoutUserInput = {
+    id?: string
+    carIds?: ComparisonCreatecarIdsInput | string[]
+    comparisonData: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type ComparisonCreateOrConnectWithoutUserInput = {
+    where: ComparisonWhereUniqueInput
+    create: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput>
+  }
+
+  export type ComparisonCreateManyUserInputEnvelope = {
+    data: ComparisonCreateManyUserInput | ComparisonCreateManyUserInput[]
     skipDuplicates?: boolean
   }
 
@@ -18705,6 +20234,33 @@ export namespace Prisma {
     buyingRecommendation?: JsonFilter<"PriceAnalysis">
     seasonalTrends?: JsonFilter<"PriceAnalysis">
     createdAt?: DateTimeFilter<"PriceAnalysis"> | Date | string
+  }
+
+  export type ComparisonUpsertWithWhereUniqueWithoutUserInput = {
+    where: ComparisonWhereUniqueInput
+    update: XOR<ComparisonUpdateWithoutUserInput, ComparisonUncheckedUpdateWithoutUserInput>
+    create: XOR<ComparisonCreateWithoutUserInput, ComparisonUncheckedCreateWithoutUserInput>
+  }
+
+  export type ComparisonUpdateWithWhereUniqueWithoutUserInput = {
+    where: ComparisonWhereUniqueInput
+    data: XOR<ComparisonUpdateWithoutUserInput, ComparisonUncheckedUpdateWithoutUserInput>
+  }
+
+  export type ComparisonUpdateManyWithWhereWithoutUserInput = {
+    where: ComparisonScalarWhereInput
+    data: XOR<ComparisonUpdateManyMutationInput, ComparisonUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type ComparisonScalarWhereInput = {
+    AND?: ComparisonScalarWhereInput | ComparisonScalarWhereInput[]
+    OR?: ComparisonScalarWhereInput[]
+    NOT?: ComparisonScalarWhereInput | ComparisonScalarWhereInput[]
+    id?: StringFilter<"Comparison"> | string
+    userId?: StringFilter<"Comparison"> | string
+    carIds?: StringNullableListFilter<"Comparison">
+    comparisonData?: JsonFilter<"Comparison">
+    createdAt?: DateTimeFilter<"Comparison"> | Date | string
   }
 
   export type UserSavedCarCreateWithoutCarInput = {
@@ -19103,6 +20659,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutSavedCarsInput = {
@@ -19120,6 +20677,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutSavedCarsInput = {
@@ -19214,6 +20772,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutSavedCarsInput = {
@@ -19231,6 +20790,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpsertWithoutSavedByInput = {
@@ -19376,6 +20936,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutTestDrivesInput = {
@@ -19393,6 +20954,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUncheckedCreateNestedManyWithoutUserInput
     environmentalImpacts?: EnvironmentalImpactUncheckedCreateNestedManyWithoutUserInput
     priceAnalyses?: PriceAnalysisUncheckedCreateNestedManyWithoutUserInput
+    comparisons?: ComparisonUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutTestDrivesInput = {
@@ -19493,6 +21055,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutTestDrivesInput = {
@@ -19510,6 +21073,7 @@ export namespace Prisma {
     maintenancePredictions?: MaintenancePredictionUncheckedUpdateManyWithoutUserNestedInput
     environmentalImpacts?: EnvironmentalImpactUncheckedUpdateManyWithoutUserNestedInput
     priceAnalyses?: PriceAnalysisUncheckedUpdateManyWithoutUserNestedInput
+    comparisons?: ComparisonUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CarUpdateWithoutChatRecommendationsInput = {
@@ -19644,6 +21208,13 @@ export namespace Prisma {
     priceAnalysis: JsonNullValueInput | InputJsonValue
     buyingRecommendation: JsonNullValueInput | InputJsonValue
     seasonalTrends: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type ComparisonCreateManyUserInput = {
+    id?: string
+    carIds?: ComparisonCreatecarIdsInput | string[]
+    comparisonData: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
   }
 
@@ -19814,6 +21385,27 @@ export namespace Prisma {
     priceAnalysis?: JsonNullValueInput | InputJsonValue
     buyingRecommendation?: JsonNullValueInput | InputJsonValue
     seasonalTrends?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carIds?: ComparisonUpdatecarIdsInput | string[]
+    comparisonData?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carIds?: ComparisonUpdatecarIdsInput | string[]
+    comparisonData?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ComparisonUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    carIds?: ComparisonUpdatecarIdsInput | string[]
+    comparisonData?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

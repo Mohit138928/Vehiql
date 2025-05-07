@@ -13,7 +13,7 @@ import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import useFetch from "@/hooks/use-fetch";
 
-const CarCard = ({ car }) => {
+const CarCard = ({ car, onSelect, isSelected }) => {
   const { isSignedIn } = useAuth();
   const router = useRouter();
   const [isSaved, setIsSaved] = useState(car.wishlisted);
@@ -59,8 +59,12 @@ const CarCard = ({ car }) => {
   };
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition group">
-      <div className="relative h-48">
+    <Card
+      className={`overflow-hidden hover:shadow-lg transition group ${
+        isSelected ? "ring-2 ring-blue-500" : ""
+      }`}
+    >
+      <div className="relative h-50">
         {car.images && car.images.length > 0 ? (
           <div className="relative w-full h-full">
             <Image
@@ -140,4 +144,4 @@ const CarCard = ({ car }) => {
   );
 };
 
-export default CarCard
+export default CarCard;

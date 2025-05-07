@@ -2,6 +2,7 @@ import { getCarFilters } from "@/actions/car-listing";
 import React from "react";
 import { CarFilters } from "./_components/car-filters";
 import { CarListings } from "./_components/cars-listing";
+import { CompareVehicles } from "@/components/comparison/CompareVehicles";
 
 export const metadata = {
   title: "Cars | AutoVolt",
@@ -24,6 +25,12 @@ const CarsPage = async () => {
         <div className="flex-1">
           <CarListings />
         </div>
+
+        {/* Add comparison section */}
+        {/* <div className="mt-16">
+          <h2 className="text-3xl font-bold mb-8">Compare Vehicles</h2>
+          <CompareVehicles cars={selectedCars} />
+        </div> */}
       </div>
     </div>
   );

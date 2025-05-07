@@ -1,15 +1,16 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { Info } from "lucide-react";
-// import { CarCard } from "@/components/car-card";
+import { Info, CheckCircle } from "lucide-react";
+import CarCard from "@/components/car-card";
+import { CompareVehicles } from "@/components/comparison/CompareVehicles";
 import useFetch from "@/hooks/use-fetch";
 import { getCars } from "@/actions/car-listing";
 import CarListingsLoading from "./car-listing-loading";
+import { toast } from "sonner";
 
 import {
   Pagination,
@@ -20,12 +21,13 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import CarCard from "@/components/car-card";
+import Link from "next/link";
 
 export function CarListings() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCars, setSelectedCars] = useState([]);
   const limit = 6;
 
   // Extract filter values from searchParams
@@ -89,6 +91,21 @@ export function CarListings() {
     return `?${params.toString()}`;
   };
 
+  // Handle car selection
+  const handleCarSelect = (car) => {
+    if (selectedCars.find((selected) => selected.id === car.id)) {
+      setSelectedCars((prev) =>
+        prev.filter((selected) => selected.id !== car.id)
+      );
+    } else {
+      if (selectedCars.length >= 3) {
+        toast.error("You can compare up to 3 cars at a time");
+        return;
+      }
+      setSelectedCars((prev) => [...prev, car]);
+    }
+  };
+
   // Show loading state
   if (loading && !result) {
     return <CarListingsLoading />;
@@ -123,8 +140,8 @@ export function CarListings() {
         </div>
         <h3 className="text-lg font-medium mb-2">No cars found</h3>
         <p className="text-gray-500 mb-6 max-w-md">
-          We couldn&apos;t find any cars matching your search criteria. Try adjusting
-          your filters or search term.
+          We couldn&apos;t find any cars matching your search criteria. Try
+          adjusting your filters or search term.
         </p>
         <Button variant="outline" asChild>
           <Link href="/cars">Clear all filters</Link>
@@ -192,24 +209,43 @@ export function CarListings() {
   });
 
   return (
-    <div>
-      {/* Results count and current page */}
-      <div className="flex justify-between items-center mb-6">
-        <p className="text-gray-600">
-          Showing{" "}
-          <span className="font-medium">
-            {(page - 1) * limit + 1}-{Math.min(page * limit, pagination.total)}
-          </span>{" "}
-          of <span className="font-medium">{pagination.total}</span> cars
-        </p>
-      </div>
-
-      {/* Car grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="space-y-8">
+      {/* Cars Grid */}
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {cars.map((car) => (
-          <CarCard key={car.id} car={car} />
+          <div key={car.id} className="relative">
+            <CarCard car={car} />
+            <Button
+              variant="outline"
+              size="sm"
+              className="absolute top-8 left-2"
+              onClick={() => handleCarSelect(car)}
+            >
+              {selectedCars.find((selected) => selected.id === car.id) ? (
+                <>
+                  <CheckCircle className="w-4 h-4 mr-2" />
+                  Selected
+                </>
+              ) : (
+                "Compare"
+              )}
+            </Button>
+          </div>
         ))}
       </div>
+
+      {/* Comparison Section - Only show when cars are selected */}
+      {selectedCars.length > 0 && (
+        <div className="mt-16">
+          <div className="flex justify-between items-center mb-8">
+            <h2 className="text-3xl font-bold">Compare Vehicles</h2>
+            <Button variant="outline" onClick={() => setSelectedCars([])}>
+              Clear Selection
+            </Button>
+          </div>
+          <CompareVehicles cars={selectedCars.filter(Boolean)} />
+        </div>
+      )}
 
       {/* shadcn Pagination */}
       {pagination.pages > 1 && (
