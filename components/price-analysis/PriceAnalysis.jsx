@@ -4,6 +4,7 @@ import { useState } from "react";
 import { analyzePriceHistory } from "@/actions/price-analysis";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { formatCurrency } from "@/lib/helper"; // Import the helper function
 import {
   LineChart,
   Line,
@@ -13,7 +14,7 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Loader2, TrendingDown, DollarSign, Calendar } from "lucide-react";
+import { Loader2, TrendingDown, DollarSign, Calendar,IndianRupee  } from "lucide-react";
 
 export function PriceAnalysis({ car }) {
   const [loading, setLoading] = useState(false);
@@ -33,6 +34,15 @@ export function PriceAnalysis({ car }) {
     }
   };
 
+    const conversionRate = 83; // 1 USD = 83.2 INR (as an example)
+
+  const handleConvert = (dollar) => {
+    const result = parseFloat(dollar) * conversionRate;
+    return (result.toFixed(2));
+  };
+
+  console.log(analysis)
+
   return (
     <div className="space-y-6">
       <Button
@@ -47,7 +57,7 @@ export function PriceAnalysis({ car }) {
           </>
         ) : (
           <>
-            <DollarSign className="mr-2 h-4 w-4" />
+            <IndianRupee className="mr-2 h-4 w-4" />
             Analyze Price
           </>
         )}
@@ -75,14 +85,19 @@ export function PriceAnalysis({ car }) {
               <div>
                 <p className="text-sm text-gray-600">Estimated Value</p>
                 <p className="text-2xl font-bold">
-                  $
-                  {analysis.analysis.marketValue.estimatedValue.toLocaleString()}
+                  {/* $
+                  {analysis.analysis.marketValue.estimatedValue.toLocaleString()} */}
+                  {formatCurrency(handleConvert(analysis.analysis.marketValue.estimatedValue))}
                 </p>
                 <p className="text-sm text-gray-500">
-                  Range: $
+                  {/* Range: $
                   {analysis.analysis.marketValue.priceRange.low.toLocaleString()}{" "}
                   - $
-                  {analysis.analysis.marketValue.priceRange.high.toLocaleString()}
+                  {analysis.analysis.marketValue.priceRange.high.toLocaleString()} */}
+                  Range: 
+                  {formatCurrency(handleConvert(analysis.analysis.marketValue.priceRange.low))}{" "}
+                  - 
+                  {formatCurrency(handleConvert(analysis.analysis.marketValue.priceRange.high))}
                 </p>
               </div>
               <div>
@@ -110,11 +125,12 @@ export function PriceAnalysis({ car }) {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="year" />
                   <YAxis
-                    tickFormatter={(value) => `$${(value / 1000).toFixed(0)}k`}
+                    tickFormatter={(value) => `₹${(value / 100000).toFixed(1)}L`}
                   />
                   <Tooltip
                     formatter={(value) => [
-                      `$${value.toLocaleString()}`,
+                      formatCurrency(value),
+                      // `$${value.toLocaleString()}`,
                       "Value",
                     ]}
                   />
@@ -159,8 +175,8 @@ export function PriceAnalysis({ car }) {
                 {analysis.analysis.buyingRecommendation.potentialSavings >
                   0 && (
                   <p className="mt-3 text-sm text-green-600">
-                    Potential savings: $
-                    {analysis.analysis.buyingRecommendation.potentialSavings.toLocaleString()}
+                    Potential savings: 
+                    {formatCurrency(handleConvert(analysis.analysis.buyingRecommendation.potentialSavings))}
                   </p>
                 )}
               </div>

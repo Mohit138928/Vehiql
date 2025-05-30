@@ -5,6 +5,7 @@ import { generateMaintenancePrediction } from "@/actions/maintenance-prediction"
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
+import { formatCurrency } from "@/lib/helper";
 
 export function MaintenanceCalculator({ car }) {
   const [loading, setLoading] = useState(false);
@@ -22,6 +23,13 @@ export function MaintenanceCalculator({ car }) {
     } finally {
       setLoading(false);
     }
+  };
+
+     const conversionRate = 83; // 1 USD = 83.2 INR (as an example)
+
+  const handleConvert = (dollar) => {
+    const result = parseFloat(dollar) * conversionRate;
+    return (result.toFixed(2));
   };
 
   return (
@@ -50,7 +58,7 @@ export function MaintenanceCalculator({ car }) {
                 <li key={i} className="flex justify-between">
                   <span>{service.serviceName}</span>
                   <span className="font-semibold">
-                    ${service.estimatedCost}
+                    {formatCurrency(handleConvert(service.estimatedCost))}
                   </span>
                 </li>
               ))}
@@ -66,7 +74,7 @@ export function MaintenanceCalculator({ car }) {
                   <div className="flex justify-between">
                     <span>{part.partName}</span>
                     <span className="font-semibold">
-                      ${part.estimatedCost}
+                      {formatCurrency(handleConvert(part.estimatedCost))}
                     </span>
                   </div>
                   {part.warning && (
@@ -125,7 +133,7 @@ export function MaintenanceCalculator({ car }) {
                 Total Maintenance Cost (12 months)
               </h3>
               <span className="text-2xl font-bold text-blue-600">
-                ${prediction.totalMaintenanceCost}
+                {formatCurrency(handleConvert(prediction.totalMaintenanceCost))}
               </span>
             </div>
           </Card>

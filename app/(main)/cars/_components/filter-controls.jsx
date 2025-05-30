@@ -3,6 +3,7 @@
 import { Check, X } from "lucide-react";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
+import { formatCurrency } from "@/lib/helper";
 
 export const CarFilterControls = ({
   filters,
@@ -46,6 +47,13 @@ export const CarFilterControls = ({
     },
   ];
 
+  const conversionRate = 83; // 1 USD = 83.2 INR (as an example)
+
+  const handleConvert = (dollar) => {
+    const result = parseFloat(dollar) * conversionRate;
+    return (result.toFixed(2));
+  };
+
   return (
     <div className="space-y-6">
       {/* Price Range */}
@@ -61,8 +69,8 @@ export const CarFilterControls = ({
           />
         </div>
         <div className="flex items-center justify-between">
-          <div className="font-medium text-sm">$ {priceRange[0]}</div>
-          <div className="font-medium text-sm">$ {priceRange[1]}</div>
+          <div className="font-medium text-sm">{formatCurrency(handleConvert(priceRange[0]))}</div>
+          <div className="font-medium text-sm">{formatCurrency(handleConvert(priceRange[1]))}</div>
         </div>
       </div>
 

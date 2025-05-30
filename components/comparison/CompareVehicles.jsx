@@ -23,6 +23,7 @@ import {
   PolarRadiusAxis,
 } from "recharts";
 import { Loader2, Save } from "lucide-react";
+import { formatCurrency } from "@/lib/helper";
 
 export function CompareVehicles({ cars }) {
   const [loading, setLoading] = useState(false);
@@ -54,6 +55,15 @@ export function CompareVehicles({ cars }) {
     } finally {
       setLoading(false);
     }
+  };
+
+  console.log(comparison);
+
+  const conversionRate = 83; // 1 USD = 83.2 INR (as an example)
+
+  const handleConvert = (dollar) => {
+    const result = parseFloat(dollar) * conversionRate;
+    return result.toFixed(2);
   };
 
   const handleSave = async () => {
@@ -118,12 +128,13 @@ export function CompareVehicles({ cars }) {
                   <h3 className="font-semibold">
                     {[car.year, car.make, car.model].filter(Boolean).join(" ")}
                   </h3>
-                  {car.price && (
+                  {formatCurrency(handleConvert(car.price)) && (
                     <p className="text-lg font-medium text-blue-600">
-                      $
+                      {/* $
                       {typeof car.price === "number"
                         ? car.price.toLocaleString()
-                        : car.price}
+                        : car.price} */}
+                      {formatCurrency(handleConvert(car.price))}
                     </p>
                   )}
                 </Card>
@@ -194,8 +205,8 @@ export function CompareVehicles({ cars }) {
             </div>
           </Card>
 
-          {/* Cost Analysis */}
-          {comparison.costAnalysis?.length > 0 && (
+          {/* Cost Analysis in dollar */}
+          {/* {comparison.costAnalysis?.length > 0 && (
             <Card className="p-6">
               <h3 className="text-lg font-semibold mb-4">
                 5-Year Cost of Ownership
@@ -225,6 +236,53 @@ export function CompareVehicles({ cars }) {
                     />
                     <Tooltip
                       formatter={(value) => `$${value.toLocaleString()}`}
+                    />
+                    <Legend />
+                    <Bar dataKey="Depreciation" stackId="a" fill="#8884d8" />
+                    <Bar dataKey="Maintenance" stackId="a" fill="#82ca9d" />
+                    <Bar dataKey="Fuel" stackId="a" fill="#ffc658" />
+                    <Bar dataKey="Insurance" stackId="a" fill="#ff7300" />
+                  </BarChart>
+                </ResponsiveContainer>
+              </div>
+            </Card>
+          )} */}
+
+          {/* Cost Analysis in rupee */}
+          {comparison.costAnalysis?.length > 0 && (
+            <Card className="p-6">
+              <h3 className="text-lg font-semibold mb-4">
+                5-Year Cost of Ownership
+              </h3>
+              <div className="h-[400px]">
+                <ResponsiveContainer width="100%" height="100%">
+                  <BarChart
+                    data={comparison.costAnalysis.map((cost) => {
+                      const car = comparison.basics.find(
+                        (c) => c?.id === cost.carId
+                      );
+                      return {
+                        name: car ? car.model : "Unknown",
+                        Depreciation: cost.fiveYearCosts.depreciation,
+                        Maintenance: cost.fiveYearCosts.maintenance,
+                        Fuel: cost.fiveYearCosts.fuel,
+                        Insurance: cost.fiveYearCosts.insurance,
+                      };
+                    })}
+                  >
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis
+                      tickFormatter={
+                        (value) => `₹${(value / 100000).toFixed(1)}L` // Convert to Lakhs
+                      }
+                    />
+                    <Tooltip
+                      formatter={(value) => [
+                        formatCurrency(value), // Use the formatCurrency helper
+                        // Or if you want more precise formatting:
+                        // `₹${value.toLocaleString('en-IN')}`
+                      ]}
                     />
                     <Legend />
                     <Bar dataKey="Depreciation" stackId="a" fill="#8884d8" />

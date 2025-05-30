@@ -208,6 +208,8 @@ export function CarListings() {
     lastPageNumber = pageNumber;
   });
 
+  console.log(cars)
+
   return (
     <div className="space-y-8">
       {/* Cars Grid */}

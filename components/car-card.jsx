@@ -12,6 +12,7 @@ import { toggleSavedCar } from "@/actions/car-listing";
 import { useAuth } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import useFetch from "@/hooks/use-fetch";
+import { formatCurrency } from "@/lib/helper";
 
 const CarCard = ({ car, onSelect, isSelected }) => {
   const { isSignedIn } = useAuth();
@@ -56,6 +57,15 @@ const CarCard = ({ car, onSelect, isSelected }) => {
 
     // Call the toggleSavedCar function using our useFetch hook
     await toggleSavedCarFn(car.id);
+  };
+
+  console.log(car)
+
+  const conversionRate = 83; // 1 USD = 83.2 INR (as an example)
+
+  const handleConvert = (dollar) => {
+    const result = parseFloat(dollar) * conversionRate;
+    return (result.toFixed(2));
   };
 
   return (
@@ -105,7 +115,9 @@ const CarCard = ({ car, onSelect, isSelected }) => {
             {car.make} {car.model}
           </h3>
           <span className="text-xl font-bold text-blue-600">
-            ${car.price.toLocaleString()}
+            {/* ${car.price.toLocaleString()} */}
+            {formatCurrency(car.price)}
+            {/* {formatCurrency(handleConvert(car.price))} */}
           </span>
         </div>
 

@@ -39,6 +39,8 @@ export function CarDetails({ car, testDriveInfo }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(car.wishlisted);
 
+  console.log(car)
+
   const {
     loading: savingCar,
     fn: toggleSavedCarFn,

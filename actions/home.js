@@ -9,7 +9,8 @@ import { request } from "@arcjet/next";
 function serializeCarData(car) {
   return {
     ...car,
-    price: car.price ? parseFloat(car.price.toString()) : 0,
+    // price: car.price ? parseFloat(car.price.toString()) : 0,
+    price: car.price ? parseFloat((parseFloat(car.price.toString()) * 83).toFixed(0)) : 0,
     createdAt: car.createdAt?.toISOString(),
     updatedAt: car.updatedAt?.toISOString(),
   };
