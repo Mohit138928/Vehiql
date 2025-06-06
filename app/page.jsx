@@ -18,9 +18,9 @@ export default async function Home() {
 
   return (
     <div className="pt-20 flex flex-col">
-      {/*Hero */}
 
-      <section className="relative py-16 md:py-28 dotted-background">
+      {/*Hero */}
+      {/* <section className="relative py-16 md:py-28 dotted-background">
         <div className="max-w-4xl mx-auto text-center">
           <div>
             <h1 className="text-4xl md:text-7xl mb-4 gradient-title">
@@ -30,22 +30,34 @@ export default async function Home() {
               Advanced AI Car Search and test Drive from thousands of vehicles.
             </p>
           </div>
-
-          {/* Search */}
           <HomeSearch />
         </div>
-
-        {/* <DotPattern
-          // glow={true}
-          className={cn(
-            "[mask-image:radial-gradient(800px_circle_at_center,white,transparent)]",
-            "text-white"
-          )}
-        /> */}
+      </section> */}
+      <section className="min-h-screen relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
+        <div className="absolute inset-0 bg-grid-black/[0.02] -z-10" />
+        <DotPattern className="absolute inset-0 -z-10 opacity-50" />
+        
+        <div className="container mx-auto px-4 pt-32 pb-20">
+          <div className="max-w-5xl mx-auto text-center relative">
+            <div className="animate-fade-in">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600">
+                Find Your Perfect Car with AI
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12">
+                Experience the future of car buying with our AI-powered platform
+              </p>
+              
+              <div className="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl">
+                <HomeSearch />
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
+      {/* Featured Cars Section */}
       <section className="py-12">
-        <div className="container mx-auto px-20">
+        <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-bold">Featured Cars</h2>
             <Button variant="ghost" className="flex items-center" asChild>
@@ -62,8 +74,9 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* Browse by Make Section */}
       <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-20">
+        <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-bold">Browse by Make</h2>
             <Button variant="ghost" className="flex items-center" asChild>
@@ -72,7 +85,7 @@ export default async function Home() {
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {carMakes.map((make) => (
               <Link
                 key={make.name}
@@ -92,12 +105,33 @@ export default async function Home() {
                 <h3 className="font-medium">{make.name}</h3>
               </Link>
             ))}
+          </div> */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            {carMakes.map((make) => (
+              <Link
+                key={make.name}
+                href={`/cars?make=${make.name}`}
+                className="group"
+              >
+                <div className="bg-gray-50 rounded-2xl p-6 hover:bg-blue-50 transition-colors">
+                  <div className="h-20 relative mb-4">
+                    <Image
+                      src={make.imageUrl || `/make/${make.name.toLowerCase()}.webp`}
+                      alt={make.name}
+                      fill
+                      className="object-contain transition-transform group-hover:scale-110"
+                    />
+                  </div>
+                  <h3 className="text-center font-medium">{make.name}</h3>
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="py-12">
-        <div className="container mx-auto px-20">
+        <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-12">
             Why Choose Our Platform
           </h2>
@@ -139,7 +173,7 @@ export default async function Home() {
       </section>
 
       <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-20">
+        <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
             <h2 className="text-2xl font-bold">Browse by Body Type</h2>
             <Button variant="ghost" className="flex items-center" asChild>
@@ -178,7 +212,7 @@ export default async function Home() {
 
       {/* FAQ Section with Accordion */}
       <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-20">
+        <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8">
             Frequently Asked Questions
           </h2>
