@@ -113,15 +113,15 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2">
                 <MapPinIcon size={18} />
-                <span>69 Car Street, Autoville, CA 69420</span>
+                <span>Faridabad, Haryana 121007</span>
               </li>
               <li className="flex items-center gap-2">
                 <PhoneIcon size={18} />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 7827136553</span>
               </li>
               <li className="flex items-center gap-2">
                 <MailIcon size={18} />
-                <span>contact@autovolt.com</span>
+                <span>autovolt@gmail.com</span>
               </li>
               <li className="flex items-center gap-2">
                 <ClockIcon size={18} />

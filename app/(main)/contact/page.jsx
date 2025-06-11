@@ -79,15 +79,15 @@ const ContactPage = () => {
                   <Building2 className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
                     <p className="font-medium">AutoVolt Motors</p>
-                    <p className="text-gray-600">69 Car Street, Autoville, CA 69420</p>
+                    <p className="text-gray-600">Faridabad, Haryana 121007</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Mail className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
                     <p className="font-medium">Email</p>
-                    <a href="mailto:contact@autovolt.com" className="text-blue-600 hover:underline">
-                      contact@autovolt.com
+                    <a href="mailto:autovolt@gmail.com" className="text-blue-600 hover:underline">
+                      autovolt@gmail.com
                     </a>
                   </div>
                 </div>
@@ -95,8 +95,8 @@ const ContactPage = () => {
                   <Phone className="h-5 w-5 text-blue-600 mt-1" />
                   <div>
                     <p className="font-medium">Phone</p>
-                    <a href="tel:+15551234567" className="text-blue-600 hover:underline">
-                      +1 (555) 123-4567
+                    <a href="tel:+917827136553" className="text-blue-600 hover:underline">
+                      +91 7827136553
                     </a>
                   </div>
                 </div>
@@ -138,10 +138,10 @@ const ContactPage = () => {
       </div>
 
       {/* Map Section */}
-      <Card>
+      {/* <Card>
         <CardContent className="p-0">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d387193.30596073366!2d-74.25986867659859!3d40.69714941680757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1635779283479!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1225.6607505853628!2d77.3115463549927!3d28.405205291254088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cddb4eb004d59%3A0x504c5ea9ba819179!2sNavkar%20Enterprises%20Faridabad%20Textile%20Machinesry%20spare%20parts!5e1!3m2!1sen!2sin!4v1749652481785!5m2!1sen!2sin"
             width="100%"
             height="400"
             style={{ border: 0 }}
@@ -151,7 +151,7 @@ const ContactPage = () => {
             className="rounded-lg"
           ></iframe>
         </CardContent>
-      </Card>
+      </Card> */}
     </div>
   );
 };
