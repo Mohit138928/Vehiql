@@ -9,6 +9,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import useFetch from "@/hooks/use-fetch";
 import { processImageSearch } from "@/actions/home";
+import { motion, AnimatePresence } from "framer-motion";
 
 const HomeSearch = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,15 +17,16 @@ const HomeSearch = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [searchImage, setSearchImage] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
+  
 
   const router = useRouter();
 
-  const{
-    loading : isProcessing,
-    fn : processImageFn,
-    data : processResult,
-    error : processError,
-  } = useFetch(processImageSearch)
+  const {
+    loading: isProcessing,
+    fn: processImageFn,
+    data: processResult,
+    error: processError,
+  } = useFetch(processImageSearch);
 
   const onDrop = (acceptedFiles) => {
     const file = acceptedFiles[0];
@@ -65,7 +67,7 @@ const HomeSearch = () => {
   const handleTextSubmit = (e) => {
     e.preventDefault();
 
-    if(!searchTerm.trim()){
+    if (!searchTerm.trim()) {
       toast.error("Please enter a search term");
       return;
     }
@@ -76,7 +78,7 @@ const HomeSearch = () => {
   const handleImageSearch = async (e) => {
     e.preventDefault();
 
-    if(!searchImage){
+    if (!searchImage) {
       toast.error("Please Upload an image first");
       return;
     }
@@ -85,7 +87,7 @@ const HomeSearch = () => {
   };
 
   useEffect(() => {
-    if(processError){
+    if (processError) {
       toast.error(
         "Failed to analyze image: " + (processError.message || "Unknown error")
       );
@@ -93,15 +95,15 @@ const HomeSearch = () => {
   }, [processError]);
 
   useEffect(() => {
-    if(processResult?.success){
+    if (processResult?.success) {
       const params = new URLSearchParams();
-      if(processResult.data.make){
+      if (processResult.data.make) {
         params.set("make", processResult.data.make);
       }
-      if(processResult.data.bodyType){
+      if (processResult.data.bodyType) {
         params.set("bodyType", processResult.data.bodyType);
       }
-      if(processResult.data.color){
+      if (processResult.data.color) {
         params.set("color", processResult.data.color);
       }
       router.push(`/cars?${params.toString()}`);
@@ -131,69 +133,85 @@ const HomeSearch = () => {
             />
           </div>
 
-          <Button type="submit" className="absolute right-2 rounded-full cursor-pointer">
+          <Button
+            type="submit"
+            className="absolute right-2 rounded-full cursor-pointer"
+          >
             Search
           </Button>
         </div>
       </form>
 
-      {isImageSearchActive && (
-        <div className="mt-4">
-          <form onSubmit={handleImageSearch}>
-            <div className="border-2 border-dashed border-gray-300 rounded-3xl p-6 text-center">
-              {imagePreview ? (
-                <div className="flex flex-col items-center">
-                  <img
-                    src={imagePreview}
-                    alt="Uploaded Image"
-                    className="h-40 rounded-lg mb-4"
-                  />
-                  <Button
-                    variant="outline"
-                    className="cursor-pointer"
-                    onClick={() => {
-                      setSearchImage(null);
-                      setImagePreview("");
-                      toast.info("Image Removed");
-                    }}
-                  >
-                    Remove Image
-                  </Button>
-                </div>
-              ) : (
-                <div {...getRootProps()} className="cursor-pointer">
-                  <input {...getInputProps()} />
+      <AnimatePresence>
+        {isImageSearchActive && (
+          <motion.div
+            key="image-search"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            className="mt-4"
+          >
+            <form onSubmit={handleImageSearch}>
+              <div className="border-2 border-dashed border-gray-300 rounded-3xl p-6 text-center">
+                {imagePreview ? (
                   <div className="flex flex-col items-center">
-                    <Upload className="h-12 w-12 text-gray-400 mb-2" />
-                    <p className="text-white/20 mb-2">
-                      {isDragActive && !isDragReject
-                        ? "Drop the files here to Upload ..."
-                        : "Drag & Drop a Car Image or Click to select"}
-                    </p>
-                    {isDragReject && (
-                      <p className="text-red-500 mb-2">
-                        Unsupported file type or too many files
-                      </p>
-                    )}
-                    <p className="text-gray-400 text-sm">
-                      Supports : JPG, PNG (max 5mb)
-                    </p>
+                    <img
+                      src={imagePreview}
+                      alt="Uploaded Image"
+                      className="h-40 rounded-lg mb-4"
+                    />
+                    <Button
+                      variant="outline"
+                      className="cursor-pointer"
+                      onClick={() => {
+                        setSearchImage(null);
+                        setImagePreview("");
+                        toast.info("Image Removed");
+                      }}
+                    >
+                      Remove Image
+                    </Button>
                   </div>
-                </div>
+                ) : (
+                  <div {...getRootProps()} className="cursor-pointer">
+                    <input {...getInputProps()} />
+                    <div className="flex flex-col items-center">
+                      <Upload className="h-12 w-12 text-gray-400 mb-2" />
+                      <p className="text-white/20 mb-2">
+                        {isDragActive && !isDragReject
+                          ? "Drop the files here to Upload ..."
+                          : "Drag & Drop a Car Image or Click to select"}
+                      </p>
+                      {isDragReject && (
+                        <p className="text-red-500 mb-2">
+                          Unsupported file type or too many files
+                        </p>
+                      )}
+                      <p className="text-gray-400 text-sm">
+                        Supports : JPG, PNG (max 5mb)
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+              {imagePreview && (
+                <Button
+                  type="submit"
+                  className="w-full cursor-pointer mt-2"
+                  disabled={isUploading || isProcessing}
+                >
+                  {isUploading
+                    ? "Uploading..."
+                    : isProcessing
+                    ? "Analyzing Image..."
+                    : "Search with this Image"}
+                </Button>
               )}
-            </div>
-            {imagePreview && (
-              <Button
-                type="submit"
-                className="w-full cursor-pointer mt-2"
-                disabled={isUploading || isProcessing}
-              >
-                {isUploading ? "Uploading..." : isProcessing ? "Analyzing Image..." : "Search with this Image"}
-              </Button>
-            )}
-          </form>
-        </div>
-      )}
+            </form>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

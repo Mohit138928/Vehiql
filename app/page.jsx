@@ -10,29 +10,17 @@ import { SignedOut } from "@clerk/nextjs";
 import { Calendar, Car, ChevronRight, Shield } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import FadeInWhenVisible from "@/hooks/FadeInWhenVisible";
 
 export default async function Home() {
 
   const featuredCars = await getFeaturedCars();
 
-
   return (
     <div className="pt-20 flex flex-col">
 
       {/*Hero */}
-      {/* <section className="relative py-16 md:py-28 dotted-background">
-        <div className="max-w-4xl mx-auto text-center">
-          <div>
-            <h1 className="text-4xl md:text-7xl mb-4 gradient-title">
-              Electrify Your Journey with AutoVolt AI
-            </h1>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto mb-8">
-              Advanced AI Car Search and test Drive from thousands of vehicles.
-            </p>
-          </div>
-          <HomeSearch />
-        </div>
-      </section> */}
+      <FadeInWhenVisible>
       <section className="min-h-screen relative overflow-hidden bg-gradient-to-b from-blue-50 to-white">
         <div className="absolute inset-0 bg-grid-black/[0.02] -z-10" />
         <DotPattern className="absolute inset-0 -z-10 opacity-50" />
@@ -54,8 +42,10 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </FadeInWhenVisible>
 
       {/* Featured Cars Section */}
+      <FadeInWhenVisible>
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
@@ -73,8 +63,10 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </FadeInWhenVisible>
 
       {/* Browse by Make Section */}
+      <FadeInWhenVisible>
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
@@ -85,27 +77,7 @@ export default async function Home() {
               </Link>
             </Button>
           </div>
-          {/* <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-            {carMakes.map((make) => (
-              <Link
-                key={make.name}
-                href={`/cars?make=${make.name}`}
-                className="bg-white rounded-lg shadow p-4 text-center hover:shadow-md transition cursor-pointer"
-              >
-                <div className="h-16 w-auto mx-auto mb-2 relative">
-                  <Image
-                    src={
-                      make.imageUrl || `/make/${make.name.toLowerCase()}.webp`
-                    }
-                    alt={make.name}
-                    fill
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-                <h3 className="font-medium">{make.name}</h3>
-              </Link>
-            ))}
-          </div> */}
+      
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {carMakes.map((make) => (
               <Link
@@ -129,7 +101,10 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </FadeInWhenVisible>
 
+      {/* Why Choose Us Section */}
+      <FadeInWhenVisible>
       <section className="py-12">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-12">
@@ -171,7 +146,10 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </FadeInWhenVisible>
 
+      {/* Browse by Body Type Section */}
+      <FadeInWhenVisible>
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8">
@@ -209,8 +187,10 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </FadeInWhenVisible>
 
       {/* FAQ Section with Accordion */}
+      <FadeInWhenVisible>
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl font-bold text-center mb-8">
@@ -226,8 +206,10 @@ export default async function Home() {
           </Accordion>
         </div>
       </section>
+      </FadeInWhenVisible>
 
       {/* CTA Section */}
+      <FadeInWhenVisible>
       <section className="py-16 dotted-background text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
@@ -249,6 +231,7 @@ export default async function Home() {
           </div>
         </div>
       </section>
+      </FadeInWhenVisible>
     </div>
   );
 }
