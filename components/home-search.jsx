@@ -116,7 +116,7 @@ const HomeSearch = () => {
         <div className="flex relative items-center">
           <Input
             type="text"
-            placeholder="Search for a car, make, model or use our AI Image Search..."
+            placeholder="Search or use our AI Image Search..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10 pr-12 py-6 w-full rounded-full border-gray-300 bg-white/95 backdrop-blur-sm"
