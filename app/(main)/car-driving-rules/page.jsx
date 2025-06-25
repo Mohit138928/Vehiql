@@ -161,7 +161,7 @@ export default function CarDrivingRulesPage() {
                 <li>Press brake pedal and start the engine.</li>
                 <li>
                   For manual: press clutch and shift to first gear. For
-                  automatic: shift to 'D'.
+                  automatic: shift to &apos;D&apos;.
                 </li>
                 <li>Release the parking brake.</li>
               </ul>
@@ -197,7 +197,7 @@ export default function CarDrivingRulesPage() {
             <li>
               <strong>Defensive Driving:</strong>
               <ul className="list-disc pl-6">
-                <li>Anticipate others' actions.</li>
+                <li>Anticipate others&apos; actions.</li>
                 <li>Keep distance, avoid aggressive driving.</li>
                 <li>Stay calm and patient.</li>
               </ul>
