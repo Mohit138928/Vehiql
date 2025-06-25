@@ -5,8 +5,9 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { useAuth } from "@clerk/nextjs";
-import { AlertCircle, Calendar } from "lucide-react";
 import {
+  AlertCircle,
+  Calendar,
   Car,
   Fuel,
   Gauge,
@@ -24,7 +25,12 @@ import useFetch from "@/hooks/use-fetch";
 import { formatCurrency } from "@/lib/helper";
 import { format } from "date-fns";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from "framer-motion";
 import {
   Dialog,
   DialogContent,
@@ -34,13 +40,32 @@ import {
 } from "@/components/ui/dialog";
 import EmiCalculator from "./emi-calculator";
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const staggerContainer = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const ParallaxImage = ({ children }) => {
+  const { scrollYProgress } = useScroll();
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+
+  return (
+    <motion.div style={{ y }} className="relative z-0">
+      {children}
+    </motion.div>
+  );
+};
+
 export function CarDetails({ car, testDriveInfo }) {
   const router = useRouter();
   const { isSignedIn } = useAuth();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(car.wishlisted);
-
-  console.log(car)
 
   const {
     loading: savingCar,
@@ -49,7 +74,6 @@ export function CarDetails({ car, testDriveInfo }) {
     error: toggleError,
   } = useFetch(toggleSavedCar);
 
-  // Handle toggle result with useEffect
   useEffect(() => {
     if (toggleResult?.success) {
       setIsWishlisted(toggleResult.saved);
@@ -57,28 +81,22 @@ export function CarDetails({ car, testDriveInfo }) {
     }
   }, [toggleResult]);
 
-  // Handle errors with useEffect
   useEffect(() => {
     if (toggleError) {
       toast.error("Failed to update favorites");
     }
   }, [toggleError]);
 
-  // Handle save car
   const handleSaveCar = async () => {
     if (!isSignedIn) {
       toast.error("Please sign in to save cars");
       router.push("/sign-in");
       return;
     }
-
     if (savingCar) return;
-
-    // Use the toggleSavedCarFn from useFetch hook
     await toggleSavedCarFn(car.id);
   };
 
-  // Handle share
   const handleShare = () => {
     if (navigator.share) {
       navigator
@@ -87,10 +105,7 @@ export function CarDetails({ car, testDriveInfo }) {
           text: `Check out this ${car.year} ${car.make} ${car.model} on AutoVolt!`,
           url: window.location.href,
         })
-        .catch((error) => {
-          console.log("Error sharing", error);
-          copyToClipboard();
-        });
+        .catch(() => copyToClipboard());
     } else {
       copyToClipboard();
     }
@@ -101,7 +116,6 @@ export function CarDetails({ car, testDriveInfo }) {
     toast.success("Link copied to clipboard");
   };
 
-  // Handle book test drive
   const handleBookTestDrive = () => {
     if (!isSignedIn) {
       toast.error("Please sign in to book a test drive");
@@ -112,54 +126,72 @@ export function CarDetails({ car, testDriveInfo }) {
   };
 
   return (
-    <div>
+    <motion.div
+      variants={staggerContainer}
+      initial="hidden"
+      animate="visible"
+      className="space-y-14"
+    >
+      {/* Image and Info Section */}
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Image Gallery */}
+        {/* Image Section */}
         <div className="w-full lg:w-7/12">
-          <div className="aspect-video rounded-lg overflow-hidden relative mb-4">
-            {car.images && car.images.length > 0 ? (
-              <Image
-                src={car.images[currentImageIndex]}
-                alt={`${car.year} ${car.make} ${car.model}`}
-                fill
-                className="object-cover"
-                priority
-              />
-            ) : (
-              <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                <Car className="h-24 w-24 text-gray-400" />
-              </div>
-            )}
-          </div>
+          <ParallaxImage>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentImageIndex}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.5 }}
+                className="aspect-video rounded-lg overflow-hidden relative mb-4"
+              >
+                {car.images?.length > 0 ? (
+                  <Image
+                    src={car.images[currentImageIndex]}
+                    alt={`${car.year} ${car.make} ${car.model}`}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gray-200 flex items-center justify-center">
+                    <Car className="h-24 w-24 text-gray-400" />
+                  </div>
+                )}
+              </motion.div>
+            </AnimatePresence>
+          </ParallaxImage>
 
           {/* Thumbnails */}
           {car.images && car.images.length > 1 && (
-            <div className="flex gap-2 overflow-x-auto pb-2">
+            <motion.div
+              variants={fadeInUp}
+              className="flex gap-2 overflow-x-auto pb-2"
+            >
               {car.images.map((image, index) => (
                 <div
                   key={index}
+                  onClick={() => setCurrentImageIndex(index)}
                   className={`relative cursor-pointer rounded-md h-20 w-24 flex-shrink-0 transition ${
                     index === currentImageIndex
                       ? "border-2 border-blue-600"
                       : "opacity-70 hover:opacity-100"
                   }`}
-                  onClick={() => setCurrentImageIndex(index)}
                 >
                   <Image
                     src={image}
-                    alt={`${car.year} ${car.make} ${car.model} - view ${
-                      index + 1
-                    }`}
+                    alt={`Thumbnail ${index + 1}`}
                     fill
                     className="object-cover"
                   />
                 </div>
               ))}
-            </div>
+            </motion.div>
           )}
 
-          {/* Secondary Actions */}
-          <div className="flex mt-4 gap-4">
+          {/* Buttons */}
+          <motion.div variants={fadeInUp} className="flex mt-4 gap-4">
             <Button
               variant="outline"
               className={`flex items-center gap-2 flex-1 ${
@@ -181,19 +213,15 @@ export function CarDetails({ car, testDriveInfo }) {
               <Share2 className="h-5 w-5" />
               Share
             </Button>
-          </div>
+          </motion.div>
         </div>
 
-        {/* Car Details */}
-        <div className="w-full lg:w-5/12">
-          <div className="flex items-center justify-between">
-            <Badge className="mb-2">{car.bodyType}</Badge>
-          </div>
-
+        {/* Details Section */}
+        <motion.div variants={fadeInUp} className="w-full lg:w-5/12">
+          <Badge className="mb-2">{car.bodyType}</Badge>
           <h1 className="text-4xl font-bold mb-1">
             {car.year} {car.make} {car.model}
           </h1>
-
           <div className="text-2xl font-bold text-blue-600">
             {formatCurrency(car.price)}
           </div>
@@ -214,9 +242,10 @@ export function CarDetails({ car, testDriveInfo }) {
             </div>
           </div>
 
+          {/* EMI Calculator */}
           <Dialog>
             <DialogTrigger className="w-full text-start">
-              <Card className="pt-5">
+              <Card className="pt-5 hover:shadow-lg transition">
                 <CardContent>
                   <div className="flex items-center gap-2 text-lg font-medium mb-2">
                     <Currency className="h-5 w-5 text-blue-600" />
@@ -243,16 +272,15 @@ export function CarDetails({ car, testDriveInfo }) {
             </DialogContent>
           </Dialog>
 
-          {/* Request More Info */}
-          <Card className="my-6">
+          {/* Request Info */}
+          <Card className="my-6 hover:shadow-lg transition">
             <CardContent className="p-4">
               <div className="flex items-center gap-2 text-lg font-medium mb-2">
                 <MessageSquare className="h-5 w-5 text-blue-600" />
                 <h3>Have Questions?</h3>
               </div>
               <p className="text-sm text-gray-600 mb-3">
-                Our representatives are available to answer all your queries
-                about this vehicle.
+                Our representatives are available to answer all your queries.
               </p>
               <a href="mailto:help@autovolt.in">
                 <Button variant="outline" className="w-full">
@@ -262,17 +290,13 @@ export function CarDetails({ car, testDriveInfo }) {
             </CardContent>
           </Card>
 
-          {(car.status === "SOLD" || car.status === "UNAVAILABLE") && (
+          {/* Alerts and Book Test Drive */}
+          {["SOLD", "UNAVAILABLE"].includes(car.status) ? (
             <Alert variant="destructive">
-              <AlertTitle className="capitalize">
-                This car is {car.status.toLowerCase()}
-              </AlertTitle>
-              <AlertDescription>Please check again later.</AlertDescription>
+              <AlertTitle>This car is {car.status.toLowerCase()}</AlertTitle>
+              <AlertDescription>Check again later.</AlertDescription>
             </Alert>
-          )}
-
-          {/* Book Test Drive Button */}
-          {car.status !== "SOLD" && car.status !== "UNAVAILABLE" && (
+          ) : (
             <Button
               className="w-full py-6 text-lg"
               onClick={handleBookTestDrive}
@@ -287,11 +311,14 @@ export function CarDetails({ car, testDriveInfo }) {
                 : "Book Test Drive"}
             </Button>
           )}
-        </div>
+        </motion.div>
       </div>
 
-      {/* Details & Features Section */}
-      <div className="mt-12 p-6 bg-white rounded-lg shadow-sm">
+      {/* Description & Features */}
+      <motion.div
+        variants={fadeInUp}
+        className="p-6 bg-white rounded-lg shadow-sm"
+      >
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-2xl font-bold mb-6">Description</h3>
@@ -327,10 +354,13 @@ export function CarDetails({ car, testDriveInfo }) {
             </ul>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Specifications Section */}
-      <div className="mt-8 p-6 bg-white rounded-lg shadow-sm">
+      {/* Specifications */}
+      <motion.div
+        variants={fadeInUp}
+        className="p-6 bg-white rounded-lg shadow-sm"
+      >
         <h2 className="text-2xl font-bold mb-6">Specifications</h2>
         <div className="bg-gray-50 rounded-lg p-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-y-4 gap-x-8">
@@ -376,10 +406,13 @@ export function CarDetails({ car, testDriveInfo }) {
             )}
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Dealership Location Section */}
-      <div className="mt-8 p-6 bg-white rounded-lg shadow-sm">
+      {/* Dealership Location */}
+      <motion.div
+        variants={fadeInUp}
+        className="p-6 bg-white rounded-lg shadow-sm"
+      >
         <h2 className="text-2xl font-bold mb-6">Dealership Location</h2>
         <div className="bg-gray-50 rounded-lg p-6">
           <div className="flex flex-col md:flex-row gap-6 justify-between">
@@ -436,8 +469,7 @@ export function CarDetails({ car, testDriveInfo }) {
                           </span>
                         </div>
                       ))
-                  : // Default hours if none provided
-                    [
+                  : [
                       "Monday",
                       "Tuesday",
                       "Wednesday",
@@ -461,7 +493,7 @@ export function CarDetails({ car, testDriveInfo }) {
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
